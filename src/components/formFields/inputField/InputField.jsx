@@ -4,11 +4,10 @@ import {Input} from "antd";
 
 const InputField = ({label, use}) => {
 
-    const h = use === 'profile' ? 40 : 52;
     const w = use === 'profile' ? 318 : 450;
 
     return <Input placeholder={label}
-                  style={{height: h, width : w}}
+                  style={{height: 52, width : w}}
                   className={classes["__input_field"]} />;
 }
 
