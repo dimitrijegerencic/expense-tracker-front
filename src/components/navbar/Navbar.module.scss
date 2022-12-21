@@ -1,0 +1,42 @@
+.navigation-menu{
+  background-color: #140C6F;
+  color: white;
+  padding-top: 41px;
+  padding-bottom: 21px;
+
+  .logo-item{
+
+    font-family: "Montserrat ExtraBold", sans-serif;
+    font-size: 45px;
+    margin-right: auto;
+    padding-left: 110px !important;
+    margin-top:10px !important;
+
+    :hover{
+      color: white !important;
+    }
+  }
+
+  .menu-items{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    font-family: "Montserrat", sans-serif;
+    font-size:18px;
+    font-weight:700;
+    padding-right: 20px;
+
+    a{
+      color: white;
+    }
+
+    :hover{
+      color: white !important;
+    }
+  }
+
+  .menu-buttons{
+    padding-right: 101px !important;
+  }
+}
