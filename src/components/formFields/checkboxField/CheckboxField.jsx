@@ -1,9 +1,9 @@
 import React from "react";
-import classes from "./CheckboxField.module.scss";
+import "./CheckboxField.scss";
 import {Checkbox} from "antd";
 
 const CheckboxField = ({option}) => {
-    return <Checkbox className={classes['r']}>{option}</Checkbox>
+    return <Checkbox className={'checkbox-field'}>{option}</Checkbox>
 }
 
 export default CheckboxField;

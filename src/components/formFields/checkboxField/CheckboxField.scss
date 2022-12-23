@@ -1,0 +1,22 @@
+.checkbox-field{
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #140C6F;
+  padding-bottom: 15px;
+}
+
+.ant-checkbox {
+  border-radius: 0 !important;
+  background-color: #D9D9D9 !important;
+}
+
+.ant-checkbox-inner{
+  background-color: #D9D9D9 !important;
+}
+.ant-checkbox-checked .ant-checkbox-inner {
+  border-color: #140C6F;
+  background-color: #140C6F !important;
+  color:white;
+  border-radius: 0;
+}
