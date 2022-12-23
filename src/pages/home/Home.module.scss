@@ -1,0 +1,44 @@
+.info-cards-container, .main, .chart-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-cards-container{
+  gap: 73px;
+  margin-top: 92px;
+}
+
+.main{
+  flex-direction: column;
+  margin-top: 91px;
+}
+
+.filters{
+  width: 1308px;
+
+  p{
+    font-family: "Montserrat ExtraBold", sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 27px;
+    color: #140C6F;
+    padding-left: 42px;
+    margin-bottom: 35px;
+  }
+
+}
+
+.chart-container{
+  margin: 52px 0 53px 0;
+  width: 1308px;
+  height: 698px;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+
+  >div{
+    width: 1176px;
+    height: 571px;
+  }
+
+}

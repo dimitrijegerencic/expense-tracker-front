@@ -23,7 +23,7 @@ const ButtonUser = () => {
         className={classes['popover']}
         >
         <Button className={classes['user-btn']}>
-            <img src={userImg} alt={'user image'}/>
+            <img src={userImg} alt={'user'}/>
             <img src={arrowImg} alt={'arrow'}/>
         </Button>
     </Popover>
