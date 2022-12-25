@@ -1,13 +1,15 @@
+.select-field{
 
-.ant-select-selector {
-  border: none !important;
-  border-bottom: 1px solid rgba(20, 12, 111, 0.5) !important;
-  border-radius: 0 !important;
-}
+  .ant-select-selector {
+    border: none !important;
+    border-bottom: 1px solid rgba(20, 12, 111, 0.5) !important;
+    border-radius: 0 !important;
+  }
 
-.ant-select-selection-placeholder{
-  font-family: "Montserrat", sans-serif !important;
-  font-size: 16px;
-  font-weight: 400;
-  color: #140C6F !important;
+  .ant-select-selection-placeholder{
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 16px;
+    font-weight: 400;
+    color: #140C6F !important;
+  }
 }

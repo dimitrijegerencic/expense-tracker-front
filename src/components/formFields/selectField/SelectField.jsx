@@ -3,12 +3,13 @@ import "./SelectField.scss";
 import {Select} from "antd";
 import arrowImg from "../../../img/inputs/icon.png";
 
-const SelectField = () => {
+const SelectField = ({label}) => {
 
     return <Select
-        placeholder={'Prihodi'}
+        placeholder={label}
         options={null}
-        suffixIcon={<img src={arrowImg} alt={null} style={{width:16, height:8}}/>}
+        className={'select-field'}
+        suffixIcon={<img src={arrowImg} alt="" style={{width:16, height:8}}/>}
     />
 }
 

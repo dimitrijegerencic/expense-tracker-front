@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./InputField.module.scss";
+import  "./InputField.scss";
 import {Input} from "antd";
 
 const InputField = ({label, use}) => {
@@ -8,7 +8,7 @@ const InputField = ({label, use}) => {
 
     return <Input placeholder={label}
                   style={{height: 52, width : w}}
-                  className={classes["__input_field"]} />;
+                  className={"__input_field"} />;
 }
 
 export default InputField;

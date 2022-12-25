@@ -1,5 +1,5 @@
 import React from "react";
-import classes from './PasswordField.module.scss';
+import './PasswordField.scss';
 import { Input } from 'antd';
 
 const PasswordField = ({label, use}) => {
@@ -8,7 +8,7 @@ const PasswordField = ({label, use}) => {
 
     return <Input.Password  placeholder={label}
                             style={{height: 52, width : w}}
-                            className={classes["__input_field"]} />
+                            className={"password_field"}/>
 }
 
 export default PasswordField;
