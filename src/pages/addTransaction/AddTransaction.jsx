@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./AddCategory.module.scss";
+import classes from "./AddTransaction.module.scss";
 import Navbar from "../../components/navbar/Navbar";
 import TextAreaField from "../../components/formFields/textAreaField/TextAreaField";
 import ButtonFormGroup from "../../components/buttons/buttonFormGroup/ButtonFormGroup";
@@ -9,7 +9,7 @@ import DateField from "../../components/formFields/dateField/DateField";
 import TimeField from "../../components/formFields/timeField/TimeField";
 import SelectField from "../../components/formFields/selectField/SelectField";
 
-const AddCategory = () => {
+const AddTransaction = () => {
     return <>
         <Navbar/>
         <div className={classes['main']}>
@@ -54,4 +54,4 @@ const AddCategory = () => {
     </>
 }
 
-export default AddCategory;
+export default AddTransaction;
