@@ -1,0 +1,24 @@
+.table{
+  border: none;
+  width: 1222px;
+  margin: 0;
+  padding-left: 63px;
+
+  .ant-table-content {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    color: #70768C;
+  }
+
+  .ant-table-thead .ant-table-cell {
+    background-color: white;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    color: #140C6F;
+    border: none;
+  }
+
+  .ant-table-tbody>tr>td{
+    border: none;
+  }
+}

@@ -1,0 +1,14 @@
+.transaction-input-field{
+  width: 295px;
+  height: 56px;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding-left:16px;
+
+  &::placeholder{
+    font-family: "Metropolis", sans-serif;
+    font-size: 16px;
+    color: #B7B7B7;
+    line-height: 16px;
+  }
+}
