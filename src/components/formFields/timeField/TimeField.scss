@@ -3,9 +3,15 @@
   border: none;
   border-bottom: 1px solid rgba(20, 12, 111, 0.5);
   border-radius: 0;
-  font-family: "Montserrat", sans-serif;
-  font-size: 18px;
-  color: #140C6F;
+  cursor: pointer;
+
+  .ant-picker-input>input{
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px !important;
+    font-weight: 400;
+    color: #140C6F;
+  }
+
 }
 
 .ant-picker-now>a{
@@ -18,3 +24,4 @@
   font-family: "Montserrat", sans-serif;
   border-radius: 5px;
 }
+
