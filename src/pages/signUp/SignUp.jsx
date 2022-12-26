@@ -10,8 +10,8 @@ const SignUp = () => {
             <h1 className={classes['logo']}>LOGO</h1>
             <p>Welcome</p>
             <div className={classes['inputs']}>
-                <InputField label={'Enter your full name'}/>
-                <InputField label={'Enter your e-mail'}/>
+                <InputField label={'Enter your full name'} use={'signup'}/>
+                <InputField label={'Enter your e-mail'} use={'signup'}/>
                 <PasswordField label={'Input password'}/>
                 <PasswordField label={'Confirm password'}/>
             </div>

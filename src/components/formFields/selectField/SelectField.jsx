@@ -2,13 +2,14 @@ import React from "react";
 import "./SelectField.scss";
 import {Select} from "antd";
 import arrowImg from "../../../img/inputs/icon.png";
+import clsx from "clsx";
 
-const SelectField = ({label}) => {
+const SelectField = ({label, use}) => {
 
     return <Select
         placeholder={label}
         options={null}
-        className={'select-field'}
+        className={clsx('select-field', use)}
         suffixIcon={<img src={arrowImg} alt="" style={{width:16, height:8}}/>}
     />
 }

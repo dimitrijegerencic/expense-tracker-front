@@ -14,7 +14,7 @@ const LogIn = () => {
                 <img src={Logo} alt="logo"/>
             </div>
             <div className={classes['inputs']}>
-                <InputField label={'Enter e-mail'}/>
+                <InputField label={'Enter e-mail'} use={'login'}/>
                 <PasswordField label={'Enter password'}/>
             </div>
             <p className={classes['forgot-password']}>Forgot  password</p>

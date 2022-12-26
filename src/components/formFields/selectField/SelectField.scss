@@ -1,15 +1,33 @@
 .select-field{
 
-  .ant-select-selector {
-    border: none !important;
-    border-bottom: 1px solid rgba(20, 12, 111, 0.5) !important;
-    border-radius: 0 !important;
+  &.type-1{
+    .ant-select-selector {
+      border: none !important;
+      border-bottom: 1px solid rgba(20, 12, 111, 0.5) !important;
+      border-radius: 0 !important;
+    }
+
+    .ant-select-selection-placeholder{
+      font-family: "Montserrat", sans-serif !important;
+      font-size: 16px;
+      font-weight: 400;
+      color: #140C6F !important;
+    }
   }
 
-  .ant-select-selection-placeholder{
-    font-family: "Montserrat", sans-serif !important;
-    font-size: 16px;
-    font-weight: 400;
-    color: #140C6F !important;
+  &.type-2{
+    .ant-select-selector{
+      width: 295px !important;
+      height: 56px !important;
+      font-family: "Metropolis", sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      color: #B7B7B7;
+      padding: 13px !important;
+      border-color: black !important;
+      border-radius: 5px !important;
+    }
   }
+
+
 }

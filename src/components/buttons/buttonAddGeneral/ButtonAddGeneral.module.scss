@@ -1,10 +1,24 @@
 .btn-add-general{
-  background-color: #140C6F;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
-  width: 77px;
-  height: 60px;
-  cursor: pointer;
+
+  &.big, &.small{
+    background-color: #140C6F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  &.big{
+    width: 77px;
+    height: 60px;
+  }
+
+  &.small{
+    width: 30px;
+    height: 30px;
+    color:white;
+    font-size: 30px !important;
+    border: none;
+  }
 }

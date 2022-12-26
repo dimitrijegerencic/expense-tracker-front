@@ -1,0 +1,17 @@
+.table-button-group{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  >button{
+    border-radius: 6px;
+    border: none;
+    width: 39px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+}

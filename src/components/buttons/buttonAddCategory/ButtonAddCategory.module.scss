@@ -1,0 +1,19 @@
+.btn-add-category{
+  width: 336px;
+  height: 48px;
+  background-color: white;
+  font-family: "Montserrat ExtraBold", sans-serif;
+  font-size: 18px;
+  line-height: 22px;
+  color: #140C6F;
+  border: 1px solid #140C6F;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover{
+    background-color: #140C6F;
+    color: white;
+}
+
+
+}
