@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import classes from "./Home.module.scss";
-import Navbar from "../../components/navbar/Navbar";
 import InfoCard from "../../components/cards/infoCard/InfoCard";
 import BarChart from "../../components/charts/BarChart";
 import {Chart} from "chart.js/auto";
@@ -94,7 +93,6 @@ const Home = () => {
 
 
     return <div>
-        <Navbar/>
         <div className={classes['info-cards-container']}>
             <InfoCard title={'Trenutno stanje na računu'} value={'896.86€'} color={"#140C6F"}/>
             <InfoCard title={'Prihodi'} value={'+1569.65€'} color={"#84C57A"}/>

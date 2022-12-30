@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./ChangeProfile.module.scss";
-import Navbar from "../../components/navbar/Navbar";
 import InputField from "../../components/formFields/inputField/InputField";
 import ButtonFormGroup from "../../components/buttons/buttonFormGroup/ButtonFormGroup";
 import profileImg from "../../img/profile/unsplash_jmURdhtm7Ng.png";
@@ -8,7 +7,6 @@ import PasswordField from "../../components/formFields/passwordField/PasswordFie
 
 const ChangeProfile = () => {
     return <>
-        <Navbar/>
         <div className={classes['main']}>
             <div className={classes['container']}>
                 <p>Izmjena profila</p>

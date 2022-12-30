@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./TransactionsHistory.module.scss";
-import Navbar from "../../components/navbar/Navbar";
 import Table from "../../components/tables/Table";
 import {Tag} from "antd";
 import DefaultCard from "../../components/cards/defaultCard/DefaultCard";
@@ -80,7 +79,6 @@ const TransactionsHistory = () => {
     ];
 
     return <>
-        <Navbar/>
         <HorizontalTransactionForm/>
         <div className={classes['container']}>
             <hr/>
