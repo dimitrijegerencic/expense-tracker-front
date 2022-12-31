@@ -28,20 +28,6 @@
       text-align: center;
     }
 
-    .inputs{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 32px;
-      margin-top: 50px;
-    }
-
-    .button-section{
-      text-align: center;
-      padding-top: 72px;
-    }
-
   }
 
   .second-container{
@@ -55,12 +41,10 @@
     }
 
     span{
-      a{
         color: #7980c6;
         font-weight: bold;
         cursor: pointer;
         text-decoration: none;
-      }
     }
   }
 

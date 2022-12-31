@@ -1,11 +1,10 @@
 import React from "react";
-import classes from "./TextAreaField.module.scss";
-import { Input } from 'antd';
+import  "./NumberField.scss";
+import {InputNumber} from "antd";
 import Wrapper from "../../wrapper/Wrapper";
 import {Controller} from 'react-hook-form';
-const { TextArea } = Input;
 
-const TextAreaField = ({
+const NumberField = ({
                         label,
                         name,
                         placeholder,
@@ -13,26 +12,25 @@ const TextAreaField = ({
                         disabled = false,
                         control,
                         type,
-                        value
+                        value,
+                        prefix,
+                        step
                     }) => {
-
-    const h = type === 'description' ? 62 : 102;
-
-    return <Wrapper label={null} error={error}>
+    return <Wrapper label={label} error={error}>
         {control &&
             <Controller
                 name={name}
                 control={control}
                 render={({ field }) => (
-                    <TextArea
+                    <InputNumber
                         placeholder={placeholder}
                         status={error ? "error" : ''}
                         disabled={disabled}
                         type={type}
                         defaultValue={value}
-                        maxLength={100}
-                        style={{ height: h, resize: 'none', width:380 }}
-                        className={classes['text-area-field']}
+                        className={'number-field'}
+                        step={step}
+                        prefix={prefix}
                         {...field}
                     />
                 )}
@@ -41,4 +39,4 @@ const TextAreaField = ({
     </Wrapper>
 }
 
-export default TextAreaField;
+export default NumberField;

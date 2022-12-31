@@ -1,0 +1,15 @@
+.form-container{
+  .inputs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 50px;
+  }
+
+  .button-section{
+    text-align: center;
+    padding-top: 72px;
+  }
+}

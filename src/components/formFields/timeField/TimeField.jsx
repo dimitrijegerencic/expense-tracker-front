@@ -2,9 +2,17 @@ import React from "react";
 import "./TimeField.scss";
 import {TimePicker} from "antd";
 import dayjs from "dayjs";
+import Wrapper from "../../wrapper/Wrapper";
+import {Controller} from 'react-hook-form';
 import clockImg from "../../../img/inputs/clock-2.png";
 
-const TimeField = () => {
+const TimeField = ({   label,
+                       name,
+                       placeholder,
+                       error,
+                       disabled = false,
+                       control,
+                       type}) => {
 
     const date = new Date();
 
@@ -15,12 +23,25 @@ const TimeField = () => {
 
     const timeFormat = "HH:mm";
 
-    return <TimePicker
-            defaultValue={dayjs(currentTime, timeFormat)} format={timeFormat}
-            placeholder={''}
-            suffixIcon={<img src={clockImg} alt={null} style={{width:22, height:22}}/>}
-            allowClear={false}
-            className={'time-field'}/>
+    return  <Wrapper label={label} error={error}>
+        {control && <Controller
+                        name={name}
+                        control={control}
+                        render={({field}) => (
+                            <TimePicker
+                                defaultValue={dayjs(currentTime, timeFormat)}
+                                format={timeFormat}
+                                placeholder={placeholder}
+                                status={error ? "error" : ''}
+                                disabled={disabled}
+                                suffixIcon={<img src={clockImg} alt={null} style={{width:22, height:22}}/>}
+                                allowClear={false}
+                                className={'time-field'}
+                                type={type}
+                                {...field}/>
+                        )}
+                    />}
+            </Wrapper>
 }
 
 export default TimeField;

@@ -6,7 +6,7 @@
     padding-top: 52px;
     background-color: #140C6F;
     width: 100%;
-    height: 800px;
+    height: 830px;
     border-radius: 0 0 50px 50px;
 
     .logo{
@@ -37,30 +37,6 @@
         height: 191px;
       }
     }
-
-    .inputs{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 19px;
-      margin-top: 57px;
-    }
-
-    .forgot-password{
-      font-family: "Inter", sans-serif;
-      font-size: 18px;
-      line-height: 21px;
-      font-weight: 400;
-      margin-bottom: 41px;
-      cursor: pointer;
-      letter-spacing: 1px;
-    }
-
-    .button-section{
-      text-align: center;
-    }
-
   }
 
   .second-container{
