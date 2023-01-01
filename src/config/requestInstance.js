@@ -4,7 +4,7 @@ import {  storageKeys } from "./config";
 
 export const requestInstance=axios.create();
 
-requestInstance.defaults.baseURL = 'https://expense-tracker.amplitudo.me/api/v1'
+requestInstance.defaults.baseURL = 'https://expense-tracker.amplitudo.me/api'
 requestInstance.defaults.headers['Accept'] ='application/json';
 requestInstance.interceptors.request.use(
     async (config)=>{

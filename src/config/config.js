@@ -3,12 +3,12 @@ export const storageKeys = {
 }
 
 
-export const reactQueryConfig = {
+export const queryClientConfig = {
     defaultOptions: {
         queries: {
             refetchOnWindowFocus: false,
             cacheTime: 1000 * 60 * 30,
-            retry: 0
+            retry: false
         }
     }
 }

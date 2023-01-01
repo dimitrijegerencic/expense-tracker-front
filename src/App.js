@@ -6,21 +6,24 @@ import Categories from "./pages/categories/Categories";
 import Home from "./pages/home/Home";
 import ChangeProfile from "./pages/changeProfile/ChangeProfile";
 import {createBrowserRouter, RouterProvider, createRoutesFromElements, Route} from 'react-router-dom';
-import AuthLayout from "./components/layouts/authLayout/AuthLayout";
+import ContextWrapper from "./context/wrapper/ContextWrapper";
+import {QueryClient, QueryClientProvider} from "react-query";
+import {queryClientConfig} from "./config/config";
+import DefaultLayout from "./components/layouts/defaultLayout/DefaultLayout";
 
+const queryClient = new QueryClient(queryClientConfig);
 
 const router = createBrowserRouter(
     createRoutesFromElements (
         <>
             <Route path="sign-in" element={<SignUp/>}/>
-            <Route path="login" element={<LogIn/>}/>
-            <Route path="/" element={<AuthLayout/>}>
+            <Route path="login" element={<ContextWrapper><LogIn/></ContextWrapper>}/>
+            <Route path="/" element={<ContextWrapper><DefaultLayout/></ContextWrapper>}>
                 <Route index element={<Home/>}/>
                 <Route path={"/transactions-history"} element={<TransactionsHistory/>}/>
                 <Route path={"/change-profile"} element={<ChangeProfile/>}/>
                 <Route path={"/add-transaction"} element={<AddTransaction/>}/>
                 <Route path={"/categories"} element={<Categories/>}/>
-                <Route path="sign-in" element={<SignUp/>}/>
             </Route>
         </>
     )
@@ -28,9 +31,9 @@ const router = createBrowserRouter(
 
 function App() {
   return (
-    <div className="App">
-        <RouterProvider router={router} />
-    </div>
+      <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router}/>
+      </QueryClientProvider>
   );
 }
 

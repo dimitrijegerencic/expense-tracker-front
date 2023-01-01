@@ -1,4 +1,5 @@
 class StorageService{
+
     exists(key){
         return Boolean(localStorage.getItem(key))
     }
