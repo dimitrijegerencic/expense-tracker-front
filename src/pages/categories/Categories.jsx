@@ -1,105 +1,73 @@
 import React, {useState} from "react";
 import "./Categories.scss";
-import Navbar from "../../components/navbar/Navbar";
 import {Card} from "antd";
 import ButtonAddGeneral from "../../components/buttons/buttonAddGeneral/ButtonAddGeneral";
 import Table from "../../components/tables/Table";
 import ButtonTableGroup from "../../components/buttons/buttonTableGroup/ButtonTableGroup";
 import CategoryForm from "./categoryForm/CategoryForm";
+import {useQuery} from "react-query";
+import {categoryService} from "../../services/CategoryService";
+import ColorCircle from "../../components/colorCircle/ColorCircle";
+import {useModal} from "../../context/modalContext/ModalContext";
 
 const Categories = () => {
 
-    const dataSource = [
-        {
-            key: '1',
-            name: 'Mike',
-            age: 32,
-            address: '10 Downing Street',
-        },
-        {
-            key: '2',
-            name: 'John',
-            age: 42,
-            address: '10 Downing Street',
-        },
-        {
-            key: '1',
-            name: 'Mike',
-            age: 32,
-            address: '10 Downing Street',
-        },
-        {
-            key: '2',
-            name: 'John',
-            age: 42,
-            address: '10 Downing Street',
-        },
-        {
-            key: '1',
-            name: 'Mike',
-            age: 32,
-            address: '10 Downing Street',
-        },
-        {
-            key: '2',
-            name: 'John',
-            age: 42,
-            address: '10 Downing Street',
-        },
-        {
-            key: '1',
-            name: 'Mike',
-            age: 32,
-            address: '10 Downing Street',
-        },
-        {
-            key: '2',
-            name: 'John',
-            age: 42,
-            address: '10 Downing Street',
-        },
-        {
-            key: '1',
-            name: 'Mike',
-            age: 32,
-            address: '10 Downing Street',
-        },
-        {
-            key: '2',
-            name: 'John',
-            age: 42,
-            address: '10 Downing Street',
-        },
-    ];
+    const {open, close} = useModal();
+
+    const openCategoryModal = ({type}) => {
+        open({
+            title : type==='delete' ? 'Confirm delete' : 'Placeholder',
+            content : <div><p>Are you sure you want to delete?</p></div>
+        })
+    }
+
+    const openVehicleModal = (type, id = null) => {
+        open({
+            title: 'Bezveze radi viseee',
+            content: <h1>RADI VISE AJDE</h1>
+        })
+    }
 
     const columns = [
 
         {
             title: 'Naziv kategorije',
-            dataIndex: 'age',
-            key: 'age',
+            dataIndex: 'name',
+            key: 'name',
         },
         {
             title: 'Boja',
-            dataIndex: 'address',
-            key: 'address',
-            align: 'center'
+            dataIndex: 'color',
+            key: 'color',
+            align: 'center',
+            render:(text,record)=>{
+                return <ColorCircle color={record?.color}/>
+            }
         },
         {
             title: '',
             dataIndex: 'x',
             key: 'x',
-            render: () => <ButtonTableGroup
+            render: (text, record) => <ButtonTableGroup
                 onEdit={() => {
                     console.log("Edit")
                 }}
                 onDelete={() => {
-                    console.log("Delete")
+                    openVehicleModal("delete", record?.id)
                 }}
             />
 
         },
     ];
+
+    const {data:categories}=useQuery(
+        ['all-categories'],
+        ()=>categoryService.getAll(),
+        {
+            enabled:true,
+            initialData:[]
+        }
+    )
 
     const [isVisible, setIsVisible] = useState(false);
 
@@ -107,11 +75,9 @@ const Categories = () => {
         setIsVisible(true);
         const element1 = document.getElementById("categories-main");
         element1.classList.add("animationOpen");
-
     }
 
     return <>
-      <Navbar/>
       <div className={'category-container'}>
           <Card title={<div className={'card-title'} >
                             <div><p>Dodaj kategoriju</p></div>
@@ -121,7 +87,7 @@ const Categories = () => {
                         id={"categories-main"}
                         className={'card-category'}
           >
-            <Table data={dataSource} columns={columns} size={200}/>
+            <Table data={categories} columns={columns} size={200}/>
           </Card>
           {isVisible && (
               <div id={"hidden-form"}>

@@ -21,8 +21,6 @@
 
   .content{
 
-    padding-left: 26px;
-
     .ant-input{
       padding: 0 0 6px 0 !important;
     }
@@ -37,10 +35,6 @@
         margin: 0;
       }
 
-      .circle-picker{
-        margin: 27px 0 0 0 !important;
-        width: 100% !important;
-      }
     }
   }
 
@@ -48,5 +42,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 90px;
   }
 }

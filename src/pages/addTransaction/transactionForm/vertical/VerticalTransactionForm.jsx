@@ -12,6 +12,8 @@ import * as yup from 'yup';
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
 import NumberField from "../../../../components/formFields/numberField/NumberField";
+import {useQuery} from "react-query";
+import {categoryService} from "../../../../services/CategoryService";
 
 const VerticalTransactionForm = () => {
 
@@ -56,8 +58,26 @@ const VerticalTransactionForm = () => {
         }
     ]
 
-    const categories = ['Kategorija 1', 'Kategorija 2', 'Kategorija 3'];
+    const getCategories=()=>{
+        return categoryService.getAll()
+            .then(res=>{
+                return res.map(category => {
+                    return {
+                        label: category?.name,
+                        value: category?.id
+                    }
+                })
+            })
+    }
 
+    const {data:categories} = useQuery(
+        ['categories'],
+        ()=>getCategories(),
+        {
+            enabled:true,
+            initialData:[]
+        }
+    )
 
     return <>
         <form onSubmit={handleSubmit(onSubmit)}>

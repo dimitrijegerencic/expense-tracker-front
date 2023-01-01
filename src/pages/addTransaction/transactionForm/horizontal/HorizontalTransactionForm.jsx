@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./HorizontalTransactionForm.module.scss";
-import RadioField from "../../../../components/formFields/radioField/RadioField";
 import InputField from "../../../../components/formFields/inputField/InputField";
 import DateField from "../../../../components/formFields/dateField/DateField";
 import SelectField from "../../../../components/formFields/selectField/SelectField";
@@ -57,8 +56,6 @@ const HorizontalTransactionForm = () => {
 
     return <form onSubmit={handleSubmit(onSubmit)}>
                 <div className={classes['form-container']}>
-                    <RadioField option={'Trošak'}/>
-                    <RadioField option={'Prihod'}/>
                     <InputField label={'Opis'}
                                 use={'transaction'}
                                 name={'Description'}

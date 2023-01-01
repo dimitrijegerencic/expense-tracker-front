@@ -8,8 +8,32 @@ import * as yup from "yup";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
 import {message} from "antd";
+import {authService} from "../../../services/AuthService";
+import {storageService} from "../../../services/StorageService";
+import {storageKeys} from "../../../config/config";
+import {profileService} from "../../../services/ProfileService";
 
 const LoginForm = () => {
+
+    const login = (email, password) => {
+        authService.login(email, password)
+            .then(r => {
+                storageService.set(storageKeys.TOKEN, r.getAccessToken())
+            })
+            .then(res=>{
+                return profileService.getCurrentUserInfo()
+            })
+            .then(r => {
+                message.success("Login successful!");
+                setTimeout(()=>{
+                    navigate("/");
+                }, 300)
+            })
+            .catch(error => {
+                console.log(error);
+                message.error("Wrong credentials!");
+            })
+    }
 
     const navigate = useNavigate();
 
@@ -23,12 +47,10 @@ const LoginForm = () => {
             .min(8, "Password must be at least 8 characters long!")
     })
 
-
     const {handleSubmit, control, formState:{errors}}=useForm({resolver: yupResolver(schema)})
 
     const onSubmit=(data)=>{
-        message.success("Login successful!");
-        navigate('/');
+        login(data.Email, data.Password);
     }
 
     return <>
