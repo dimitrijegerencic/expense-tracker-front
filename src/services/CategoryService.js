@@ -4,17 +4,26 @@ import {requestInstance} from "../config/requestInstance";
 class CategoryService {
 
     api = {
-        categories: '/categories'
+        categories: '/v1/categories'
     }
 
     params = {
         search: 'search='
     }
 
-    getAll(query){
-        const queryParam = query?.length > 0 ? `?${this.params.search}${query}` : '';
-        return requestInstance.get(`${this.api.categories}${queryParam}`)
+    getAll(){
+        return requestInstance.get(this.api.categories)
             .then(r => r?.data?.data?.map(item => new CategoryModel(item)))
+            .catch(err => Promise.reject(err))
+    }
+
+    addCategory(data){
+        const formData = {
+            "name" : data?.name,
+            "color" : data?.color
+        }
+        return requestInstance.post(this.api.categories,formData)
+            .then(res => new CategoryModel(res?.data?.data))
             .catch(err => Promise.reject(err))
     }
 

@@ -6,13 +6,7 @@ import Wrapper from "../../wrapper/Wrapper";
 import {Controller} from 'react-hook-form';
 import clockImg from "../../../img/inputs/clock-2.png";
 
-const TimeField = ({   label,
-                       name,
-                       placeholder,
-                       error,
-                       disabled = false,
-                       control,
-                       type}) => {
+const TimeField = ({   label, name, placeholder, error, disabled = false, control, type}) => {
 
     const date = new Date();
 
@@ -34,7 +28,7 @@ const TimeField = ({   label,
                                 placeholder={placeholder}
                                 status={error ? "error" : ''}
                                 disabled={disabled}
-                                suffixIcon={<img src={clockImg} alt={null} style={{width:22, height:22}}/>}
+                                suffixIcon={<img src={clockImg} alt={"clock-icon"} style={{width:22, height:22}}/>}
                                 allowClear={false}
                                 className={'time-field'}
                                 type={type}
