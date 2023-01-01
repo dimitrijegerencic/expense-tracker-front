@@ -1,7 +1,7 @@
 export const storageKeys = {
-    TOKEN: 'user-token'
+    TOKEN: 'user-token',
+    LANGUAGE : 'language'
 }
-
 
 export const queryClientConfig = {
     defaultOptions: {

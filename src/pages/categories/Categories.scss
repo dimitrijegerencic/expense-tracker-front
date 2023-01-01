@@ -31,6 +31,54 @@
     animation: slideRight 0.3s backwards;
   }
 
+  .category-form-container{
+    width: 445px;
+    height: 449px;
+
+    .ant-card-head-title{
+      font-family: "Inter", sans-serif;
+      font-size: 18px;
+      padding: 35px 0 0 10px;
+    }
+
+    .ant-card-head{
+      border: none;
+    }
+
+    .ant-card-body{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .content{
+
+      .ant-input{
+        padding: 0 0 6px 0 !important;
+      }
+
+      .colors{
+        margin-top: 35px;
+
+        p{
+          font-family: "Montserrat ExtraBold", sans-serif;
+          font-size: 18px;
+          color: #140C6F;
+          margin: 0;
+        }
+
+      }
+    }
+
+    .button-section{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 70px;
+    }
+  }
+
 
 }
 

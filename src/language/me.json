@@ -1,0 +1,105 @@
+{
+  "common":{
+    "cancel":"otkaži",
+    "save":"sačuvaj",
+    "delete":"obriši",
+    "modal-title":"Obriši {type}",
+    "modal-content":"Da li ste sigurni? Ova akcija ne može biti opozvana.",
+    "income":"Prihod",
+    "expense":"Trošak"
+  },
+  "navbar":{
+    "transaction-history":"Istorija transakcija",
+    "categories":"Kategorije",
+    "add-transaction":"Dodaj transakciju",
+    "edit-profile": "Izmjena profila",
+    "logout":"Odjava"
+  },
+  "home":{
+    "title":"Trenutno stanje",
+      "months":{
+        "january":"Januar",
+        "february":"Februar",
+        "march":"Mart",
+        "april":"April",
+        "may":"Maj",
+        "june":"Jun",
+        "july":"Jul",
+        "august":"Avgust",
+        "september":"Septembar",
+        "october":"Oktobar",
+        "november":"Novembar",
+        "december":"Decembar"
+      },
+    "info-cards":{
+      "balance":"Trenutno stanje na računu",
+      "incomes":"Prihodi",
+      "expenses":"Troškovi"
+    }
+  },
+  "transactions-history":{
+    "table":{
+      "type":"Tip",
+      "description":"Kratak opis",
+      "date":"Datum i vrijeme",
+      "amount":"Iznos",
+      "category":"Kategorija",
+      "note":"Opis"
+    },
+    "filter_options":{
+      "expense":"Trošak",
+      "income":"Prihod",
+      "description":"Opis",
+      "category":"Kategorija"
+    },
+    "title":"Istorija transakcija"
+  },
+  "transactions":{
+    "title":"Dodaj transakciju",
+    "form":{
+      "type":"Tip",
+      "income":"Prihodi",
+      "expense":"Troškovi",
+      "date":"Datum",
+      "time":"Vrijeme",
+      "amount":"Iznos",
+      "description":"Kratak opis",
+      "note":"Bilješka",
+      "category":"Kategorija"
+    },
+    "errors":{
+      "required":"Polje je obavezno!",
+      "negative":"Polje ne može imati negativnu vrijednost",
+      "min":"Polje mora da sadrži barem {number} karaktera!",
+      "max":"Polje ne može imati više od {number} karaktera!"
+    }
+  },
+  "categories":{
+    "title":"Dodaj kategoriju",
+    "name":"Naziv kategorije",
+    "color":"Boja",
+    "new-category":"Nova kategorija",
+    "edit-category":"Izmijeni kategoriju",
+    "add":"dodaj",
+    "edit":"Izmijeni",
+    "placeholder" : "Kategorija",
+    "errors":{
+      "required":"Polje je obavezno!",
+      "min":"Polje mora da sadrži barem {number} karaktera!",
+      "max":"Polje ne smije imati više od {number} karaktera!"
+    }
+  },
+  "profile":{
+    "title":"Izmijena profila",
+    "name":"Ime i prezime",
+    "password":"Lozinka",
+    "edit-image":"Promijeni profilnu sliku",
+    "edit-content":"Izaberi novu profilnu sliku",
+    "errors":{
+      "min":"Polje mora da sadrži najmanje {number} karaktera!",
+      "max":"Polje ne smije imati više od {number} karaktera!",
+      "required":"Polje je obavezno!",
+      "format":"Unešeni format nije podržan!"
+    }
+  }
+}

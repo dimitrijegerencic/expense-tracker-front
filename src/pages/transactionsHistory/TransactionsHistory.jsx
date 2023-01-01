@@ -5,78 +5,91 @@ import {Tag} from "antd";
 import DefaultCard from "../../components/cards/defaultCard/DefaultCard";
 import ButtonTableGroup from "../../components/buttons/buttonTableGroup/ButtonTableGroup";
 import HorizontalTransactionForm from "../addTransaction/transactionForm/horizontal/HorizontalTransactionForm";
+import {useQuery} from "react-query";
+import {transactionService} from "../../services/TransactionService";
+import {t} from "react-switch-lang";
+import {useModal} from "../../context/modalContext/ModalContext";
+import DeleteForm from "../../components/deleteFrom/DeleteForm";
 
 const TransactionsHistory = () => {
 
-    const dataSource = [
+    const {open, close} = useModal();
+
+    const openDeleteTransactionModal = (type, id) => {
+        open({
+            title : '',
+            content : <DeleteForm
+                            id={id}
+                            onCancel={close}
+                            type={'transaction'}
+            />
+        })
+    }
+
+    const {data : expenses} = useQuery(
+        ['expenses'],
+        () => transactionService.getAll(),
         {
-            key: '1',
-            type: 'Trošak',
-            description: 'Neki tamo opis',
-            value: '891',
-            date_and_time:' 23.01.2023.',
-            category: 'Kategorija 1'
-        },
-        {
-            key: '2',
-            type: 'Prihod',
-            description: 'Neki tamo opis',
-            value: '600',
-            date_and_time:' 06.12.2022.',
-            category: 'Kategorija 2'
+            enabled : true,
+            initialData : []
         }
-    ];
-    const columns = [
+    )
+
+    const headers = [
         {
-            title: 'Tip',
-            dataIndex: 'type',
-            key: 'type',
+            title : t('transactions-history.table.type'),
+            dataIndex : 'type',
+            key : 'type'
         },
         {
-            title: 'Kratak opis',
-            dataIndex: 'description',
-            key: 'description',
+            title : t('transactions-history.table.description'),
+            dataIndex : 'description',
+            key : 'description'
         },
         {
-            title: 'Iznos',
-            dataIndex: 'value',
-            key: 'value',
-            align: 'center'
+            title : t('transactions-history.table.amount'),
+            dataIndex : 'amount',
+            key : 'amount',
+            align : 'center'
         },
         {
-            title: 'Datum i vrijeme',
-            dataIndex: 'date_and_time',
-            key: 'date_and_time',
+            title : t('transactions-history.table.date'),
+            dataIndex : 'date',
+            key : 'date',
+            render : (text, record) => {
+                return record?.getDateAndTimeFormatted()
+            }
+        },
+
+        {
+            title : t('transactions-history.table.category'),
+            dataIndex : 'categories',
+            key : 'categories',
+            align: 'center',
+            render : (text, record) => {
+                return record?.categories?.map(category => {
+                    return <Tag key={category?.id} color={category?.color}>{category?.name}</Tag>
+                })
+            }
         },
         {
-            title: 'Kategorija',
-            dataIndex: 'category',
-            key: 'category',
-            render: (text) => (
-                <Tag color="#f50">{text}</Tag>
-            ),
-        },
-        {
-            title: 'Opis',
-            dataIndex: 'description',
-            key: 'description',
-            align: 'center'
+            title : t('transactions-history.table.note'),
+            dataIndex : 'note',
+            key : 'note',
+            align : 'center'
         },
         {
             title: '',
-            dataIndex: 'x',
-            key: 'x',
-            render: () => <ButtonTableGroup
-                onEdit={() => {
-                    console.log("Edit")
-                }}
-                onDelete={() => {
-                    console.log("Delete")
-                }}
-            />
-
-        },
-    ];
+            dataIndex: 'options',
+            key: 'options',
+            render: (text,record)=>{
+                return <ButtonTableGroup
+                    onEdit={()=>console.log("Edit", record?.id)}
+                    onDelete={()=>openDeleteTransactionModal('transaction', record?.id)}
+                />
+            }
+        }
+    ]
 
     return <>
         <HorizontalTransactionForm/>
@@ -84,7 +97,7 @@ const TransactionsHistory = () => {
             <hr/>
             <div className={classes['table-container']}>
                 <DefaultCard title="Istorija transakcija"
-                             content={<Table data={dataSource} columns={columns} size={600}/>}>
+                             content={<Table data={expenses} columns={headers} size={600}/>}>
                 </DefaultCard>
             </div>
         </div>

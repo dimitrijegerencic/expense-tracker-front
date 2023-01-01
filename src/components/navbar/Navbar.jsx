@@ -6,6 +6,7 @@ import ButtonUser from "../buttons/buttonUser/ButtonUser";
 import MenuItem from "antd/es/menu/MenuItem";
 import {Link, useNavigate} from "react-router-dom";
 import {routes} from "../../routes/routes";
+import {t} from "react-switch-lang";
 
 const Navbar = () => {
 
@@ -19,10 +20,10 @@ const Navbar = () => {
         </MenuItem>
         <div className={classes['menu-items']}>
             <MenuItem>
-                <Link to={routes.TRANSACTIONS.history.path}>Istorija transakcija</Link>
+                <Link to={routes.TRANSACTIONS.history.path}>{t('navbar.transaction-history')}</Link>
             </MenuItem>
             <MenuItem>
-                <Link to={routes.CATEGORIES.general.path}>Kategorije</Link>
+                <Link to={routes.CATEGORIES.general.path}>{t('navbar.categories')}</Link>
             </MenuItem>
         </div>
         <div className={classes['menu-buttons']}>

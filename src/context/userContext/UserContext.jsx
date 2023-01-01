@@ -3,8 +3,14 @@ import { useNavigate } from "react-router-dom";
 import {profileService} from "../../services/ProfileService";
 import {storageService} from "../../services/StorageService";
 import {storageKeys} from "../../config/config";
+import { setTranslations, setDefaultLanguage, setLanguage } from "react-switch-lang";
+import me from "../../language/me.json";
+import en from "../../language/en.json";
 
 const UserContext = createContext();
+
+setTranslations({en,me})
+setDefaultLanguage(storageService.exists(storageKeys.LANGUAGE) ? storageService.get(storageKeys.LANGUAGE) : 'me');
 
 const UserProvider = ({children}) => {
 
@@ -21,13 +27,19 @@ const UserProvider = ({children}) => {
         else{
             navigate("/login");
         }
+        if(storageService.exists(storageKeys.LANGUAGE) === false){
+            storageService.set(storageKeys.LANGUAGE,'me')
+        }
+
     }, [])
 
     const data = {
         userData : userData,
         setUserData: (data) => setUserData(data),
-        setAppLanguage: (key) => {
+        setLanguage: (data)=>{
+            setLanguage(data);
             setAppLanguage(prevState => prevState + 1)
+            storageService.set(storageKeys.LANGUAGE,data)
         }
     }
 

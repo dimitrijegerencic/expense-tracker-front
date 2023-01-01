@@ -1,9 +1,10 @@
 import React, {createContext, useContext, useState} from 'react';
 import Modal from "../../components/modal/Modal";
 
-const ModalContext = createContext({});
+const ModalContext = createContext();
 
 const ModalProvider = ({children}) => {
+
     const initialModalData = {title: '', content: ''}
     const [isVisible, setIsVisible] = useState(false)
     const [modalData, setModalData] = useState(initialModalData)

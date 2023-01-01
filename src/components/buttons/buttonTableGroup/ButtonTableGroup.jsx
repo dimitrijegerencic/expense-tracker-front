@@ -8,7 +8,7 @@ const ButtonTableGroup = ({onEdit, onDelete}) => {
         <button onClick={(e)=>{e.stopPropagation(); onEdit(e)}}>
             <img src={pencilImg} alt={""}/>
         </button>
-        <button onClick={(e)=>{e.stopPropagation(); onDelete(e)}}>
+        <button onClick={onDelete} type={'button'}>
             <img src={trashbinImg} alt={""}/>
         </button>
     </div>

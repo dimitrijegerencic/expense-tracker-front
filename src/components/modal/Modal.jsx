@@ -3,7 +3,7 @@ import { Modal as AntModal } from 'antd';
 
 const Modal = ({title, isVisible, close, content}) => {
     return <AntModal
-        title={title}
+        title={false}
         centered
         visible={isVisible}
         footer={null}

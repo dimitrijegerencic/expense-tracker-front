@@ -3,6 +3,9 @@ import classes from "./Home.module.scss";
 import InfoCard from "../../components/cards/infoCard/InfoCard";
 import BarChart from "../../components/charts/BarChart";
 import {Chart} from "chart.js/auto";
+import {useQuery} from "react-query";
+import {dashboardService} from "../../services/DashboardService";
+import {t} from "react-switch-lang";
 
 const Home = () => {
 
@@ -65,6 +68,7 @@ const Home = () => {
         },
     ];
 
+
     Chart.defaults.font.size = 16;
     Chart.defaults.font.family = "Montserrat";
 
@@ -91,12 +95,45 @@ const Home = () => {
         }
     };
 
+    const {data : reports} = useQuery(
+        ['reports'],
+        ()=>dashboardService.getReportData(),{
+            enabled : true,
+            initialData : []
+        }
+    );
+
+    const infoCards = [
+        {
+            title: t('home.info-cards.balance'),
+            amount : reports.balance,
+            color : "#140C6F"
+        },
+        {
+            title: t('home.info-cards.incomes'),
+            amount : reports.incomes,
+            color : "#84C57A"
+        },
+        {
+            title: t('home.info-cards.expenses'),
+            amount : reports.expenses,
+            color : "#DC678894"
+        }
+
+    ]
+
 
     return <div>
         <div className={classes['info-cards-container']}>
-            <InfoCard title={'Trenutno stanje na računu'} value={'896.86€'} color={"#140C6F"}/>
-            <InfoCard title={'Prihodi'} value={'+1569.65€'} color={"#84C57A"}/>
-            <InfoCard title={'Troškovi'} value={'-679.79€'} color={"#DC678894"}/>
+
+            {infoCards.map((card, key) => {
+                return <InfoCard
+                            key={key}
+                            title={card?.title}
+                            value={card?.amount}
+                            color={card?.color}
+                        />
+            })}
         </div>
         <div className={classes['main']}>
             <div className={classes['filters']}>

@@ -1,0 +1,102 @@
+{
+  "common":{
+    "cancel":"cancel",
+    "save":"save",
+    "delete":"delete",
+    "modal-title":"Delete {type}",
+    "modal-content":"Are you sure? This action cannot be undone.",
+    "income":"Income",
+    "expense":"Expense"
+  },
+  "navbar":{
+    "transaction-history":"Transactions history",
+    "categories":"Categories",
+    "add-transaction":"Add transaction",
+    "edit-profile": "Edit profile",
+    "logout":"Logout"
+  },
+  "home":{
+    "title":"Current balance",
+      "months":{
+        "january":"January",
+        "february":"February",
+        "march":"March",
+        "april":"April",
+        "may":"May",
+        "june":"Jun",
+        "july":"July",
+        "august":"August",
+        "september":"September",
+        "october":"October",
+        "november":"November",
+        "december":"December"
+      },
+    "info-cards":{
+      "balance":"Current account balance",
+      "incomes":"Incomes",
+      "expenses":"Expenses"
+    }
+  },
+
+    "chart-data":"There are no transactions for the choosen period!",
+
+  "transactions-history":{
+    "table":{
+      "type":"Type",
+      "description":"Description",
+      "date":"Date and time",
+      "amount":"Amount",
+      "category":"Category",
+      "note":"Note"
+    },
+    "title":"Transactions history"
+  },
+  "transactions":{
+    "title":"Add transaction",
+    "form":{
+      "type":"Type",
+      "income":"Incomes",
+      "expense":"Expenses",
+      "date":"Date",
+      "time":"Time",
+      "amount":"Amount",
+      "description":"Description",
+      "note":"Note",
+      "category":"Category"
+    },
+    "errors":{
+      "required":"Field is required!",
+      "negative":"Field cannot have negative value!",
+      "min":"Field must have at least {number} characters!",
+      "max":"Field can't have more than {number} characters!"
+    }
+  },
+  "categories":{
+    "title":"Add category",
+    "name":"Category name",
+    "color":"Color",
+    "new-category":"New category",
+    "edit-category":"Edit category",
+    "add":"add",
+    "edit":"edit",
+    "placeholder" : "Category",
+    "errors":{
+      "required":"Field is required!",
+      "min":"Field must have at least {number} characters!",
+      "max":"Field can't have more than {number} characters!"
+    }
+  },
+  "profile":{
+    "title":"Edit profile",
+    "name":"First name and last name",
+    "password":"Password",
+    "edit-image":"Edit profile photo",
+    "edit-content":"Choose new profile photo",
+    "errors":{
+      "min":"Field must have at least {number} characters!",
+      "max":"Field can't have more than {number} characters!",
+      "required":"Field is required!",
+      "format":"File format is not supported!"
+    }
+  }
+}
