@@ -4,6 +4,7 @@ import {Input} from "antd";
 import clsx from "clsx";
 import Wrapper from "../../wrapper/Wrapper";
 import {Controller} from 'react-hook-form';
+import PropTypes from "prop-types";
 
 const InputField = ({
                         label,
@@ -35,6 +36,16 @@ const InputField = ({
             />
         }
     </Wrapper>
+}
+
+InputField.propTypes={
+    label:PropTypes.string,
+    error:PropTypes.string,
+    name:PropTypes.string.isRequired,
+    placeholder:PropTypes.string,
+    control:PropTypes.object.isRequired,
+    type : PropTypes.string,
+    use : PropTypes.string
 }
 
 export default InputField;

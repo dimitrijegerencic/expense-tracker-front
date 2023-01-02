@@ -1,6 +1,7 @@
 import React from "react";
 import {Table as AntdTable} from "antd";
 import "./Table.scss";
+import PropTypes from "prop-types";
 
 const Table = ({data, columns, size}) => {
 
@@ -11,6 +12,15 @@ const Table = ({data, columns, size}) => {
                 className={'table'}
                 scroll={{ y: size }}
     />
+}
+
+Table.propTypes={
+    size:PropTypes.number,
+    columns:PropTypes.arrayOf(PropTypes.shape({
+        title : PropTypes.string,
+        dataIndex : PropTypes.string,
+        key : PropTypes.string
+    })).isRequired
 }
 
 export default Table;

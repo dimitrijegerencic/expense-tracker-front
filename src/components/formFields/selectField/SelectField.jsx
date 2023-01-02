@@ -5,17 +5,10 @@ import Wrapper from "../../wrapper/Wrapper";
 import {Controller} from 'react-hook-form';
 import arrowImg from "../../../img/inputs/icon.png";
 import clsx from "clsx";
+import PropTypes from "prop-types";
 
-const SelectField = ({
-                        name,
-                        placeholder,
-                        error,
-                        options,
-                        control,
-                        use,
-                        label,
-                        allowMultiple=false
-                    }) => {
+const SelectField = ({name, placeholder, error, options, control, use, label, allowMultiple= false}) => {
+
     return <Wrapper label={label} error={error}>
         {control &&
             <Controller
@@ -36,6 +29,19 @@ const SelectField = ({
             />
         }
     </Wrapper>
+}
+
+SelectField.propTypes={
+    label:PropTypes.string,
+    placeholder:PropTypes.string,
+    error:PropTypes.string,
+    name:PropTypes.string.isRequired,
+    control:PropTypes.object.isRequired,
+    use : PropTypes.string,
+    options:PropTypes.arrayOf(PropTypes.shape({
+        label:PropTypes.string,
+        key:PropTypes.string
+    })).isRequired
 }
 
 export default SelectField;

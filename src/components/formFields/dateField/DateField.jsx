@@ -5,11 +5,23 @@ import Wrapper from "../../wrapper/Wrapper";
 import {Controller} from 'react-hook-form';
 import calendarImg from "../../../img/inputs/calendar-days.png";
 import clsx from "clsx";
-import moment from "moment";
+import dayjs from "dayjs";
+import customParseFormat from 'dayjs/plugin/customParseFormat'
+import PropTypes from "prop-types";
 
 const DateField = ({use, label, name, error, disabled = false, control, type}) => {
 
     const dateFormat = 'DD/MM/YYYY';
+
+    const date = new Date();
+
+    let currentDay = date.getDate() <= 9 ? '0' + date.getDate() : date.getDay();
+    let currentMonth = date.getMonth() + 1 <= 9 ? '0' + date.getMonth()+1 : date.getMonth()+1;
+    let currentYear = date.getFullYear();
+
+    let currentDate = `${currentDay}/${currentMonth}/${currentYear}`;
+
+    dayjs.extend(customParseFormat)
 
     return  <Wrapper label={label} error={error}>
         {control && <Controller
@@ -21,7 +33,7 @@ const DateField = ({use, label, name, error, disabled = false, control, type}) =
                     disabled={disabled}
                     type={type}
                     placeholder={use==='type-2' ? '_ _ /_ _ /_ _ _ _' : null}
-                    defaultValue={use==='type-1' ? moment() : ''}
+                    defaultValue={dayjs(currentDate, dateFormat)}
                     format={dateFormat}
                     suffixIcon={<img src={calendarImg} alt="" style={{width:22, height:22}}/>}
                     allowClear={false}
@@ -30,6 +42,15 @@ const DateField = ({use, label, name, error, disabled = false, control, type}) =
             )}
         />}
     </Wrapper>
+}
+
+DateField.propTypes={
+    use:PropTypes.string,
+    label:PropTypes.string,
+    type:PropTypes.string,
+    error:PropTypes.string,
+    name:PropTypes.string.isRequired,
+    control:PropTypes.object.isRequired,
 }
 
 export default DateField;

@@ -4,6 +4,7 @@ import "./RadioField.scss";
 import {Radio} from "antd";
 import Wrapper from "../../wrapper/Wrapper";
 import clsx from "clsx";
+import PropTypes from "prop-types";
 
 const RadioField=({label,error,name,control,options, use})=>{
     return (
@@ -31,6 +32,18 @@ const RadioField=({label,error,name,control,options, use})=>{
         </Wrapper>
 
     );
+}
+
+RadioField.propTypes={
+    label:PropTypes.string,
+    error:PropTypes.string,
+    name:PropTypes.string.isRequired,
+    control:PropTypes.object.isRequired,
+    use : PropTypes.string,
+    options:PropTypes.arrayOf(PropTypes.shape({
+        label:PropTypes.string,
+        key:PropTypes.string
+    })).isRequired
 }
 
 export default RadioField;

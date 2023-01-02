@@ -6,6 +6,7 @@ import {useMutation, useQueryClient} from "react-query";
 import {categoryService} from "../../services/CategoryService";
 import {message} from "antd";
 import {transactionService} from "../../services/TransactionService";
+import PropTypes from "prop-types";
 
 const DeleteForm = ({id, onCancel, type}) => {
 
@@ -46,6 +47,12 @@ const DeleteForm = ({id, onCancel, type}) => {
             </div>
         </div>
     </>
+}
+
+DeleteForm.propTypes = {
+    id:PropTypes.number,
+    onCancel:PropTypes.func.isRequired,
+    type:PropTypes.string
 }
 
 export default DeleteForm;

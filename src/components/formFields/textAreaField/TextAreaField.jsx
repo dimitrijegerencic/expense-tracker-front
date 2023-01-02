@@ -3,18 +3,10 @@ import classes from "./TextAreaField.module.scss";
 import { Input } from 'antd';
 import Wrapper from "../../wrapper/Wrapper";
 import {Controller} from 'react-hook-form';
+import PropTypes from "prop-types";
 const { TextArea } = Input;
 
-const TextAreaField = ({
-                        label,
-                        name,
-                        placeholder,
-                        error,
-                        disabled = false,
-                        control,
-                        type,
-                        value
-                    }) => {
+const TextAreaField = ({name, placeholder, error, disabled = false, control, type, value}) => {
 
     const h = type === 'description' ? 62 : 102;
 
@@ -39,6 +31,15 @@ const TextAreaField = ({
             />
         }
     </Wrapper>
+}
+
+TextAreaField.propTypes={
+    type:PropTypes.string,
+    label:PropTypes.string,
+    error:PropTypes.string,
+    name:PropTypes.string.isRequired,
+    value:PropTypes.string,
+    control:PropTypes.object.isRequired,
 }
 
 export default TextAreaField;

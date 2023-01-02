@@ -5,8 +5,9 @@ import dayjs from "dayjs";
 import Wrapper from "../../wrapper/Wrapper";
 import {Controller} from 'react-hook-form';
 import clockImg from "../../../img/inputs/clock-2.png";
+import PropTypes from "prop-types";
 
-const TimeField = ({   label, name, placeholder, error, disabled = false, control, type}) => {
+const TimeField = ({ label, name, placeholder, error, disabled = false, control, type}) => {
 
     const date = new Date();
 
@@ -36,6 +37,15 @@ const TimeField = ({   label, name, placeholder, error, disabled = false, contro
                         )}
                     />}
             </Wrapper>
+}
+
+TimeField.propTypes={
+    label:PropTypes.string,
+    placeholder:PropTypes.string,
+    type:PropTypes.string,
+    error:PropTypes.string,
+    name:PropTypes.string.isRequired,
+    control:PropTypes.object.isRequired,
 }
 
 export default TimeField;

@@ -3,15 +3,9 @@ import './PasswordField.scss';
 import { Input } from 'antd';
 import Wrapper from "../../wrapper/Wrapper";
 import {Controller} from 'react-hook-form';
+import PropTypes from "prop-types";
 
-const PasswordField = ({
-                           label,
-                           name,
-                           placeholder,
-                           error,
-                           disabled = false,
-                           control, use
-                       }) => {
+const PasswordField = ({label, name, placeholder, error, disabled = false, control, use}) => {
 
     const w = use === 'profile' ? 318 : 450;
 
@@ -33,6 +27,15 @@ const PasswordField = ({
             />
         }
     </Wrapper>
+}
+
+PasswordField.propTypes={
+    label:PropTypes.string,
+    error:PropTypes.string,
+    name:PropTypes.string.isRequired,
+    placeholder:PropTypes.string,
+    control:PropTypes.object.isRequired,
+    use : PropTypes.string
 }
 
 export default PasswordField;

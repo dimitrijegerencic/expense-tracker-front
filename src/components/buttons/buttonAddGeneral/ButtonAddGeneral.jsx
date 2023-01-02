@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./ButtonAddGeneral.module.scss";
 import addImg from "../../../img/button/material-symbols_add.png";
 import clsx from "clsx";
+import PropTypes from "prop-types";
 
 const ButtonAddGeneral = ({size, onClick, type}) => {
     return <button
@@ -11,6 +12,12 @@ const ButtonAddGeneral = ({size, onClick, type}) => {
             >
         {size==='big' ? <img src={addImg} alt={"+"}/> : "+"}
     </button>
+}
+
+ButtonAddGeneral.propTypes = {
+    onClick:PropTypes.func.isRequired,
+    size:PropTypes.string,
+    type:PropTypes.string
 }
 
 export default ButtonAddGeneral;
