@@ -6,17 +6,8 @@ import Wrapper from "../../wrapper/Wrapper";
 import {Controller} from 'react-hook-form';
 import PropTypes from "prop-types";
 
-const InputField = ({
-                        label,
-                        name,
-                        placeholder,
-                        error,
-                        disabled = false,
-                        control,
-                        type,
-                        use,
-                        value
-                    }) => {
+const InputField = ({label, name, placeholder, error, disabled = false, control, type, use, value}) => {
+
     return <Wrapper label={label} error={error}>
         {control &&
             <Controller

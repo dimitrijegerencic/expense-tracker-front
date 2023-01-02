@@ -1,10 +1,7 @@
 import {requestInstance} from "../config/requestInstance";
 import TransactionModel from "./models/TransactionModel";
-import {dateFormat} from "./models/TransactionModel";
 import dayjs from "dayjs";
 
-
-const timeFormat = "HH:mm:ss";
 
 class TransactionService {
 
@@ -29,8 +26,8 @@ class TransactionService {
     addTransaction(data){
         const formData={
             "type" : data?.type,
-            "entry_date" : dayjs(data?.entry_date).format(dateFormat),
-            "entry_time" : dayjs(data?.entry_time).format(timeFormat),
+            "entry_date" : dayjs(data?.date).format('YYYY-MM-DD'),
+            "entry_time" : dayjs(data?.time).format('HH:mm:ss'),
             "amount" : data?.amount,
             "description" : data?.description,
             "note" : data?.note ? data?.note : "",
@@ -45,6 +42,27 @@ class TransactionService {
         return requestInstance.delete(`${this.api.expenses}/${id}`)
             .then(result => new TransactionModel(result?.data?.data))
             .catch(error => Promise.reject(error))
+    }
+
+    getSpecificTransaction(id){
+        return requestInstance.get(`${this.api.expenses}/${id}`)
+            .then(res=>new TransactionModel(res?.data?.data))
+            .catch(err=>Promise.reject(err))
+    }
+
+    editTransaction(data){
+        const formData = {
+            "type" : data?.type,
+            "entry_date" : dayjs(data?.entry_date).format('YYYY-MM-DD'),
+            "entry_time" : dayjs(data?.entry_time).format('HH:mm:ss'),
+            "amount" : data?.amount,
+            "description" : data?.description,
+            "note" : data?.note ? data?.note : "",
+            "categories" : data?.categories
+        }
+        return requestInstance.put(`${this.api.expenses}/${data?.id}`,formData)
+            .then(res=>new TransactionModel(res?.data?.data))
+            .catch(err=>Promise.reject(err))
     }
 
 }

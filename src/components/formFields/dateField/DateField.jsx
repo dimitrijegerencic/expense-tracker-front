@@ -6,8 +6,10 @@ import {Controller} from 'react-hook-form';
 import calendarImg from "../../../img/inputs/calendar-days.png";
 import clsx from "clsx";
 import dayjs from "dayjs";
-import customParseFormat from 'dayjs/plugin/customParseFormat'
 import PropTypes from "prop-types";
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+
+dayjs.extend(customParseFormat);
 
 const DateField = ({use, label, name, error, disabled = false, control, type}) => {
 
@@ -16,7 +18,7 @@ const DateField = ({use, label, name, error, disabled = false, control, type}) =
     const date = new Date();
 
     let currentDay = date.getDate() <= 9 ? '0' + date.getDate() : date.getDay();
-    let currentMonth = date.getMonth() + 1 <= 9 ? '0' + date.getMonth()+1 : date.getMonth()+1;
+    let currentMonth = date.getMonth() + 1;
     let currentYear = date.getFullYear();
 
     let currentDate = `${currentDay}/${currentMonth}/${currentYear}`;
@@ -32,9 +34,8 @@ const DateField = ({use, label, name, error, disabled = false, control, type}) =
                     status={error ? "error" : ''}
                     disabled={disabled}
                     type={type}
-                    placeholder={use==='type-2' ? '_ _ /_ _ /_ _ _ _' : null}
-                    defaultValue={dayjs(currentDate, dateFormat)}
                     format={dateFormat}
+                    placeholder={currentDate}
                     suffixIcon={<img src={calendarImg} alt="" style={{width:22, height:22}}/>}
                     allowClear={false}
                     className={clsx('date-field', use)}

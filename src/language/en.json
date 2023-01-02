@@ -6,7 +6,13 @@
     "modal-title":"Delete {type}",
     "modal-content":"Are you sure? This action cannot be undone.",
     "income":"Income",
-    "expense":"Expense"
+    "expense":"Expense",
+    "form": {
+      "error" : "Došlo je do greške. Molimo pokušajte ponovo."
+    },
+    "errors": {
+      "required" : "Field is required!"
+    }
   },
   "navbar":{
     "transaction-history":"Transactions history",
@@ -52,7 +58,11 @@
     "title":"Transactions history"
   },
   "transactions":{
-    "title":"Add transaction",
+    "add-title":"Add transaction",
+    "edit-title" : "Edit transaction",
+    "add-success" : "Transaction added successfully!",
+    "edit-success" : "Transaction edited successfully!",
+    "history" : "Transactions history",
     "form":{
       "type":"Type",
       "income":"Incomes",
@@ -72,13 +82,16 @@
     }
   },
   "categories":{
-    "title":"Add category",
+    "add-title":"Add category",
+    "edit-title":"Edit category",
     "name":"Category name",
     "color":"Color",
     "new-category":"New category",
     "edit-category":"Edit category",
     "add":"add",
     "edit":"edit",
+    "add-success" : "Category added successfully!",
+    "edit-success" : "Category edited successfully!",
     "placeholder" : "Category",
     "errors":{
       "required":"Field is required!",

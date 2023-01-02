@@ -10,10 +10,12 @@ import {transactionService} from "../../services/TransactionService";
 import {t} from "react-switch-lang";
 import {useModal} from "../../context/modalContext/ModalContext";
 import DeleteForm from "../../components/deleteFrom/DeleteForm";
+import {useNavigate} from "react-router-dom";
 
 const TransactionsHistory = () => {
 
     const {open, close} = useModal();
+    const navigate = useNavigate();
 
     const openDeleteTransactionModal = (type, id) => {
         open({
@@ -84,9 +86,9 @@ const TransactionsHistory = () => {
             key: 'options',
             render: (text,record)=>{
                 return <ButtonTableGroup
-                    onEdit={()=>console.log("Edit", record?.id)}
-                    onDelete={()=>openDeleteTransactionModal('transaction', record?.id)}
-                />
+                            onEdit={() => navigate(`/edit-transaction/${record?.id}`)}
+                            onDelete={() => openDeleteTransactionModal('transaction', record?.id)}
+                        />
             }
         }
     ]
@@ -96,7 +98,7 @@ const TransactionsHistory = () => {
         <div className={classes['container']}>
             <hr/>
             <div className={classes['table-container']}>
-                <DefaultCard title="Istorija transakcija"
+                <DefaultCard title={t('transactions.history')}
                              content={<Table data={expenses} columns={headers} size={600}/>}>
                 </DefaultCard>
             </div>

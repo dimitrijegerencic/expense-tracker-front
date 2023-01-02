@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./TextAreaField.module.scss";
+import "./TextAreaField.scss";
 import { Input } from 'antd';
 import Wrapper from "../../wrapper/Wrapper";
 import {Controller} from 'react-hook-form';
@@ -24,7 +24,7 @@ const TextAreaField = ({name, placeholder, error, disabled = false, control, typ
                         defaultValue={value}
                         maxLength={100}
                         style={{ height: h, resize: 'none', width:380 }}
-                        className={classes['text-area-field']}
+                        className={'text-area-field'}
                         {...field}
                     />
                 )}

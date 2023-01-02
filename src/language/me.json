@@ -6,7 +6,13 @@
     "modal-title":"Obriši {type}",
     "modal-content":"Da li ste sigurni? Ova akcija ne može biti opozvana.",
     "income":"Prihod",
-    "expense":"Trošak"
+    "expense":"Trošak",
+    "form": {
+      "error" : "Došlo je do greške. Molimo pokušajte ponovo."
+    },
+    "errors": {
+      "required" : "Polje je obavezno!"
+    }
   },
   "navbar":{
     "transaction-history":"Istorija transakcija",
@@ -55,7 +61,11 @@
     "title":"Istorija transakcija"
   },
   "transactions":{
-    "title":"Dodaj transakciju",
+    "add-title":"Dodaj transakciju",
+    "edit-title" : "Izmijeni transakciju",
+    "add-success" : "Transakcija uspješno dodata!",
+    "edit-success" : "Transakcija uspješno izmijenjena!",
+    "history" : "Istorija transakcija",
     "form":{
       "type":"Tip",
       "income":"Prihodi",
@@ -75,13 +85,16 @@
     }
   },
   "categories":{
-    "title":"Dodaj kategoriju",
+    "add-title":"Dodaj kategoriju",
+    "edit-title":"Izmijeni kategoriju",
     "name":"Naziv kategorije",
     "color":"Boja",
     "new-category":"Nova kategorija",
     "edit-category":"Izmijeni kategoriju",
     "add":"dodaj",
     "edit":"Izmijeni",
+    "add-success" : "Kategorija uspješno dodata!",
+    "edit-success" : "Kategorija uspješno izmijenjena!",
     "placeholder" : "Kategorija",
     "errors":{
       "required":"Polje je obavezno!",

@@ -8,6 +8,9 @@
   justify-content: center;
   gap: 5px;
   border-radius: 15px;
+  position: absolute;
+  top: -73px;
+  right: -20px;
 
   p{
     margin: 0;
@@ -15,13 +18,11 @@
     font-family: "Montserrat", sans-serif;
     font-size: 22px;
     font-weight: 600;
+    cursor: pointer;
+
+    &:hover{
+      color: #140C6F;
+    }
   }
 
-  .languages{
-    margin-top: 15px;
-    color: white;
-    font-family: "Montserrat", sans-serif;
-    font-size: 22px;
-    font-weight: 600;
-  }
 }

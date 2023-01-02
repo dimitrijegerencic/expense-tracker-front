@@ -13,7 +13,7 @@ const DefaultCard = ({title, content}) => {
 
 DefaultCard.propTypes = {
     title:PropTypes.string,
-    content:PropTypes.string
+    content:PropTypes.element
 }
 
 export default DefaultCard;

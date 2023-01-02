@@ -7,8 +7,8 @@ export const timeFormat = "HH:mm";
 class TransactionModel{
     constructor(data){
         this.id=data?.id;
-        this.entry_date=data?.entry_date;
-        this.entry_time=data?.entry_time;
+        this.date=data?.entry_date;
+        this.time=data?.entry_time;
         this.amount=data?.amount;
         this.description=data?.description;
         this.type=data?.type;
@@ -17,7 +17,7 @@ class TransactionModel{
     }
 
     getDateAndTimeFormatted(){
-        return dayjs(this.entry_date + " " + this.entry_time).format(`${dateFormat + ' ' +timeFormat}`);
+        return dayjs(this.date + " " + this.time).format('DD/MM/YYYY HH:mm');
     }
 
     getTypeName(){

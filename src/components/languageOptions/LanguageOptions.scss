@@ -1,0 +1,17 @@
+.languages-container{
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: white;
+  margin-top: 10px;
+  
+  p{
+    cursor: pointer;
+
+    &:hover{
+      color: #140C6F;
+    }
+  }
+}

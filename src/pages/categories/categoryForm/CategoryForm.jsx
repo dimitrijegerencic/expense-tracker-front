@@ -1,40 +1,76 @@
 import React from "react";
 import "./CategoryForm.scss";
-import {Card} from "antd";
+import {t} from "react-switch-lang";
 import InputField from "../../../components/formFields/inputField/InputField";
+import RadioField from "../../../components/formFields/radioField/RadioField";
 import ButtonAddCategory from "../../../components/buttons/buttonAddCategory/ButtonAddCategory";
+import {Card, message} from "antd";
+import {useMutation, useQuery, useQueryClient} from "react-query";
+import {categoryService} from "../../../services/CategoryService";
 import * as yup from "yup";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
-import {useMutation, useQueryClient} from "react-query";
-import {categoryService} from "../../../services/CategoryService";
-import {message} from "antd";
-import RadioField from "../../../components/formFields/radioField/RadioField";
 
-const CategoryForm = () => {
+const CategoryForm = ({type, id, onClick}) => {
 
     const queryClient = useQueryClient();
 
     const schema = yup.object().shape({
         name: yup.string().trim()
-            .required('This field is required!'),
-        color: yup.string().required('This field is required!')
+            .required(t('categories.errors.required')),
+        color: yup.string().required(t('categories.errors.required'))
     })
 
-    const {handleSubmit, control, formState:{errors}}=useForm({resolver: yupResolver(schema)})
+    const {handleSubmit, control, reset, formState:{errors}}=useForm({resolver: yupResolver(schema)})
 
     const addCategory = useMutation(data => categoryService.addCategory(data)
         .then(res=>{
             queryClient.invalidateQueries('all-categories')
-            message.success("Category added!")
+            message.success(t('categories.add-success'))
         })
         .catch(err=>{
-            message.error("Error occured!")
+            message.error(t('common.form.error'))
         })
     )
 
+    const getSelectedCategory = (id) => {
+        categoryService.getParticularCategory(id)
+            .then(result => {
+                reset({
+                    id:result?.id,
+                    name:result?.name,
+                    color:result?.color
+                })
+                return result;
+            })
+            .catch(()=>message.error('Did not get info!'))
+    }
+
+    const editCategory = useMutation((data) => categoryService.editCategory(data)
+        .then(result => {
+            queryClient.invalidateQueries('all-categories')
+            message.success(t('categories.edit-success'))
+            onClick()
+        })
+        .catch(()=>{
+            message.error(t('common.form.error'))
+        })
+    )
+
+    useQuery(
+        ['category',id],
+        () => getSelectedCategory(id),
+        {enabled: type === 'edit'}
+    )
+
+
     const submitForm = (data) => {
-        addCategory.mutate(data)
+        if (type === 'add'){
+            addCategory.mutate(data)
+        }
+        else{
+            editCategory.mutate(data);
+        }
     }
 
     const colorOptions = [
@@ -52,32 +88,35 @@ const CategoryForm = () => {
         {value:'#7628DA',label:'#7628DA'}
     ]
 
-    return <Card title={'Nova kategorija'} className={'category-form-container'}>
-        <form onSubmit={handleSubmit(submitForm)}>
-            <div className={'content'}>
-                <InputField label={''}
-                            name="name"
-                            control={control}
-                            placeholder={'Kategorija'}
-                            error={errors?.name?.message}
-                            use={'category'}
-                />
-                <div className={'colors'}>
-                    <p>Boja</p>
-                    <RadioField
-                        name="color"
-                        use={'categories'}
-                        options={colorOptions}
-                        control={control}
-                        error={errors?.color?.message}
+    return <>
+        <Card title={type==='add' ? t('categories.add-title') : t('categories.edit-title')} className={'category-form-container'}>
+            <form onSubmit={handleSubmit(submitForm)}>
+                <div className={'content'}>
+                    <InputField label={''}
+                                name="name"
+                                control={control}
+                                placeholder={t('categories.placeholder')}
+                                error={errors?.name?.message}
+                                use={'category'}
                     />
+                    <div className={'colors'}>
+                        <p>{t('categories.color')}</p>
+                        <RadioField name="color"
+                                    use={'categories'}
+                                    options={colorOptions}
+                                    control={control}
+                                    error={errors?.color?.message}
+                        />
+                    </div>
                 </div>
-            </div>
-            <div className={'button-section'}>
-                <ButtonAddCategory label={'dodaj'} onClick={()=>{}}/>
-            </div>
-        </form>
-            </Card>
+                <div className={'button-section'}>
+                    <ButtonAddCategory
+                        label={t('categories.add')}
+                        onClick={() => {{}setTimeout(onClick, 1000)}}/>
+                </div>
+            </form>
+        </Card>
+    </>
 }
 
 export default CategoryForm;

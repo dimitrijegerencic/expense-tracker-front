@@ -1,5 +1,9 @@
 .date-field{
 
+  ::placeholder{
+    color:#140C6F !important;
+  }
+
   &.type-1{
     background:transparent;
     border-radius: 0;

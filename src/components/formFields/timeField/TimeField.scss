@@ -6,7 +6,15 @@
   cursor: pointer;
   padding-bottom: 13px;
 
+  .ant-picker-input{
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 22px;
 
+    ::placeholder{
+      color: #140C6F !important;
+    }
+  }
   .ant-picker-input>input{
     display: flex;
     align-items: center;
@@ -29,4 +37,3 @@
   font-family: "Montserrat", sans-serif;
   border-radius: 5px;
 }
-

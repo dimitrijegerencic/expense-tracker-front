@@ -5,7 +5,8 @@ import {t} from "react-switch-lang";
 import PropTypes from "prop-types";
 
 const ButtonAddTransaction = ({onClick}) => {
-    return <button className={classes['btn']} onClick={(e) => onClick(e)}>
+    return <button className={classes['btn-add-transaction']}
+                   onClick={(e) => onClick(e)}>
         <img src={plusIcon} alt={'plus'}/> {t('navbar.add-transaction')}
     </button>
 }
