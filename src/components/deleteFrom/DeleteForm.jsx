@@ -25,7 +25,7 @@ const DeleteForm = ({id, onCancel, type}) => {
         () => transactionService.deleteTransaction(id)
             .then(result => {
                 queryClient.invalidateQueries('expenses')
-                message.success('Transaction deleted successfuly!')
+                message.success('Transaction deleted successfully!')
                 onCancel()
             })
             .catch(error => message.error(error))
@@ -43,7 +43,7 @@ const DeleteForm = ({id, onCancel, type}) => {
             <h4>{t('common.modal-content')}</h4>
             <div className={classes['delete-form-buttons']}>
                 <ButtonModal label={t('common.cancel')} onClick={(e)=>onCancel(e)} color={'#5E72EB'}/>
-                <ButtonModal label={t('common.delete')} onClick={()=>deleteAction(id)} color={'red'}/>
+                <ButtonModal label={t('common.delete')} onClick={()=>deleteAction(id)} color={'#DF2C14'}/>
             </div>
         </div>
     </>

@@ -4,11 +4,16 @@
   font-size: 13px;
   padding-top: 10px;
   color: #140C6F4D !important;
+
+  &:hover{
+    border: 1px solid #140C6F;
+  }
 }
 
 textarea::placeholder{
   color: rgba(20, 12, 111, 0.3) !important;
 }
+
 
 .ant-input{
   color: #140C6F !important;

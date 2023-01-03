@@ -81,7 +81,7 @@ const TransactionForm = ({type, id}) => {
     const addTransaction = useMutation(data => transactionService.addTransaction(data)
         .then(res=>{
             queryClient.invalidateQueries('transactions')
-            message.success(t('transaction.add-success'))
+            message.success(t('transactions.add-success'))
             navigate('/transactions-history')
         })
         .catch(err=>{

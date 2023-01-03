@@ -10,6 +10,7 @@ import {categoryService} from "../../../services/CategoryService";
 import * as yup from "yup";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
+import {motion} from "framer-motion";
 
 const CategoryForm = ({type, id, onClick}) => {
 
@@ -89,33 +90,46 @@ const CategoryForm = ({type, id, onClick}) => {
     ]
 
     return <>
-        <Card title={type==='add' ? t('categories.add-title') : t('categories.edit-title')} className={'category-form-container'}>
-            <form onSubmit={handleSubmit(submitForm)}>
-                <div className={'content'}>
-                    <InputField label={''}
-                                name="name"
-                                control={control}
-                                placeholder={t('categories.placeholder')}
-                                error={errors?.name?.message}
-                                use={'category'}
-                    />
-                    <div className={'colors'}>
-                        <p>{t('categories.color')}</p>
-                        <RadioField name="color"
-                                    use={'categories'}
-                                    options={colorOptions}
+        <motion.div
+            initial={{scale : 0}}
+            animate={{rotate : 360, scale : 1}}
+            transition={{
+                type:"spring",
+                stiffness : 140,
+                damping : 20
+            }}
+        >
+            <Card title={type==='add' ? t('categories.add-title') : t('categories.edit-title')}
+                  className={'category-form-container'}>
+                <form onSubmit={handleSubmit(submitForm)}>
+                    <div className={'content'}>
+                        <InputField label={''}
+                                    name="name"
                                     control={control}
-                                    error={errors?.color?.message}
+                                    placeholder={t('categories.placeholder')}
+                                    error={errors?.name?.message}
+                                    use={'category'}
                         />
+                        <div className={'colors'}>
+                            <p>{t('categories.color')}</p>
+                            <RadioField name="color"
+                                        use={'categories'}
+                                        options={colorOptions}
+                                        control={control}
+                                        error={errors?.color?.message}
+                            />
+                        </div>
                     </div>
-                </div>
-                <div className={'button-section'}>
-                    <ButtonAddCategory
-                        label={t('categories.add')}
-                        onClick={() => {{}setTimeout(onClick, 1000)}}/>
-                </div>
-            </form>
-        </Card>
+                    <div className={'button-section'}>
+                        <ButtonAddCategory
+                            label={type==='add' ? t('categories.add') : t('categories.edit')}
+                            onClick={() => {{}setTimeout(onClick, 1000)}}/>
+                    </div>
+                </form>
+            </Card>
+
+        </motion.div>
+
     </>
 }
 
