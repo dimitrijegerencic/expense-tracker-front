@@ -12,6 +12,7 @@ import {authService} from "../../../services/AuthService";
 import {storageService} from "../../../services/StorageService";
 import {storageKeys} from "../../../config/config";
 import {profileService} from "../../../services/ProfileService";
+import {t} from "react-switch-lang";
 
 const LoginForm = () => {
 
@@ -20,17 +21,16 @@ const LoginForm = () => {
             .then(r => {
                 storageService.set(storageKeys.TOKEN, r.getAccessToken())
             })
-            .then(res=>{
+            .then(()=>{
                 return profileService.getCurrentUserInfo()
             })
-            .then(r => {
+            .then(() => {
                 message.success("Login successful!");
                 setTimeout(()=>{
                     navigate("/");
                 }, 300)
             })
-            .catch(error => {
-                console.log(error);
+            .catch(() => {
                 message.error("Wrong credentials!");
             })
     }
@@ -60,18 +60,18 @@ const LoginForm = () => {
                     <InputField label={''}
                                 name="Email"
                                 control={control}
-                                placeholder={'Enter e-mail'}
+                                placeholder={t('login.placeholder.email')}
                                 error={errors?.Email?.message}
                                 use={'login'}
                     />
                     <PasswordField label={''}
                                    name="Password"
                                    control={control}
-                                   placeholder={'Enter password'}
+                                   placeholder={t('login.placeholder.password')}
                                    error={errors?.Password?.message}
                     />
                 </div>
-                <p className={classes['forgot-password']}>Forgot  password</p>
+                <p className={classes['forgot-password']}>{t('login.forgot-password')}</p>
                 <div className={classes['button-section']}>
                     <ButtonLogin type='submit' onClick={()=>{}}/>
                 </div>

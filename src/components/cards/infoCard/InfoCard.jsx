@@ -1,14 +1,19 @@
 import React from "react";
-import classes from "./InfoCard.module.scss";
+import "./InfoCard.scss";
+import clsx from "clsx";
 import PropTypes from "prop-types";
 
-const InfoCard = ({title, value, color}) => {
+const InfoCard = ({title, value, use}) => {
 
-    const c = color.toString();
+    const incomeFormat = `+${value}€`;
+    const expenseFormat = `-${value}€`
+    const regularFormat = `${value}€`;
 
-    return <div className={classes['info-card']}>
-        <p className={classes['card-title']}>{title}</p>
-        <h1 className={classes['card-value']} style={{color:c}}>{value}</h1>
+    return <div className={'info-card'}>
+        <p className={'info-card-title'}>{title}</p>
+        <h1 className={clsx('info-card-value', use)}>
+            {use==='income' ? incomeFormat : use==='expense' ? expenseFormat : regularFormat}
+        </h1>
     </div>
 }
 

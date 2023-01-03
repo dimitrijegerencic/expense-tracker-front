@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./SignUp.module.scss";
 import {useNavigate} from "react-router-dom";
 import SignUpForm from "./signUpForm/SignUpForm";
+import {t} from "react-switch-lang";
 
 const SignUp = () => {
 
@@ -10,11 +11,11 @@ const SignUp = () => {
     return <div className={classes['main']}>
         <div className={classes['first-container']}>
             <h1 className={classes['logo']}>LOGO</h1>
-            <p>Welcome</p>
+            <p>{t('sign-up.welcome')}</p>
             <SignUpForm/>
         </div>
         <div className={classes['second-container']}>
-            <p>Already have an account ? <span onClick={()=>navigate("/login")}>Sign in</span></p>
+            <p>{t('common.already-have-an-account')}<span onClick={()=>navigate("/login")}> Sign in</span></p>
         </div>
     </div>
 }

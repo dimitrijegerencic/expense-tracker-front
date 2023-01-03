@@ -12,6 +12,24 @@
     },
     "errors": {
       "required" : "Field is required!"
+    },
+    "already-have-an-account": "Already have an account ?"
+  },
+  "login": {
+    "placeholder": {
+      "email": "Enter e-mail",
+      "password" : "Enter password"
+    },
+    "forgot-password" : "Forgot password"
+  },
+  "sign-up" : {
+    "title" : "Sign up",
+    "welcome" : "Welcome",
+    "placeholder" : {
+      "name": "Enter your full name",
+      "email" : "Enter your e-mail",
+      "password" : "Input password",
+      "confirm-password" : "Confirm password"
     }
   },
   "navbar":{
@@ -41,6 +59,11 @@
       "balance":"Current account balance",
       "incomes":"Incomes",
       "expenses":"Expenses"
+    },
+    "expense" : "Expense",
+    "income" : "Income",
+    "chart" : {
+      "no-data" : "Sorry! There is no data for this type of information."
     }
   },
 

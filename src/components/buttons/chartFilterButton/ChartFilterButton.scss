@@ -1,0 +1,33 @@
+.filter-btn{
+
+  .ant-select{
+    border: 1px solid #140C6F !important;
+  }
+
+  .ant-select-selector{
+    font-size: 20px;
+    color: #140C6F;
+    font-family: "Montserrat ExtraBold", sans-serif;
+    border: 1px solid #140C6F !important;
+    border-radius: 10px;
+    width: 240px !important;
+    height: 60px !important;
+
+    .ant-select-selection-item{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Montserrat ExtraBold", sans-serif !important;
+      font-size: 20px !important;
+    }
+
+    .ant-select-selection-placeholder{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #140C6F;
+    }
+  }
+
+
+}

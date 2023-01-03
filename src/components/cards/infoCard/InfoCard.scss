@@ -6,7 +6,7 @@
 
   text-align: center;
 
-  .card-title{
+  .info-card-title{
     font-family: "Montserrat", sans-serif;
     font-size: 18px;
     font-weight: 400;
@@ -16,10 +16,20 @@
     padding-top: 32px;
   }
 
-  .card-value{
+  .info-card-value{
     font-family: "Montserrat ExtraBold", sans-serif;
     font-size: 40px;
     font-weight: 700;
     padding-bottom: 10px;
+
+    color:#140C6F;
+
+    &.expense{
+      color: rgba(220, 103, 136, 0.58);
+    }
+
+    &.income{
+      color:#84C57A;
+    }
   }
 }

@@ -15,9 +15,16 @@
 }
 
 .filters{
-  width: 1308px;
+  display: flex;
+  flex-direction: row !important;
+  gap: 520px;
 
-  p{
+  .filter-buttons{
+    display: flex;
+    gap: 20px;
+  }
+
+  .current-state{
     font-family: "Montserrat ExtraBold", sans-serif;
     font-size: 22px;
     font-weight: 800;

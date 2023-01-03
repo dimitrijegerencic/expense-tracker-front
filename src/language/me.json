@@ -10,8 +10,29 @@
     "form": {
       "error" : "Došlo je do greške. Molimo pokušajte ponovo."
     },
+    "already-have-an-account": "Već imate nalog ?",
+    "dont-have-an-account" : "Nemate nalog ? ",
     "errors": {
       "required" : "Polje je obavezno!"
+    }
+  },
+  "login": {
+    "title" : "Log in",
+    "welcome-back" : "Dobrodošli nazad!",
+    "placeholder": {
+      "email": "Unesite e-mail",
+      "password" : "Unesite šifru"
+    },
+    "forgot-password" : "Zaboravljena lozinka"
+  },
+  "sign-up" : {
+    "title" : "Prijavite se",
+    "welcome" : "Dobrodošli",
+    "placeholder" : {
+      "name": "Unesite puno ime i prezime",
+      "email" : "Unesite e-mail",
+      "password" : "Unesite lozinku",
+      "confirm-password" : "Potvrdite lozinku"
     }
   },
   "navbar":{
@@ -41,6 +62,11 @@
       "balance":"Trenutno stanje na računu",
       "incomes":"Prihodi",
       "expenses":"Troškovi"
+    },
+    "expense" : "Trošak",
+    "income" : "Prihod",
+    "chart" : {
+      "no-data" : "Izvinjavamo se! Za odabrane filtere nema podataka."
     }
   },
   "transactions-history":{

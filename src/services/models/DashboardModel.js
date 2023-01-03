@@ -2,8 +2,8 @@
 class DashboardModel{
 
     constructor(data){
-        this.name=data?.name;
-        this.amount=data?.amount
+        this.name = data?.name;
+        this.amount = data?.amount
     }
 }
 

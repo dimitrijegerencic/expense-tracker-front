@@ -8,22 +8,25 @@ import {useNavigate} from "react-router-dom";
 import InputField from "../../../components/formFields/inputField/InputField";
 import PasswordField from "../../../components/formFields/passwordField/PasswordField";
 import ButtonLogin from "../../../components/buttons/buttonLogin/ButtonLogin";
+import {t} from "react-switch-lang";
 
 const SignUpForm = () => {
 
+    const navigate = useNavigate();
+
     const schema = yup.object().shape({
-        Name : yup.string().trim()
+        name : yup.string().trim()
             .min(3, "Name should have at least 3 characters!")
             .max(100, "Name can not have more than 100 characters!")
             .required("This field is required!"),
-        Email : yup.string().trim()
+        email : yup.string().trim()
             .email("Email format required!")
             .required("This field is required!"),
-        Password : yup.string().trim()
+        password : yup.string().trim()
             .min(8, "Password should be at least 8 characters long!")
             .max(16, "Password can not have more than 16 characters!")
             .required("This field is required!"),
-        ConfirmPassword : yup.string().trim()
+        confirmPassword : yup.string().trim()
             .min(8, "Password should be at least 8 characters long!")
             .max(16, "Password can not have more than 16 characters!")
             .required("This field is required!")
@@ -36,8 +39,6 @@ const SignUpForm = () => {
         navigate('/');
     }
 
-    const navigate = useNavigate();
-
     return <>
         <div className={classes['form-container']}>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -45,28 +46,28 @@ const SignUpForm = () => {
                     <InputField label={''}
                                 name="Name"
                                 control={control}
-                                placeholder={'Enter your full name'}
-                                error={errors?.Name?.message}
+                                placeholder={t('sign-up.placeholder.name')}
+                                error={errors?.name?.message}
                                 use={'signup'}
                     />
                     <InputField label={''}
                                 name="Email"
                                 control={control}
-                                placeholder={'Enter your e-mail'}
-                                error={errors?.Email?.message}
+                                placeholder={t('sign-up.placeholder.email')}
+                                error={errors?.email?.message}
                                 use={'signup'}
                     />
                     <PasswordField label={''}
                                    name="Password"
                                    control={control}
-                                   placeholder={'Input password'}
-                                   error={errors?.Password?.message}
+                                   placeholder={t('sign-up.placeholder.password')}
+                                   error={errors?.password?.message}
                     />
                     <PasswordField label={''}
                                    name="ConfirmPassword"
                                    control={control}
-                                   placeholder={'Confirm password'}
-                                   error={errors?.ConfirmPassword?.message}
+                                   placeholder={t('sign-up.placeholder.confirm-password')}
+                                   error={errors?.confirmPassword?.message}
                     />
                 </div>
                 <div className={classes['button-section']}>

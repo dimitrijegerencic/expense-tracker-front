@@ -1,103 +1,23 @@
 import React, {useState} from "react";
 import classes from "./Home.module.scss";
 import InfoCard from "../../components/cards/infoCard/InfoCard";
-import BarChart from "../../components/charts/BarChart";
-import {Chart} from "chart.js/auto";
 import {useQuery} from "react-query";
 import {dashboardService} from "../../services/DashboardService";
 import {t} from "react-switch-lang";
+import BarChart from "../../components/charts/barChart/BarChart";
+import ChartFilterButton from "../../components/buttons/chartFilterButton/ChartFilterButton";
+import dayjs from "dayjs";
 
 const Home = () => {
 
-    const UserData = [
-        {
-            id: 1,
-            year: 2019,
-            userGain: 780,
-            userLost: 823,
-            color : "orange"
-        },
-        {
-            id: 2,
-            year: 2020,
-            userGain: 200,
-            userLost: 345,
-            color: "blue"
-        },
-        {
-            id: 3,
-            year: 2022,
-            userGain: 433,
-            userLost: 555,
-            color:"green"
-        },
-        {
-            id: 4,
-            year: 2023,
-            userGain: 351,
-            userLost: 4555,
-            color:"red"
-        },
-        {
-            id: 5,
-            year: 2024,
-            userGain: 600,
-            userLost: 234,
-            color: "purple"
-        },
-        {
-            id: 6,
-            year: 2091,
-            userGain: 80,
-            userLost: 823,
-            color : "black"
-        },
-        {
-            id: 7,
-            year: 1970,
-            userGain: 251,
-            userLost: 345,
-            color: "#91a5c4"
-        },
-        {
-            id: 8,
-            year: 2024,
-            userGain: 600,
-            userLost: 234,
-            color: "purple"
-        },
-    ];
+    const currDate = new Date();
 
-
-    Chart.defaults.font.size = 16;
-    Chart.defaults.font.family = "Montserrat";
-
-    const [userData, setUserData] = useState({
-        labels : UserData.sort((a,b) => b.userGain - a.userGain).map((data) => data.year),
-        datasets : [{
-            label: "",
-            data : UserData.map((data) => data.userGain),
-            backgroundColor : UserData.map((data) => data.color),
-            borderRadius : 10,
-            grouped:false,
-        }]
-    });
-
-    const options = {
-        responsive: true,
-        plugins: {
-            legend: {
-                display: false
-            },
-            title: {
-                display: false
-            },
-        }
-    };
+    const [month, setMonth] = useState(currDate.getMonth() + 1);
+    const [type, setType] = useState('expense');
 
     const {data : reports} = useQuery(
         ['reports'],
-        ()=>dashboardService.getReportData(),{
+        () => dashboardService.getReportData(),{
             enabled : true,
             initialData : []
         }
@@ -107,42 +27,97 @@ const Home = () => {
         {
             title: t('home.info-cards.balance'),
             amount : reports.balance,
-            color : "#140C6F"
+            type : 'balance'
         },
         {
             title: t('home.info-cards.incomes'),
             amount : reports.incomes,
-            color : "#84C57A"
+            type : 'income'
         },
         {
             title: t('home.info-cards.expenses'),
             amount : reports.expenses,
-            color : "#DC678894"
+            type : 'expense'
         }
 
     ]
 
+    const typeOptions = [
+        {
+            label : <p onClick={()=>setType('income')}>{t('home.income')}</p>,
+            key : 'income',
+            value : t('home.income')
+        },
+        {
+            label : <p onClick={()=>setType('expense')}>{t('home.expense')}</p>,
+            key : 'expense',
+            value : t('home.expense')
+        }
+
+    ];
+
+    const [typeLabel, setTypeLabel] = useState(typeOptions[1].value)
+
+    const allMonths = [
+        t('home.months.january'),
+        t('home.months.february'),
+        t('home.months.march'),
+        t('home.months.april'),
+        t('home.months.may'),
+        t('home.months.june'),
+        t('home.months.july'),
+        t('home.months.august'),
+        t('home.months.september'),
+        t('home.months.october'),
+        t('home.months.november'),
+        t('home.buttons.months.december'),
+    ];
+
+    const [monthLabel, setMonthLabel] = useState(`${allMonths[dayjs().month()]} ${dayjs().year()}`)
+
+    const currentDate = dayjs();
+    const last12dates = [];
+
+    for (let i = 0; i < 12; i++) {
+        last12dates.push(allMonths[i] + " " +currentDate.subtract(i, 'month').format('YYYY'));
+    }
+
+    const finale = last12dates.map((item, index) =>(
+        {
+            label : <p onClick={()=>setMonth(index + 1)}>{item}</p>,
+            key : item.toString().toLowerCase(),
+            value : item.toString().toLowerCase()
+        }
+    ) )
 
     return <div>
         <div className={classes['info-cards-container']}>
-
             {infoCards.map((card, key) => {
                 return <InfoCard
                             key={key}
                             title={card?.title}
                             value={card?.amount}
-                            color={card?.color}
+                            use={card?.type}
                         />
             })}
         </div>
+
         <div className={classes['main']}>
             <div className={classes['filters']}>
-                <p>Trenutno stanje</p>
+                <div>
+                    <p className={classes['current-state']}>Trenutno stanje</p>
+                </div>
+                <div className={classes['filter-buttons']}>
+                    <ChartFilterButton options={typeOptions} label={typeLabel} use={'type'}/>
+                    <ChartFilterButton options={finale} label={monthLabel} use={'month'}/>
+                </div>
+            </div>
+            <div style={{height:50, width:"80%"}}>
                 <hr/>
             </div>
             <div className={classes['chart-container']}>
                <div>
-                   <BarChart dataset={userData} options={options}/>
+                    <BarChart type={type} month={month} />
                </div>
             </div>
         </div>
