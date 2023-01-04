@@ -1,83 +1,73 @@
 import React from "react";
-import classes from "./HorizontalTransactionForm.module.scss";
-import InputField from "../../../../components/formFields/inputField/InputField";
-import DateField from "../../../../components/formFields/dateField/DateField";
-import SelectField from "../../../../components/formFields/selectField/SelectField";
+import "./HorizontalTransactionForm.scss";
+import {Input, Radio} from "antd";
+import {DatePicker} from "antd";
+import {Select} from "antd";
+import calendarImg from "../../../../img/inputs/calendar-days.png";
+import arrowDown from "../../../../img/inputs/arrowDown.png";
 import ButtonAddGeneral from "../../../../components/buttons/buttonAddGeneral/ButtonAddGeneral";
 import {useNavigate} from "react-router-dom";
-import * as yup from "yup";
-import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
-import {message} from "antd";
+import dayjs from "dayjs";
+import {categoryService} from "../../../../services/CategoryService";
+import {useQuery} from "react-query";
 
-const HorizontalTransactionForm = () => {
+const HorizontalTransactionForm = ({typeSet, dateSet, descriptionSet, categorySet}) => {
 
     const navigate = useNavigate();
 
-    const schema = yup.object().shape({
-        Type : yup.string().trim()
-            .required("This field is required!"),
-        Date : yup.date()
-            .required("This field is required!"),
-        Time : yup.string()
-            .required("This field is required!"),
-        Amount : yup.number()
-            .required("This field is required!")
-            .min(0, "Something"),
-        Description : yup.string().trim()
-            .required("This field is required!")
-            .min(3, "Description should be at least 3 characters long!")
-            .max(100, "Description can not be longer than 100 characters!"),
-        Note : yup.string().trim()
-            .required("This field is required!")
-            .min(3, "Note should be at least 3 characters long!")
-            .max(400, "Note can not be longer than 400 characters!"),
-        Category : yup.array().of(yup.number().integer()).required("This field is required!")
-    })
-
-    const {handleSubmit, control, formState:{errors}}=useForm({resolver: yupResolver(schema)})
-
-    const onSubmit=(data)=>{
-        message.success("Transaction added successful!");
-        navigate('/');
+    const getCategories=()=>{
+        return categoryService.getAll()
+            .then(res=>{
+                return res.map(category=>{
+                    return {
+                        label: category?.name,
+                        value: category?.id
+                    }
+                })
+            })
     }
 
-    const typeOptions=[
+    const {data : categoryOptions} = useQuery(
+        ['all-categories'],
+        ()=>getCategories(),
         {
-            label: 'Expense',
-            value: 'expense'
-        },
-        {
-            label: 'Income',
-            value: 'income'
+            enabled : true,
+            initialData: []
         }
-    ]
+    )
 
-
-    return <form onSubmit={handleSubmit(onSubmit)}>
-                <div className={classes['form-container']}>
-                    <InputField label={'Opis'}
-                                use={'transaction'}
-                                name={'Description'}
-                                control={control}
-                                placeholder={'Opis'}
-                                error={errors?.Description?.message}
-                    />
-                    <DateField label={''}
-                               name={'Date'}
-                               control={control}
-                               error={errors?.Date?.message}
-                               use={'type-2'}/>
-                    <SelectField use={'type-2'}
-                                 options={typeOptions}
-                                 placeholder={'Prihodi'}
-                                 name={'Type'}
-                                 control={control}
-                                 error={errors?.Type?.message}
-                    />
-                    <ButtonAddGeneral size={'big'} type={'submit'} onClick={()=>{}}/>
-                </div>
-            </form>
+    return <div className={'form-container'}>
+        <div className={'radio-buttons-container'}>
+            <Radio.Group className={'filter-radio-buttons'} onChange={e=>typeSet(e)}>
+                <Radio value={'expense'}>Trošak</Radio>
+                <Radio value={'income'}>Prihod</Radio>
+            </Radio.Group>
+        </div>
+        <div className={'filter-inputs'}>
+            <Input
+                placeholder={'Opis'}
+                onChange={e=>descriptionSet(e)}
+                className={'filter-input-field'}
+            />
+            <DatePicker
+                className={'filter-date-field'}
+                placeholder={'_ _ /_ _/_ _ _ _'}
+                suffixIcon={<img src={calendarImg} alt="" style={{width:22, height:22}}/>}
+                allowClear={false}
+                format={'YYYY/MM/DD'}
+                onChange={(d,ds) => dateSet(ds ? dayjs(d).format('YYYY-MM-DD') : '')}
+            />
+            <Select
+                className={'filter-select-field'}
+                placeholder={'Kategorija'}
+                suffixIcon={<img src={arrowDown} alt={''} style={{paddingRight:10}}/>}
+                mode={'multiple'}
+                options={categoryOptions}
+                onChange={value => categorySet(value)}
+            />
+        </div>
+        <ButtonAddGeneral size={'big'} onClick={()=>navigate('/transactions-history')}/>
+    </div>
 }
 
 export default HorizontalTransactionForm;

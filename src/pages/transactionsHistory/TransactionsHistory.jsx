@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import classes from "./TransactionsHistory.module.scss";
 import Table from "../../components/tables/Table";
 import {Tag} from "antd";
@@ -17,6 +17,11 @@ const TransactionsHistory = () => {
     const {open, close} = useModal();
     const navigate = useNavigate();
 
+    const [type, setType] = useState('');
+    const [description, setDescription] = useState('');
+    const [date, setDate] = useState('');
+    const [category, setCategory] = useState(null);
+
     const openDeleteTransactionModal = (type, id) => {
         open({
             title : '',
@@ -29,8 +34,8 @@ const TransactionsHistory = () => {
     }
 
     const {data : expenses} = useQuery(
-        ['expenses'],
-        () => transactionService.getAll(),
+        ['expenses', type, description, category, date],
+        () => transactionService.getAll(type, description, category, date),
         {
             enabled : true,
             initialData : []
@@ -94,14 +99,25 @@ const TransactionsHistory = () => {
     ]
 
     return <>
-        <HorizontalTransactionForm/>
+        <HorizontalTransactionForm typeSet={e => setType(e.target.value)}
+                                   descriptionSet={e => setDescription(e.target.value)}
+                                   dateSet={e => setDate(e)}
+                                   categorySet={value => setCategory(value)}
+
+        />
         <div className={classes['container']}>
             <hr/>
-            <div className={classes['table-container']}>
-                <DefaultCard title={t('transactions.history')}
-                             content={<Table data={expenses} columns={headers} size={600}/>}>
-                </DefaultCard>
-            </div>
+            {expenses.length > 0 ?
+                <div className={classes['table-container']}>
+                    <DefaultCard title={t('transactions.history')}
+                                 content={<Table data={expenses} columns={headers} size={600}/>}>
+                    </DefaultCard>
+                </div>
+                :
+                <div className={classes['no-table-data']}>
+                    <h1>{t('transactions-history.table.no-data')}</h1>
+                </div>
+            }
         </div>
     </>
 }

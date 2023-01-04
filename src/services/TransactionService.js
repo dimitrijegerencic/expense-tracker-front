@@ -2,7 +2,6 @@ import {requestInstance} from "../config/requestInstance";
 import TransactionModel from "./models/TransactionModel";
 import dayjs from "dayjs";
 
-
 class TransactionService {
 
     api = {
@@ -13,14 +12,34 @@ class TransactionService {
         search : 'search=',
         type : 'type=',
         description : 'description=',
-        category : 'category_id',
-        entry_date : 'entry_date'
+        category : 'category_id=',
+        entry_date : 'entry_date='
     }
 
-    getAll(){
-        return requestInstance.get(`${this.api.expenses}`)
-            .then(result =>result?.data?.data.map(item => new TransactionModel(item)))
-            .catch(error => Promise.reject(error))
+    getAll(type, description, categories, date){
+        const typeParam = type.length > 0 ? `?${this.params.type}${type}` : '';
+        const descParam = description.length > 0
+            ? (typeParam ? `&${this.params.description}${description}`
+                : `?${this.params.description}${description}`)
+            : '';
+        const multiCategoryParam = categories
+            ? categories.map((category, index, array)=>{
+                return (((typeParam || descParam) || array.indexOf(category)!==0)
+                    ? `&${this.params.category}${category}` : `?${this.params.category}${category}`)
+            })
+            : '';
+        const categoryParam = multiCategoryParam ? multiCategoryParam.join(''): '';
+        const dateParam = date.length>0
+            ? (((typeParam || descParam) || categoryParam) ? `&${this.params.date}${date}`
+                : `?${this.params.date}${date}`)
+            : '';
+        return requestInstance.get
+        (`${this.api.expenses}${typeParam}${descParam}${categoryParam}${dateParam}`)
+            .then(result =>
+                result?.data?.data.map(item => new TransactionModel(item)))
+            .catch(error =>
+                Promise.reject(error))
+
     }
 
     addTransaction(data){

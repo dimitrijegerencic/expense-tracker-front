@@ -4,15 +4,13 @@ import * as yup from "yup";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {message} from "antd";
-import {useNavigate} from "react-router-dom";
 import InputField from "../../../components/formFields/inputField/InputField";
 import PasswordField from "../../../components/formFields/passwordField/PasswordField";
 import ButtonLogin from "../../../components/buttons/buttonLogin/ButtonLogin";
 import {t} from "react-switch-lang";
+import {authService} from "../../../services/AuthService";
 
 const SignUpForm = () => {
-
-    const navigate = useNavigate();
 
     const schema = yup.object().shape({
         name : yup.string().trim()
@@ -35,8 +33,9 @@ const SignUpForm = () => {
     const {handleSubmit, control, formState:{errors}} = useForm({resolver:yupResolver(schema)})
 
     const onSubmit = (data) => {
-        message.success("Sign up successful!");
-        navigate('/');
+        authService.signUp(data)
+            .then(() => message.success('Uspješna prijava!'))
+            .catch(() => message.error('Došlo je do greške!'))
     }
 
     return <>
@@ -44,27 +43,27 @@ const SignUpForm = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className={classes['inputs']}>
                     <InputField label={''}
-                                name="Name"
+                                name="name"
                                 control={control}
                                 placeholder={t('sign-up.placeholder.name')}
                                 error={errors?.name?.message}
                                 use={'signup'}
                     />
                     <InputField label={''}
-                                name="Email"
+                                name="email"
                                 control={control}
                                 placeholder={t('sign-up.placeholder.email')}
                                 error={errors?.email?.message}
                                 use={'signup'}
                     />
                     <PasswordField label={''}
-                                   name="Password"
+                                   name="password"
                                    control={control}
                                    placeholder={t('sign-up.placeholder.password')}
                                    error={errors?.password?.message}
                     />
                     <PasswordField label={''}
-                                   name="ConfirmPassword"
+                                   name="confirmPassword"
                                    control={control}
                                    placeholder={t('sign-up.placeholder.confirm-password')}
                                    error={errors?.confirmPassword?.message}

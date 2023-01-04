@@ -76,7 +76,8 @@
       "date":"Datum i vrijeme",
       "amount":"Iznos",
       "category":"Kategorija",
-      "note":"Opis"
+      "note":"Opis",
+      "no-data" : "Izvinjavamo se! Za odabrane filtere nema podataka."
     },
     "filter_options":{
       "expense":"Trošak",

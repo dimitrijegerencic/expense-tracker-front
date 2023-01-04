@@ -1,34 +1,4 @@
 .radio-field{
-
-  &.transactions{
-    font-family: "Inter", sans-serif;
-    font-size: 18px;
-    font-weight: 500;
-    color: #140C6F;
-
-    .ant-radio-checked .ant-radio-inner{
-      border: 2px solid #140C6F !important;
-      background-color: white !important;
-    }
-
-    .ant-radio-inner{
-      border: 2px solid #140C6F !important;
-    }
-
-    .ant-radio:hover .ant-radio-inner {
-      border-color: #140C6F !important;
-    }
-
-    .ant-radio-checked .ant-radio-inner:after{
-      background-color: #140C6F;
-    }
-
-    .ant-radio-wrapper{
-      flex-direction: row-reverse !important;
-    }
-
-  }
-
   &.categories{
     display: grid;
     grid-template-columns: auto auto auto auto auto auto;

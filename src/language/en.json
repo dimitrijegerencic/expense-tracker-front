@@ -76,7 +76,8 @@
       "date":"Date and time",
       "amount":"Amount",
       "category":"Category",
-      "note":"Note"
+      "note":"Note",
+      "no-data" : "Sorry! There is no data for this type of information."
     },
     "title":"Transactions history"
   },

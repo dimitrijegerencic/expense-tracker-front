@@ -79,12 +79,12 @@ const TransactionForm = ({type, id}) => {
     )
 
     const addTransaction = useMutation(data => transactionService.addTransaction(data)
-        .then(res=>{
+        .then(()=>{
             queryClient.invalidateQueries('transactions')
             message.success(t('transactions.add-success'))
             navigate('/transactions-history')
         })
-        .catch(err=>{
+        .catch(()=>{
             message.error("Error occured!")
         })
     )
@@ -104,17 +104,17 @@ const TransactionForm = ({type, id}) => {
                 })
                 return result;
             })
-            .catch(error => message.error('Did not get info!'))
+            .catch(() => message.error('Did not get info!'))
     }
 
 
     const editTransaction = useMutation((data) => transactionService.editTransaction(data)
-        .then(result => {
+        .then(() => {
             queryClient.invalidateQueries("transactions")
             message.success(t('transactions.edit-success'))
             navigate('/transactions-history');
         })
-        .catch(err => {
+        .catch(() => {
             message.error(t('common.form.error'))
         }))
 

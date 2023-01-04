@@ -5,7 +5,8 @@ class AuthService{
 
     api = {
         login: '/login',
-        logout: '/logout'
+        logout: '/logout',
+        sign_up: '/v1/users'
     }
 
     login(email, password){
@@ -29,6 +30,17 @@ class AuthService{
     logout(){
         return requestInstance.post(this.api.logout)
             .then(res=>new AuthModel(res.data))
+            .catch(err=>Promise.reject(err))
+    }
+
+    signUp(data){
+        const formData = {
+            "name" : data?.name,
+            "email" : data?.email,
+            "password" : data?.password,
+        }
+        return requestInstance.post(this.api.sign_up,formData)
+            .then(result => new AuthModel(result.data))
             .catch(err=>Promise.reject(err))
     }
 
