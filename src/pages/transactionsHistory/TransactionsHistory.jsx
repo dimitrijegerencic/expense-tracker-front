@@ -107,7 +107,7 @@ const TransactionsHistory = () => {
         />
         <div className={classes['container']}>
             <hr/>
-            {expenses.length > 0 ?
+            {expenses.length !== 0 ?
                 <div className={classes['table-container']}>
                     <DefaultCard title={t('transactions.history')}
                                  content={<Table data={expenses} columns={headers} size={600}/>}>

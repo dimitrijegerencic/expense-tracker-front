@@ -6,7 +6,7 @@ class ProfileService{
     api = {
         user: '/me',
         change_profile_image : '/v1/change-profile-photo',
-        users : '/users'
+        edit_user : '/v1/users'
 
     }
 
@@ -16,6 +16,20 @@ class ProfileService{
             .catch(error => Promise.reject(error))
     }
 
+    changeProfilePhoto(data){
+        const formData = {
+            "photo" : data
+        }
+        return requestInstance.post(this.api.change_profile_image, formData,{
+            headers : {
+                "content-type" : "multipart/form-data",
+            }
+        })
+            .then(result => new ProfileModel(result?.data?.data))
+            .catch(error => Promise.reject(error))
+    }
+
+
     editUser(data){
 
         const formData = {
@@ -23,8 +37,8 @@ class ProfileService{
             "email" : data?.email,
             "password" : data?.password
         }
-        return requestInstance.put(`${this.api.users}/${data?.id}`,formData)
-            .then(result=>{console.log(result?.data);return new ProfileModel(result?.data)})
+        return requestInstance.put(`${this.api.edit_user}/${data?.id}`,formData)
+            .then(result=> new ProfileModel(result?.data))
             .catch(error => Promise.reject(error))
     }
 

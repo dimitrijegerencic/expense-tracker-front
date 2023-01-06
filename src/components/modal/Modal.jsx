@@ -6,9 +6,9 @@ const Modal = ({isVisible, close, content}) => {
     return <AntModal
         title={false}
         centered
+        closable={false}
         open={isVisible}
         footer={null}
-        maskClosable={false}
         onCancel={() => close()}
     >
         {content}

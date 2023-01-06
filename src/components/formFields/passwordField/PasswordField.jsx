@@ -4,6 +4,7 @@ import { Input } from 'antd';
 import Wrapper from "../../wrapper/Wrapper";
 import {Controller} from 'react-hook-form';
 import PropTypes from "prop-types";
+import clsx from "clsx";
 
 const PasswordField = ({label, name, placeholder, error, disabled = false, control, use}) => {
 
@@ -20,7 +21,7 @@ const PasswordField = ({label, name, placeholder, error, disabled = false, contr
                         placeholder={placeholder}
                         status={error ? "error" : ''}
                         disabled={disabled}
-                        className={"password_field"}
+                        className={clsx("password_field", use)}
                         {...field}
                     />
                 )}
