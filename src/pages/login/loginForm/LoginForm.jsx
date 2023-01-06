@@ -25,13 +25,13 @@ const LoginForm = () => {
                 return profileService.getCurrentUserInfo()
             })
             .then(() => {
-                message.success("Login successful!");
+                message.success(t('login.success'));
                 setTimeout(()=>{
                     navigate("/");
                 }, 300)
             })
             .catch(() => {
-                message.error("Wrong credentials!");
+                message.error(t('login.fail'));
             })
     }
 
@@ -39,12 +39,12 @@ const LoginForm = () => {
 
     const schema = yup.object().shape({
         Email: yup.string().trim()
-            .email("Email format required!")
-            .required('Required!'),
+            .email(t('all-forms-validations.login.email-format'))
+            .required(t('all-forms-validations.login.email-required')),
         Password: yup.string().trim()
-            .required('Required!')
-            .max(16, "Password can not be longer than 16 characters!")
-            .min(8, "Password must be at least 8 characters long!")
+            .required(t('all-forms-validations.login.password-required'))
+            .max(16, t('all-forms-validations.login.password-max', {number : 16}))
+            .min(8, t('all-forms-validations.login.password-min', {number : 8}))
     })
 
     const {handleSubmit, control, formState:{errors}}=useForm({resolver: yupResolver(schema)})

@@ -12,9 +12,8 @@
     },
     "already-have-an-account": "Već imate nalog ?",
     "dont-have-an-account" : "Nemate nalog ? ",
-    "errors": {
-      "required" : "Polje je obavezno!"
-    }
+    "close" : "Zatvori",
+    "open" : "Otvori"
   },
   "login": {
     "title" : "Log in",
@@ -23,7 +22,9 @@
       "email": "Unesite e-mail",
       "password" : "Unesite šifru"
     },
-    "forgot-password" : "Zaboravljena lozinka"
+    "forgot-password" : "Zaboravljena lozinka",
+    "success" : "Uspješna prijava!",
+    "fail" : "Pogrešno korisničko ime ili lozinka! Molimo pokušajte ponovo!"
   },
   "sign-up" : {
     "title" : "Prijavite se",
@@ -101,6 +102,7 @@
       "time":"Vrijeme",
       "amount":"Iznos",
       "description":"Kratak opis",
+      "description2" : "Opis",
       "note":"Bilješka",
       "category":"Kategorija"
     },
@@ -141,5 +143,48 @@
       "required":"Polje je obavezno!",
       "format":"Unešeni format nije podržan!"
     }
+  },
+  "all-forms-validations": {
+    "login" : {
+      "email-format" : "Email format je obavezan!",
+      "password-min" : "Lozinka mora imati najmanje {number} karaktera!",
+      "password-max" : "Lozinka ne smije imati više od {number} karaktera! ",
+      "email-required" : "Polje za email je obavezno!",
+      "password-required" : "Polje za lozinku je obavezno!"
+    },
+    "sign-up" : {
+      "full-name-max" : "Ime ne smije imati više od {number} karaktera !",
+      "full-name-min" : "Ime mora imati najmanje {number} karaktera!",
+      "full-name-required" : "Polje za ime je obavezno!",
+      "email-format" : "Polje za email je obavezno!",
+      "password-min" : "Lozinka mora imati najmanje {number} karaktera!",
+      "password-max" : "Lozinka ne smije imati više od {number} karaktera!",
+      "email-required" : "Polje za email je obavezno!",
+      "password-required" : "Polje za lozinku je obavezno!",
+      "confirm-password-required" : "Polje za potvrdu lozinke je obavezno!",
+      "confirm-password-min" : "Lozinka mora imati najmanje {number} karaktera!",
+      "confirm-password-max" : "Lozinka ne smije imati više od {number} karaktera!"
+    },
+    "transactions" : {
+      "type-required" : "Odabir tipa je obavezan!",
+      "date-required" : "Polje za datum je obavezno!",
+      "time-required" : "Polje za vrijeme je obavezno!",
+      "amount-required" : "Polje za iznos je obavezno!",
+      "amount-min" : "Vrijednost iznosa mora biti preko 0",
+      "description-required" : "Polje za opis je obavezno!",
+      "description-min" : "Opis mora imati najmanje {number} karaktera!",
+      "description-max" : "Opis ne smije imati više od {number} karaktera!",
+      "note-required" : "Polje za bilješku je obavezno!",
+      "note-min" : "Bilješka mora imati najmanje {number} karaktera!",
+      "note-max" : "Bilješka ne smije imati više od {number} karaktera",
+      "categories-required" : "Odabir kategorije je obavezan!"
+    },
+    "categories" : {
+      "name-required" : "Polje za ime kategorije je obavezno!",
+      "name-min" : "Ime mora imati najmanje {number} karaktera!",
+      "name-max" : "Ime ne smije imati više od {number} karaktera!",
+      "color-required" : "Odabir boje je obavezan!"
+    }
   }
+
 }

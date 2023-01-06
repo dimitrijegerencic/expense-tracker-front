@@ -3,4 +3,11 @@
   place-items: center;
   margin-bottom: 65px;
 
+  @media screen and (max-width: 1029px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
 }

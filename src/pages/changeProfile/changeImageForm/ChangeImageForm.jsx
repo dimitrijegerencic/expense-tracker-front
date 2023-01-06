@@ -1,5 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import React, { useState } from 'react';
+import "./ChangeImageForm.scss";
 import { useForm } from 'react-hook-form';
 import { t } from 'react-switch-lang';
 import * as yup from 'yup';

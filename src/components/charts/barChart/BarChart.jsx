@@ -6,6 +6,7 @@ import {Bar, BarChart as Chart, CartesianGrid, Cell, XAxis, YAxis} from "rechart
 import {Tooltip} from "antd";
 import {Legend} from "chart.js";
 import {t} from "react-switch-lang";
+import PropTypes from "prop-types";
 
 const BarChart = ({type, month}) => {
 
@@ -27,7 +28,7 @@ const BarChart = ({type, month}) => {
     }
 
     return <div>
-        {chartReport.length > 0 ?
+        {chartReport.length !== 0 ?
             <Chart
                 width={1176}
                 height={571}
@@ -55,6 +56,10 @@ const BarChart = ({type, month}) => {
            </div>
         }
     </div>
+}
+
+BarChart.propTypes = {
+    type : PropTypes.string.isRequired
 }
 
 export default BarChart;

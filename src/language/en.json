@@ -10,17 +10,19 @@
     "form": {
       "error" : "Došlo je do greške. Molimo pokušajte ponovo."
     },
-    "errors": {
-      "required" : "Field is required!"
-    },
-    "already-have-an-account": "Already have an account ?"
+    "already-have-an-account": "Already have an account ?",
+    "close" : "Close",
+    "open" : "Open"
   },
   "login": {
     "placeholder": {
       "email": "Enter e-mail",
       "password" : "Enter password"
     },
-    "forgot-password" : "Forgot password"
+    "forgot-password" : "Forgot password",
+    "welcome-back" : "Welcome back !",
+    "success" : "Login successfull!",
+    "fail" : "Wrong username or password! Please try again later!"
   },
   "sign-up" : {
     "title" : "Sign up",
@@ -67,7 +69,7 @@
     }
   },
 
-    "chart-data":"There are no transactions for the choosen period!",
+    "chart-data":"There are no transactions for the chosen period!",
 
   "transactions-history":{
     "table":{
@@ -95,14 +97,9 @@
       "time":"Time",
       "amount":"Amount",
       "description":"Description",
+      "description2":"Description",
       "note":"Note",
       "category":"Category"
-    },
-    "errors":{
-      "required":"Field is required!",
-      "negative":"Field cannot have negative value!",
-      "min":"Field must have at least {number} characters!",
-      "max":"Field can't have more than {number} characters!"
     }
   },
   "categories":{
@@ -116,12 +113,7 @@
     "edit":"edit",
     "add-success" : "Category added successfully!",
     "edit-success" : "Category edited successfully!",
-    "placeholder" : "Category",
-    "errors":{
-      "required":"Field is required!",
-      "min":"Field must have at least {number} characters!",
-      "max":"Field can't have more than {number} characters!"
-    }
+    "placeholder" : "Category"
   },
   "profile":{
     "title":"Edit profile",
@@ -134,6 +126,48 @@
       "max":"Field can't have more than {number} characters!",
       "required":"Field is required!",
       "format":"File format is not supported!"
+    }
+  },
+  "all-forms-validations": {
+    "login" : {
+      "email-format" : "Email format required!",
+      "password-min" : "Password must be at least {number} characters long!",
+      "password-max" : "Password cannot be longer than {number} characters",
+      "email-required" : "Email field is required!",
+      "password-required" : "Password field is required!"
+    },
+    "sign-up" : {
+      "full-name-max" : "Name cannot be longer than {number} characters!",
+      "full-name-min" : "Name must be at least {number} characters long!",
+      "full-name-required" : "Name field is required!",
+      "email-format" : "Email format required!",
+      "password-min" : "Password must be at least {number} characters long!",
+      "password-max" : "Password cannot be longer than {number} characters",
+      "email-required" : "Email field is required!",
+      "password-required" : "Password field is required!",
+      "confirm-password-required" : "Confirm password field is required!",
+      "confirm-password-min" : "Password must be at least {number} characters long!",
+      "confirm-password-max" : "Password cannot be longer than {number} characters!"
+    },
+    "transactions" : {
+      "type-required" : "Type field is required!",
+      "date-required" : "Date field is required!",
+      "time-required" : "Time field is required!",
+      "amount-required" : "Amount field is required!",
+      "amount-min" : "Amount value must be above 0!",
+      "description-required" : "Description field is required!",
+      "description-min" : "Description must be at least {number} characters long!",
+      "description-max" : "Description cannot be longer than {number} characters!",
+      "note-required" : "Note field is required!",
+      "note-min" : "Note must be at least {number} characters long!",
+      "note-max" : "Note cannot be longer {number} characters!",
+      "categories-required" : "Categories field is required!"
+    },
+    "categories" : {
+      "name-required" : "Category field is required!",
+      "name-min" : "Category name must be at least {number} characters long!",
+      "name-max" : "Category name cannot be longer than {number} characters!",
+      "color-required" : "Color field is required!"
     }
   }
 }

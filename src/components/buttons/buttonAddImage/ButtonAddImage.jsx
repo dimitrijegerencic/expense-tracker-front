@@ -5,6 +5,7 @@ import {Controller} from 'react-hook-form';
 import "./ButtonAddImage.scss";
 
 const ButtonAddImage=({name, error, control, addImageClick})=>{
+
     return (
         <Wrapper error={error}>
             <Controller
@@ -13,16 +14,12 @@ const ButtonAddImage=({name, error, control, addImageClick})=>{
                 render={({field})=>(
                     <Input
                         type={'file'}
-                        value=""
                         className={'add-img-button'}
                         status={error ? "error" : ""}
                         {...field}
-                        onChange={(e)=>{
-                            addImageClick(e);
-                            field.onChange(e)
+                        onChange={(e)=>{addImageClick(e);field.onChange(e)
                         }}
                     />
-
                 )}
             />
         </Wrapper>

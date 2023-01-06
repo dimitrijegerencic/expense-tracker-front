@@ -25,23 +25,23 @@ const TransactionForm = ({type, id}) => {
 
     const schema = yup.object().shape({
         type : yup.string().trim()
-            .required("This field is required!"),
+            .required(t('all-forms-validations.transactions.type-required')),
         date : yup.date()
-            .required("This field is required!"),
+            .required(t('all-forms-validations.transactions.date-required')),
         time : yup.string()
-            .required("This field is required!"),
+            .required(t('all-forms-validations.transactions.time-required')),
         amount : yup.number()
-            .required("This field is required!")
-            .min(0, "Something"),
+            .required(t('all-forms-validations.transactions.amount-required'))
+            .min(0, t('all-forms-validations.transactions.amount-min', {number:0})),
         description : yup.string().trim()
-            .required("This field is required!")
-            .min(3, "Description should be at least 3 characters long!")
-            .max(100, "Description can not be longer than 100 characters!"),
+            .required(t('all-forms-validations.transactions.description-required'))
+            .min(3, t('all-forms-validations.transactions.description-min', {number : 3}))
+            .max(100, t('all-forms-validations.transactions.description-max', {number : 100})),
         note : yup.string().trim()
-            .required("This field is required!")
-            .min(3, "Note should be at least 3 characters long!")
-            .max(400, "Note can not be longer than 400 characters!"),
-        categories : yup.array().of(yup.number().integer()).required("This field is required!")
+            .min(3, t('all-forms-validations.transactions.note-min', {number : 3}))
+            .max(400, t('all-forms-validations.transactions.note-min', {number : 400})),
+        categories : yup.array().of(yup.number().integer())
+            .required(t('all-forms-validations.transactions.categories-required'))
     })
 
     const {handleSubmit, reset, control, formState:{errors}}=useForm({resolver: yupResolver(schema)})
@@ -179,7 +179,7 @@ const TransactionForm = ({type, id}) => {
                         <TextAreaField label={''}
                                        name={'note'}
                                        control={control}
-                                       placeholder={'(min 3, max 100, required)'}
+                                       placeholder={'(min 3, max 100, optional)'}
                                        error={errors?.note?.message}
                                        type={'note'}
                         />

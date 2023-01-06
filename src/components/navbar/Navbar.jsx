@@ -10,7 +10,7 @@ import logoImg from "../../img/navbar/LOGO.png";
 
 const Navbar = () => {
 
-    const navbarItems=[
+    const navbarItems = [
         {
             label: <Link to='/'>
                 <div className={'logo-item'}>

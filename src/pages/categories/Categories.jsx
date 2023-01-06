@@ -11,6 +11,8 @@ import {useModal} from "../../context/modalContext/ModalContext";
 import { t } from "react-switch-lang";
 import DeleteForm from "../../components/deleteFrom/DeleteForm";
 import CategoryForm from "./categoryForm/CategoryForm";
+import {AnimatePresence, motion} from "framer-motion";
+import {useSpring, animated} from "react-spring";
 
 const Categories = () => {
 
@@ -21,6 +23,15 @@ const Categories = () => {
     const [isEditVisible, setIsEditVisible] = useState(false);
     const [isAddVisible, setIsAddVisible] = useState(false);
 
+    const [cardWidth, setCardWidth] = useSpring(()=>({ width : '80%'}))
+
+    const reduceWidth = () => {
+        setCardWidth({ width: '60%', config: { duration: 1000 } })
+    }
+
+    const increaseWidth = () => {
+        setCardWidth({ width: '80%', config: { duration: 1000 } })
+    }
 
     useEffect(()=>{
         setCategoryID(categoryID)
@@ -37,11 +48,6 @@ const Categories = () => {
 
     const columns = [
         {
-            title: 'ID',
-            dataIndex: 'id',
-            key: 'id'
-        },
-        {
             title: t('categories.name'),
             dataIndex: 'name',
             key: 'name',
@@ -57,12 +63,13 @@ const Categories = () => {
         },
         {
             title: '',
-            dataIndex: 'options',
-            key: 'options',
+            dataIndex: '',
+            key: '',
             render: (text, record) => <ButtonTableGroup
                 onEdit={() => {
-                   setIsEditVisible(true); setCategoryID(record?.id);
-                   setIsAddVisible(false);
+                    setCategoryID(record?.id);
+                    setEditFormVisible();
+                    setIsAddVisible(false);
                 }}
                 onDelete={() => openDeleteModal('category', record?.id)}
             />
@@ -79,37 +86,63 @@ const Categories = () => {
         }
     )
 
-    const setFormVisible = () => {
-        setIsAddVisible(true);
-        const element1 = document.getElementById("categories-main");
-        element1.classList.add("animationOpen");
+    const setAddFormVisible = () => {
+        reduceWidth();
+        setTimeout(setIsAddVisible(true), 10000);
+    }
+
+    const setEditFormVisible = () => {
+        reduceWidth();
+        setTimeout(setIsEditVisible(true), 3000);
     }
 
     return <>
       <div className={'category-container'}>
-          <Card title={<div className={'card-title'} >
-                            <div><p>{t('categories.add-title')}</p></div>
-                            <div><ButtonAddGeneral
-                                size={'small'}
-                                onClick={()=>{setFormVisible(); setIsEditVisible(false);}}/></div>
-                        </div>}
-                        style={{width:650, height:449}}
-                        id={"categories-main"}
-                        className={'card-category'}
-          >
-            <Table data={categories} columns={columns} size={200}/>
-          </Card>
-          {isAddVisible && (
-              <div id={"hidden-form"}>
-                <CategoryForm type={'add'} onClick={()=>setIsAddVisible(false)}/>
-              </div>
-          )}
-          {isEditVisible && (
-              <div id={"hidden-form"}>
-                  <CategoryForm type={'edit'} onClick={()=>setIsEditVisible(false)} id={categoryID}/>
-              </div>
-          )}
+          <animated.div style={cardWidth}>
+              <Card title={<div className={'card-title'} >
+                  <div className={'start'}>{t('categories.add-title')}</div>
+                  <div className={'end'} title={t('common.open')}><ButtonAddGeneral
+                      size={'small'}
+                      onClick={()=>{setAddFormVisible(); setIsEditVisible(false);}}/></div>
+              </div>}
+                    id={"categories-main"}
+                    className={'card-category'}
+              >
+                  <Table data={categories} columns={columns} size={200}/>
+              </Card>
+          </animated.div>
+          <AnimatePresence>
+              {isAddVisible && (
+                  <motion.div initial={{scale : 0}}
+                              animate={{rotate : 360, scale : 1}}
+                              exit={{
+                                x: '+200%',
+                                transition: { duration: 1 },
+                  }}>
+                      <CategoryForm type={'add'}
+                                    onClick={()=>{setIsAddVisible(false); }}
+                                    onClose={()=>{setIsAddVisible(false);setTimeout(increaseWidth, 1000)}}
+                      />
+                  </motion.div>
+              )}
+          </AnimatePresence>
+          <AnimatePresence>
+              {isEditVisible && (
+                  <motion.div initial={{scale : 0}}
+                              animate={{rotate : 360, scale : 1}}
+                              exit={{
+                                  x: '+200%',
+                                  transition: { duration: 1 },
+                              }}>
+                      <CategoryForm type={'edit'} onClick={()=>setIsEditVisible(false)}
+                                    id={categoryID}
+                                    onClose={()=>setIsEditVisible(false)}/>
+                  </motion.div>
+              )}
+          </AnimatePresence>
       </div>
+
+
     </>
 }
 

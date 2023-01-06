@@ -14,20 +14,20 @@ const SignUpForm = () => {
 
     const schema = yup.object().shape({
         name : yup.string().trim()
-            .min(3, "Name should have at least 3 characters!")
-            .max(100, "Name can not have more than 100 characters!")
-            .required("This field is required!"),
+            .min(3, t('all-forms-validations.sign-up.full-name-min', {number:3}))
+            .min(100, t('all-forms-validations.sign-up.full-name-max', {number:100}))
+            .required(t('all-forms-validations.sign-up.full-name-required')),
         email : yup.string().trim()
-            .email("Email format required!")
-            .required("This field is required!"),
+            .email(t('all-forms-validations.sign-up.email-format'))
+            .required(t('all-forms-validations.sign-up.email-required')),
         password : yup.string().trim()
-            .min(8, "Password should be at least 8 characters long!")
-            .max(16, "Password can not have more than 16 characters!")
-            .required("This field is required!"),
+            .min(8, t('all-forms-validations.sign-up.password-min', {number:8}))
+            .max(16, t('all-forms-validations.sign-up.password-max', {number:16}))
+            .required(t('all-forms-validations.sign-up.password-required')),
         confirmPassword : yup.string().trim()
-            .min(8, "Password should be at least 8 characters long!")
-            .max(16, "Password can not have more than 16 characters!")
-            .required("This field is required!")
+            .min(8, t('all-forms-validations.sign-up.confirm-password-min', {number:8}))
+            .max(16, t('all-forms-validations.sign-up.confirm-password-max', {number:16}))
+            .required(t('all-forms-validations.sign-up.confirm-password-required')),
     });
 
     const {handleSubmit, control, formState:{errors}} = useForm({resolver:yupResolver(schema)})

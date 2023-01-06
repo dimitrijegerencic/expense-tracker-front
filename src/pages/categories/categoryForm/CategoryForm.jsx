@@ -10,26 +10,27 @@ import {categoryService} from "../../../services/CategoryService";
 import * as yup from "yup";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
-import {motion} from "framer-motion";
 
-const CategoryForm = ({type, id, onClick}) => {
+const CategoryForm = ({type, id, onClick, onClose}) => {
 
     const queryClient = useQueryClient();
 
     const schema = yup.object().shape({
         name: yup.string().trim()
-            .required(t('categories.errors.required')),
-        color: yup.string().required(t('categories.errors.required'))
+            .required(t('all-forms-validations.categories.name-required'))
+            .min(3, t('all-forms-validations.categories.name-min', {number:3}))
+            .max(100, t('all-forms-validations.categories.name-max', {number:100})),
+        color: yup.string().required(t('all-forms-validations.categories.color-required'))
     })
 
-    const {handleSubmit, control, reset, formState:{errors}}=useForm({resolver: yupResolver(schema)})
+    const {handleSubmit, control, reset, formState:{errors}} = useForm({resolver: yupResolver(schema)})
 
     const addCategory = useMutation(data => categoryService.addCategory(data)
-        .then(res=>{
+        .then(() => {
             queryClient.invalidateQueries('all-categories')
             message.success(t('categories.add-success'))
         })
-        .catch(err=>{
+        .catch(() =>{
             message.error(t('common.form.error'))
         })
     )
@@ -48,7 +49,7 @@ const CategoryForm = ({type, id, onClick}) => {
     }
 
     const editCategory = useMutation((data) => categoryService.editCategory(data)
-        .then(result => {
+        .then(() => {
             queryClient.invalidateQueries('all-categories')
             message.success(t('categories.edit-success'))
             onClick()
@@ -63,7 +64,6 @@ const CategoryForm = ({type, id, onClick}) => {
         () => getSelectedCategory(id),
         {enabled: type === 'edit'}
     )
-
 
     const submitForm = (data) => {
         if (type === 'add'){
@@ -90,16 +90,15 @@ const CategoryForm = ({type, id, onClick}) => {
     ]
 
     return <>
-        <motion.div
-            initial={{scale : 0}}
-            animate={{rotate : 360, scale : 1}}
-            transition={{
-                type:"spring",
-                stiffness : 140,
-                damping : 20
-            }}
-        >
-            <Card title={type==='add' ? t('categories.add-title') : t('categories.edit-title')}
+        <div>
+            <Card title={<div className={'card-title'}>
+                <div className="float-start">
+                    {type==='add' ? t('categories.add-title') : t('categories.edit-title')}
+                </div>
+                <div className="float-end">
+                    <button className={'close-btn'} title={t('common.close')} onClick={onClose}>X</button>
+                </div>
+            </div>}
                   className={'category-form-container'}>
                 <form onSubmit={handleSubmit(submitForm)}>
                     <div className={'content'}>
@@ -123,12 +122,12 @@ const CategoryForm = ({type, id, onClick}) => {
                     <div className={'button-section'}>
                         <ButtonAddCategory
                             label={type==='add' ? t('categories.add') : t('categories.edit')}
-                            onClick={() => {{}setTimeout(onClick, 1000)}}/>
+                            onClick={() => {{}setTimeout(onClick, 4000)}}/>
                     </div>
                 </form>
             </Card>
 
-        </motion.div>
+        </div>
 
     </>
 }

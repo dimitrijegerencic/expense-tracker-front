@@ -8,6 +8,28 @@
     padding: 35px 0 0 10px;
   }
 
+  .card-title{
+    padding: 20px;
+    .float-start {
+      float: left;
+    }
+    .float-end {
+      float: right;
+    }
+
+    .close-btn{
+      width: 30px;
+      height: 30px;
+      background-color: #140C6F;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-family: "Inter", sans-serif;
+      font-size: 20px !important;
+      cursor: pointer;
+    }
+  }
+
   .ant-card-head{
     border: none;
   }
@@ -45,3 +67,6 @@
     margin-top: 70px;
   }
 }
+
+
+

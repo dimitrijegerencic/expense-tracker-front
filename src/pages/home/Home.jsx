@@ -13,7 +13,8 @@ const Home = () => {
     const currDate = new Date();
 
     const [month, setMonth] = useState(currDate.getMonth() + 1);
-    const [type, setType] = useState('expense');
+    const [type, setType] = useState("expense");
+
 
     const {data : reports} = useQuery(
         ['reports'],
@@ -44,12 +45,12 @@ const Home = () => {
 
     const typeOptions = [
         {
-            label : <p onClick={()=>setType('income')}>{t('home.income')}</p>,
+            label : <p onClick={()=>setType("income")}>{t('home.income')}</p>,
             key : 'income',
             value : t('home.income')
         },
         {
-            label : <p onClick={()=>setType('expense')}>{t('home.expense')}</p>,
+            label : <p onClick={()=>setType("expense")}>{t('home.expense')}</p>,
             key : 'expense',
             value : t('home.expense')
         }
@@ -104,15 +105,15 @@ const Home = () => {
 
         <div className={classes['main']}>
             <div className={classes['filters']}>
-                <div>
-                    <p className={classes['current-state']}>Trenutno stanje</p>
+                <div className={classes['current-state']}>
+                    <p>Trenutno stanje</p>
                 </div>
                 <div className={classes['filter-buttons']}>
                     <ChartFilterButton options={typeOptions} label={typeLabel} use={'type'}/>
                     <ChartFilterButton options={finale} label={monthLabel} use={'month'}/>
                 </div>
             </div>
-            <div style={{height:50, width:"80%"}}>
+            <div style={{height:50, width:"85%"}}>
                 <hr/>
             </div>
             <div className={classes['chart-container']}>

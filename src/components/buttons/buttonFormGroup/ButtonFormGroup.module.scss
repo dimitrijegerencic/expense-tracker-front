@@ -2,6 +2,11 @@
   display: flex;
   gap:55px;
 
+  @media screen and (max-width: 1029px) {
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+
   .cancel-btn{
     background-color: #F2F2F2;
     color: #140C6F;

@@ -5,10 +5,15 @@
   justify-content: center;
   gap: 1.32vw;
 
+  @media screen and (max-width: 1155px) {
+    flex-direction: column;
+  }
+
   .radio-buttons-container{
     .filter-radio-buttons{
       display: flex;
       gap: 2.44vw;
+
       .ant-radio-wrapper{
         flex-direction: row-reverse !important;
         span{
@@ -44,6 +49,9 @@
     justify-content: center;
     gap: 1.32vw;
 
+    @media screen and (max-width: 900px) {
+      flex-direction: column;
+    }
 
     .filter-input-field{
       width: 19.37vw !important;
@@ -89,4 +97,3 @@
     }
   }
 }
-

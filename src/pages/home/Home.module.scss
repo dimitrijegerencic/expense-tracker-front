@@ -5,23 +5,57 @@
 }
 
 .info-cards-container{
-  gap: 73px;
+  gap: 3.80vw;
   margin-top: 92px;
+
+  @media screen and (max-width: 1336px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+
 }
 
 .main{
   flex-direction: column;
   margin-top: 91px;
+
+
 }
 
 .filters{
-  display: flex;
-  flex-direction: row !important;
-  gap: 520px;
+  width: 85%;
+
+  @media screen and (max-width: 908px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 2.77vh;
+  }
+
+  .current-state{
+    float:left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 908px) {
+      display: flex;
+      flex-direction: row;
+      float: none;
+    }
+  }
 
   .filter-buttons{
-    display: flex;
-    gap: 20px;
+    float:right;
+    display:flex;
+    gap:30px;
+
+    @media screen and (max-width: 908px) {
+      display: flex;
+      flex-direction: column;
+  }
   }
 
   .current-state{
@@ -31,21 +65,20 @@
     line-height: 27px;
     color: #140C6F;
     padding-left: 42px;
-    margin-bottom: 35px;
+
+    @media screen and (max-width: 908px) {
+      padding: 0;
+    }
   }
 
 }
 
 .chart-container{
-  margin: 52px 0 53px 0;
-  width: 1308px;
-  height: 698px;
+  margin: 4.81vh 0 53px 0;
+  padding: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 8px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
-
-  >div{
-    width: 1176px;
-    height: 571px;
-  }
-
 }

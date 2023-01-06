@@ -1,9 +1,11 @@
 .form-container{
   border: 1px solid #E1E1E1;
   border-radius: 10px;
-  width: 895px;
-  height: 769px;
   margin-top: 118px;
+
+  @media screen and (max-width: 1029px) {
+    border: none;
+  }
 
   .form-title{
     h1{
@@ -14,12 +16,30 @@
       padding-left: 69px;
       padding-top: 51px;
       margin-bottom: 31px;
+
+      @media screen and (max-width: 1029px) {
+        text-align: center;
+        padding: 0;
+      }
+
+      @media screen and (max-width: 600px) {
+        text-align: center;
+        padding: 0;
+      }
     }
   }
 
   .boxes{
     display: flex;
     gap: 81px;
+    padding-bottom: 40px;
+
+    @media screen and (max-width: 1029px) {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+    }
 
     .left{
       display: flex;
@@ -27,6 +47,10 @@
       gap: 10px;
       padding-left: 69px;
       width: 330px;
+
+      @media screen and (max-width: 1029px) {
+        padding: 0;
+      }
 
       .date-time-container{
         display: flex;
@@ -72,6 +96,7 @@
           margin-top: 15px;
           padding-left: 26px;
           margin-bottom: 17px;
+
         }
 
       }

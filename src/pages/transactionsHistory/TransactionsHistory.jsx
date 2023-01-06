@@ -1,8 +1,7 @@
 import React, {useState} from "react";
 import classes from "./TransactionsHistory.module.scss";
 import Table from "../../components/tables/Table";
-import {Tag} from "antd";
-import DefaultCard from "../../components/cards/defaultCard/DefaultCard";
+import {Card, Tag} from "antd";
 import ButtonTableGroup from "../../components/buttons/buttonTableGroup/ButtonTableGroup";
 import HorizontalTransactionForm from "../addTransaction/transactionForm/horizontal/HorizontalTransactionForm";
 import {useQuery} from "react-query";
@@ -34,7 +33,7 @@ const TransactionsHistory = () => {
     }
 
     const {data : expenses} = useQuery(
-        ['expenses', type, description, category, date],
+        ['all-expenses', type, description, category, date],
         () => transactionService.getAll(type, description, category, date),
         {
             enabled : true,
@@ -45,8 +44,9 @@ const TransactionsHistory = () => {
     const headers = [
         {
             title : t('transactions-history.table.type'),
+            key : 'type',
             dataIndex : 'type',
-            key : 'type'
+
         },
         {
             title : t('transactions-history.table.description'),
@@ -67,7 +67,6 @@ const TransactionsHistory = () => {
                 return record?.getDateAndTimeFormatted()
             }
         },
-
         {
             title : t('transactions-history.table.category'),
             dataIndex : 'categories',
@@ -102,16 +101,16 @@ const TransactionsHistory = () => {
         <HorizontalTransactionForm typeSet={e => setType(e.target.value)}
                                    descriptionSet={e => setDescription(e.target.value)}
                                    dateSet={e => setDate(e)}
-                                   categorySet={value => setCategory(value)}
+                                   categorySet={e => setCategory(e)}
 
         />
         <div className={classes['container']}>
             <hr/>
             {expenses.length !== 0 ?
                 <div className={classes['table-container']}>
-                    <DefaultCard title={t('transactions.history')}
-                                 content={<Table data={expenses} columns={headers} size={600}/>}>
-                    </DefaultCard>
+                    <Card title={<div className={classes['table-card-title']}>{t('transactions.history')}</div>}>
+                        <Table data={expenses} columns={headers} size={600}/>
+                    </Card>
                 </div>
                 :
                 <div className={classes['no-table-data']}>
