@@ -22,7 +22,7 @@ const UserProvider = ({children}) => {
         if (storageService.exists(storageKeys.TOKEN)){
             profileService.getCurrentUserInfo()
                             .then(r => setUserData(r))
-                            .catch(error => {navigate('/login')})
+                            .catch(() => {navigate('/login')})
         }
         else{
             navigate("/login");
@@ -31,7 +31,7 @@ const UserProvider = ({children}) => {
             storageService.set(storageKeys.LANGUAGE,'me')
         }
 
-    }, [])
+    },[])
 
     const data = {
         userData : userData,

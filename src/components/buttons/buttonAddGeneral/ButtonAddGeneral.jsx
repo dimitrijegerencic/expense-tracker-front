@@ -16,7 +16,7 @@ const ButtonAddGeneral = ({size, onClick, type}) => {
 
 ButtonAddGeneral.propTypes = {
     onClick:PropTypes.func.isRequired,
-    size:PropTypes.string,
+    size:PropTypes.oneOf(['big, small']).isRequired,
     type:PropTypes.string
 }
 

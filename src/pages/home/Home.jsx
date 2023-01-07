@@ -57,7 +57,7 @@ const Home = () => {
 
     ];
 
-    const [typeLabel, setTypeLabel] = useState(typeOptions[1].value)
+    const [typeLabel] = useState(typeOptions[1].value)
 
     const allMonths = [
         t('home.months.january'),
@@ -83,9 +83,9 @@ const Home = () => {
         last12dates.push(allMonths[i] + " " +currentDate.subtract(i, 'month').format('YYYY'));
     }
 
-    const finale = last12dates.map((item, index) =>(
+    const finale = last12dates.reverse().map((item, index) =>(
         {
-            label : <p onClick={()=>setMonth(index + 1)}>{item}</p>,
+            label : <p onClick={()=>setMonth(last12dates.length-index)}>{item}</p>,
             key : item.toString().toLowerCase(),
             value : item.toString().toLowerCase()
         }
@@ -106,11 +106,11 @@ const Home = () => {
         <div className={classes['main']}>
             <div className={classes['filters']}>
                 <div className={classes['current-state']}>
-                    <p>Trenutno stanje</p>
+                    <p>{t('home.title')}</p>
                 </div>
                 <div className={classes['filter-buttons']}>
-                    <ChartFilterButton options={typeOptions} label={typeLabel} use={'type'}/>
-                    <ChartFilterButton options={finale} label={monthLabel} use={'month'}/>
+                    <ChartFilterButton options={typeOptions} label={typeLabel}/>
+                    <ChartFilterButton options={finale} label={monthLabel}/>
                 </div>
             </div>
             <div style={{height:50, width:"85%"}}>

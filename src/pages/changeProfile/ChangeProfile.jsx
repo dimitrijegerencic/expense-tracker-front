@@ -79,7 +79,7 @@ const ChangeProfile = () => {
                        </div>
                         <div className={classes['info']}>
                             <div className={classes['user-image']}>
-                                <img src={currentUser ? currentUser.getUserPhoto() : ''} alt="user-photo" onClick={()=>openImageModal()}/>
+                                <img src={currentUser ? currentUser.getUserPhoto() : ''} alt="user" onClick={()=>openImageModal()}/>
                             </div>
                             <div className={classes['inputs']}>
                                <div>
