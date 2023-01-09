@@ -68,9 +68,7 @@
       "no-data" : "Sorry! There is no data for this type of information."
     }
   },
-
     "chart-data":"There are no transactions for the chosen period!",
-
   "transactions-history":{
     "table":{
       "type":"Type",
@@ -117,10 +115,8 @@
   },
   "profile":{
     "title":"Edit profile",
-    "name":"First name and last name",
+    "first-last-name":"First and last name",
     "password":"Password",
-    "edit-image":"Edit profile photo",
-    "edit-content":"Choose new profile photo",
     "errors":{
       "min":"Field must have at least {number} characters!",
       "max":"Field can't have more than {number} characters!",

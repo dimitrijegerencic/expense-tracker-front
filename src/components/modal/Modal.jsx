@@ -4,15 +4,15 @@ import PropTypes from "prop-types";
 
 const Modal = ({isVisible, close, content}) => {
     return <AntModal
-        title={false}
-        centered
-        closable={false}
-        open={isVisible}
-        footer={null}
-        onCancel={() => close()}
-    >
-        {content}
-    </AntModal>
+                title={false}
+                centered
+                closable={false}
+                open={isVisible}
+                footer={null}
+                onCancel={() => close()}
+            >
+            {content}
+         </AntModal>
 }
 
 Modal.propTypes={

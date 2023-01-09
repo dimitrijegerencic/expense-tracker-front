@@ -6,10 +6,8 @@ import Wrapper from "../../wrapper/Wrapper";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 
-const RadioField=({label,error,name,control,options, use})=>{
-    return (
-
-        <Wrapper label={label} error={error}>
+const RadioField = ({label,error,name,control,options, use}) => {
+    return <Wrapper label={label} error={error}>
             <Controller
                 control={control}
                 name={name}
@@ -31,7 +29,6 @@ const RadioField=({label,error,name,control,options, use})=>{
             />
         </Wrapper>
 
-    );
 }
 
 RadioField.propTypes={

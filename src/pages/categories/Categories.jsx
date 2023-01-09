@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from "react";
 import "./Categories.scss";
-import {Card} from "antd";
+import {Card, Table} from "antd";
 import ButtonAddGeneral from "../../components/buttons/buttonAddGeneral/ButtonAddGeneral";
-import Table from "../../components/tables/Table";
 import ButtonTableGroup from "../../components/buttons/buttonTableGroup/ButtonTableGroup";
 import {useQuery} from "react-query";
 import {categoryService} from "../../services/CategoryService";
@@ -26,7 +25,7 @@ const Categories = () => {
     const [cardWidth, setCardWidth] = useSpring(()=>({ width : '80%'}))
 
     const reduceWidth = () => {
-        setCardWidth({ width: '60%', config: { duration: 1000 } })
+        setCardWidth({ width: '40%', config: { duration: 1000 } })
     }
 
     const increaseWidth = () => {
@@ -105,10 +104,16 @@ const Categories = () => {
                       size={'small'}
                       onClick={()=>{setAddFormVisible(); setIsEditVisible(false);}}/></div>
               </div>}
-                    id={"categories-main"}
                     className={'card-category'}
+                    style={{height:449}}
               >
-                  <Table data={categories} columns={columns} size={200}/>
+                  <Table dataSource={categories}
+                         columns={columns}
+                         scroll={{y : 250}}
+                         pagination={false}
+                         rowKey={record => record.id}
+                         className={'category-table'}
+                  />
               </Card>
           </animated.div>
           <AnimatePresence>
@@ -136,13 +141,11 @@ const Categories = () => {
                               }}>
                       <CategoryForm type={'edit'} onClick={()=>setIsEditVisible(false)}
                                     id={categoryID}
-                                    onClose={()=>setIsEditVisible(false)}/>
+                                    onClose={()=>{setIsEditVisible(false);setTimeout(increaseWidth, 1000)}}/>
                   </motion.div>
               )}
           </AnimatePresence>
       </div>
-
-
     </>
 }
 

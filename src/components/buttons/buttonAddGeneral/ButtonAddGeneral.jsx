@@ -10,13 +10,13 @@ const ButtonAddGeneral = ({size, onClick, type}) => {
                 className={clsx(classes['btn-add-general'], classes[size])}
                 onClick={(e)=>onClick(e)}
             >
-        {size==='big' ? <img src={addImg} alt={"+"}/> : "+"}
-    </button>
+                {size ==='big' ? <img src={addImg} alt={"+"}/> : "+"}
+            </button>
 }
 
 ButtonAddGeneral.propTypes = {
     onClick:PropTypes.func.isRequired,
-    size:PropTypes.oneOf(['big, small']).isRequired,
+    size:PropTypes.oneOf(['big', 'small']).isRequired,
     type:PropTypes.string
 }
 

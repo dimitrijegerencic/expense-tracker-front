@@ -1,7 +1,6 @@
 .btn-add-general{
-
   &.big, &.small{
-    background-color: #140C6F;
+    background-color: var(--primary-color);
     display: flex;
     align-items: center;
     justify-content: center;

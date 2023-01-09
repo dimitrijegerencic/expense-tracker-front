@@ -9,13 +9,19 @@ import PasswordField from "../../../components/formFields/passwordField/Password
 import ButtonLogin from "../../../components/buttons/buttonLogin/ButtonLogin";
 import {t} from "react-switch-lang";
 import {authService} from "../../../services/AuthService";
+import {storageService} from "../../../services/StorageService";
+import {storageKeys} from "../../../config/config";
+import {profileService} from "../../../services/ProfileService";
+import {useNavigate} from "react-router-dom";
 
 const SignUpForm = () => {
 
+    const navigate = useNavigate();
+
     const schema = yup.object().shape({
         name : yup.string().trim()
-            .min(3, t('all-forms-validations.sign-up.full-name-min', {number:3}))
-            .min(100, t('all-forms-validations.sign-up.full-name-max', {number:100}))
+            .min(3, t('all-forms-validations.sign-up.full-name-min', {number : 3}))
+            .max(100, t('all-forms-validations.sign-up.full-name-max', {number : 3}))
             .required(t('all-forms-validations.sign-up.full-name-required')),
         email : yup.string().trim()
             .email(t('all-forms-validations.sign-up.email-format'))
@@ -32,10 +38,30 @@ const SignUpForm = () => {
 
     const {handleSubmit, control, formState:{errors}} = useForm({resolver:yupResolver(schema)})
 
-    const onSubmit = (data) => {
+    const signUp = (data) => {
         authService.signUp(data)
-            .then(() => message.success('Uspješna prijava!'))
-            .catch(() => message.error('Došlo je do greške!'))
+            .then(() => {
+                authService.login(data?.email, data?.password)
+            })
+            .then(result => {
+                storageService.set(storageKeys.TOKEN, result.getAccessToken())
+            })
+            .then(() => {
+                return profileService.getCurrentUserInfo()
+            })
+            .then(() => {
+                setTimeout(()=>{
+                    navigate('/')
+                },1000)
+            })
+            .catch(error => {
+                console.log(error)
+                message.error('Došlo je do greške! Molimo pokušajte ponovo!')
+            })
+    }
+
+    const onSubmit = (data) => {
+        signUp(data);
     }
 
     return <>
@@ -43,14 +69,14 @@ const SignUpForm = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className={classes['inputs']}>
                     <InputField label={''}
-                                name="name"
+                                name={'name'}
                                 control={control}
                                 placeholder={t('sign-up.placeholder.name')}
                                 error={errors?.name?.message}
                                 use={'signup'}
                     />
                     <InputField label={''}
-                                name="email"
+                                name={'email'}
                                 control={control}
                                 placeholder={t('sign-up.placeholder.email')}
                                 error={errors?.email?.message}

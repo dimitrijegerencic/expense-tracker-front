@@ -5,7 +5,6 @@ import {Controller} from 'react-hook-form';
 import "./ButtonAddImage.scss";
 
 const ButtonAddImage=({name, error, control, addImageClick})=>{
-
     return (
         <Wrapper error={error}>
             <Controller
@@ -23,7 +22,6 @@ const ButtonAddImage=({name, error, control, addImageClick})=>{
                 )}
             />
         </Wrapper>
-
     );
 }
 export default ButtonAddImage;

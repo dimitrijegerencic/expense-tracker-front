@@ -17,7 +17,7 @@ const TimeField = ({ label, name, error, disabled = false, control, type}) => {
 
     const timeFormat = "HH:mm";
 
-    return  <Wrapper label={label} error={error}>
+    return <Wrapper label={label} error={error}>
         {control && <Controller
                         name={name}
                         control={control}

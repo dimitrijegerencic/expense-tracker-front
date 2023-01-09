@@ -31,7 +31,7 @@ const UserProvider = ({children}) => {
             storageService.set(storageKeys.LANGUAGE,'me')
         }
 
-    },[])
+    },[navigate])
 
     const data = {
         userData : userData,

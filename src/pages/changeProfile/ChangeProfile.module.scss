@@ -7,7 +7,6 @@
   margin-top: 126px;
   margin-bottom: 23vh;
 
-
   .main {
     border: 1px solid #E1E1E1;
     border-radius: 10px;
@@ -16,11 +15,10 @@
     flex-direction: column;
     gap: 46px;
 
-
     .title {
       h1 {
         font-family: 'Inter Bold', sans-serif;
-        color: #140C6F;
+        color: var(--primary-color);
         font-size: 25px;
         padding-left: 25px;
 
@@ -28,7 +26,6 @@
           text-align: center;
           padding: 0;
         }
-
       }
     }
 
@@ -61,7 +58,7 @@
       }
 
       .edit-button {
-        background-color: #140C6F;
+        background-color: var(--primary-color);
         width: 40px;
         height: 40px;
         display: flex;
@@ -85,6 +82,15 @@
         }
       }
     }
-}
+  }
+  .form-buttons{
+    width: 50%;
 
+    @media screen and (max-width: 1029px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+  }
 }

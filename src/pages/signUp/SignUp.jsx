@@ -15,7 +15,7 @@ const SignUp = () => {
             <SignUpForm/>
         </div>
         <div className={classes['second-container']}>
-            <p>{t('common.already-have-an-account')}<span onClick={()=>navigate("/login")}> Sign in</span></p>
+            <p>{t('common.already-have-an-account')}<span onClick={()=>navigate("/login")}> {t('sign-up.title')}</span></p>
         </div>
     </div>
 }

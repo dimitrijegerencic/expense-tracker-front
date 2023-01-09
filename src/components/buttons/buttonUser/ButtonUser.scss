@@ -1,11 +1,15 @@
 .drop-container{
-  z-index: 3;
 
   .nav-dropdown {
-    background-color: orange;
     width: auto;
     height: 60px;
     border-radius: 10px;
 
+
+
+    @media screen and (max-width: 1285px) {
+      margin-bottom: 30px;
+      height: 40px;
+    }
   }
 }

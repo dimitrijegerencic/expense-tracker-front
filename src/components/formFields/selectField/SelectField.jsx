@@ -37,7 +37,7 @@ SelectField.propTypes={
     error:PropTypes.string,
     name:PropTypes.string.isRequired,
     control:PropTypes.object.isRequired,
-    use : PropTypes.string,
+    use : PropTypes.string.isRequired,
     options:PropTypes.arrayOf(PropTypes.shape({
         label:PropTypes.string,
         key:PropTypes.string

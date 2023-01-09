@@ -39,9 +39,9 @@ class AuthService{
             "email" : data?.email,
             "password" : data?.password,
         }
-        return requestInstance.post(this.api.sign_up,formData)
-            .then(result => new AuthModel(result.data))
-            .catch(err=>Promise.reject(err))
+        return requestInstance.post(this.api.sign_up, formData)
+            .then(result => new AuthModel(result?.data?.data))
+            .catch(error => Promise.reject(error))
     }
 
 }

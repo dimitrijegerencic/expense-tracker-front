@@ -20,7 +20,7 @@ const InfoCard = ({title, value, use}) => {
 InfoCard.propTypes = {
     title:PropTypes.string,
     value:PropTypes.string,
-    use : PropTypes.oneOf(['income, balance, expense'])
+    use : PropTypes.oneOf(['income', 'balance', 'expense'])
 }
 
 

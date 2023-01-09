@@ -5,13 +5,7 @@ import Wrapper from "../../wrapper/Wrapper";
 import {Controller} from 'react-hook-form';
 import PropTypes from "prop-types";
 
-const CheckboxField = ({
-                        label,
-                        name,
-                        error,
-                        control,
-                        options
-                    }) => {
+const CheckboxField = ({label, name, error, control, options}) => {
     return <Wrapper label={label} error={error}>
         {control &&
             <Controller

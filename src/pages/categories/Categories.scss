@@ -10,27 +10,60 @@
   }
 
   .card-category{
-
-
-
     .card-title{
-
       .start{
         float: left;
-        font-family: "Inter", sans-serif;
+        font-family: "Inter Bold", sans-serif;
         font-size: 19px;
         color: #140C6F;
         padding: 0 0 0 18px;
       }
-
       .end{
         float:right;
       }
+    }
 
+    .category-table{
+      .ant-table{
+        ::-webkit-scrollbar {
+          width: 10px;
+        }
 
+        ::-webkit-scrollbar-thumb {
+          background: #F3F3F3;
+          border-radius: 6.5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+          background: #F3F3F3;
+        }
+
+        .ant-table-container{
+          font-family: "Inter Bold", sans-serif !important;
+          font-size: 15px !important;
+          color: black;
+
+          .ant-table-header{
+            .ant-table-thead{
+              tr{
+                th{
+                  font-size: 18px !important;
+                  border: none !important;
+                  background-color: white !important;
+                }
+              }
+            }
+          }
+
+          .ant-table-body{
+            tr{
+              td{
+                border: none !important;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
-
-
-

@@ -3,8 +3,6 @@ import classes from "./BarChart.module.scss";
 import {useQuery} from "react-query";
 import {dashboardService} from "../../../services/DashboardService";
 import {Bar, BarChart as Chart, CartesianGrid, Cell, XAxis, YAxis} from "recharts";
-import {Tooltip} from "antd";
-import {Legend} from "chart.js";
 import {t} from "react-switch-lang";
 import PropTypes from "prop-types";
 
@@ -42,8 +40,6 @@ const BarChart = ({type, month}) => {
                        axisLine={{ stroke: '#f5f5f5' }}
                 />
                 <YAxis />
-                <Tooltip />
-                <Legend />
                 <Bar dataKey="total" fill= {getRandomColor()} barSize={80} radius={[10, 10, 0, 0]}>
                     {chartReport.map((report, index) => (
                         <Cell key={`bar-${index}`} dataKey="total" fill={getRandomColor()} />

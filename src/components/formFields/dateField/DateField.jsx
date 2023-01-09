@@ -11,7 +11,7 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 dayjs.extend(customParseFormat);
 
-const DateField = ({use, label, name, error, disabled = false, control, type}) => {
+const DateField = ({use, label, name, error, disabled = false, control}) => {
 
     const dateFormat = 'DD/MM/YYYY';
 
@@ -33,22 +33,21 @@ const DateField = ({use, label, name, error, disabled = false, control, type}) =
                 <DatePicker
                     status={error ? "error" : ''}
                     disabled={disabled}
-                    type={type}
                     format={dateFormat}
                     placeholder={currentDate}
                     suffixIcon={<img src={calendarImg} alt="" style={{width:22, height:22}}/>}
                     allowClear={false}
                     className={clsx('date-field', use)}
-                    {...field}/>
+                    {...field}
+                />
             )}
         />}
     </Wrapper>
 }
 
 DateField.propTypes={
-    use:PropTypes.string,
+    use:PropTypes.string.isRequired,
     label:PropTypes.string,
-    type:PropTypes.string,
     error:PropTypes.string,
     name:PropTypes.string.isRequired,
     control:PropTypes.object.isRequired,

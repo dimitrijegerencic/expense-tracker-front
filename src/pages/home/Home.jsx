@@ -74,7 +74,7 @@ const Home = () => {
         t('home.buttons.months.december'),
     ];
 
-    const [monthLabel, setMonthLabel] = useState(`${allMonths[dayjs().month()]} ${dayjs().year()}`)
+    const [monthLabel] = useState(`${allMonths[dayjs().month()]} ${dayjs().year()}`)
 
     const currentDate = dayjs();
     const last12dates = [];
@@ -83,7 +83,7 @@ const Home = () => {
         last12dates.push(allMonths[i] + " " +currentDate.subtract(i, 'month').format('YYYY'));
     }
 
-    const finale = last12dates.reverse().map((item, index) =>(
+    const monthOptions = last12dates.reverse().map((item, index) =>(
         {
             label : <p onClick={()=>setMonth(last12dates.length-index)}>{item}</p>,
             key : item.toString().toLowerCase(),
@@ -91,38 +91,38 @@ const Home = () => {
         }
     ) )
 
-    return <div>
-        <div className={classes['info-cards-container']}>
-            {infoCards.map((card, key) => {
-                return <InfoCard
-                            key={key}
-                            title={card?.title}
-                            value={card?.amount}
-                            use={card?.type}
-                        />
-            })}
-        </div>
+    return <div className={classes['home']}>
+                <div className={classes['info-cards-container']}>
+                    {infoCards.map((card, key) => {
+                        return <InfoCard
+                                    key={key}
+                                    title={card?.title}
+                                    value={card?.amount}
+                                    use={card?.type}
+                                />
+                    })}
+                </div>
 
-        <div className={classes['main']}>
-            <div className={classes['filters']}>
-                <div className={classes['current-state']}>
-                    <p>{t('home.title')}</p>
+            <div className={classes['main']}>
+                <div className={classes['filters']}>
+                    <div className={classes['current-state']}>
+                        <p>{t('home.title')}</p>
+                    </div>
+                    <div className={classes['filter-buttons']}>
+                        <ChartFilterButton options={typeOptions} label={typeLabel}/>
+                        <ChartFilterButton options={monthOptions} label={monthLabel}/>
+                    </div>
                 </div>
-                <div className={classes['filter-buttons']}>
-                    <ChartFilterButton options={typeOptions} label={typeLabel}/>
-                    <ChartFilterButton options={finale} label={monthLabel}/>
+                <div style={{height:50, width:"100%"}}>
+                    <hr/>
                 </div>
-            </div>
-            <div style={{height:50, width:"85%"}}>
-                <hr/>
-            </div>
-            <div className={classes['chart-container']}>
-               <div>
-                    <BarChart type={type} month={month} />
-               </div>
+                <div className={classes['chart-container']}>
+                   <div>
+                        <BarChart type={type} month={month} />
+                   </div>
+                </div>
             </div>
         </div>
-    </div>
 }
 
 export default Home;

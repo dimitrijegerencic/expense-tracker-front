@@ -75,30 +75,30 @@ const CategoryForm = ({type, id, onClick, onClose}) => {
     }
 
     const colorOptions = [
-        {value:'#258FDC',label:'#258FDC'},
-        {value:'#84C57A',label:'#84C57A'},
-        {value:'#FFA800',label:'#FFA800'},
-        {value:'#C2F1FB',label:'#C2F1FB'},
-        {value:'#DC6788',label:'#DC6788'},
-        {value:'#5E72EB',label:'#5E72EB'},
-        {value:'#F52929',label:'#F52929'},
-        {value:'#D946EF',label:'#D946EF'},
-        {value:'#10B981',label:'#10B981'},
-        {value:'#84CC16',label:'#84CC16'},
-        {value:'#EC4899',label:'#EC4899'},
-        {value:'#7628DA',label:'#7628DA'}
+        {value:'#258FDC', label:'#258FDC'},
+        {value:'#84C57A', label:'#84C57A'},
+        {value:'#FFA800', label:'#FFA800'},
+        {value:'#C2F1FB', label:'#C2F1FB'},
+        {value:'#DC6788', label:'#DC6788'},
+        {value:'#5E72EB', label:'#5E72EB'},
+        {value:'#F52929', label:'#F52929'},
+        {value:'#D946EF', label:'#D946EF'},
+        {value:'#10B981', label:'#10B981'},
+        {value:'#84CC16', label:'#84CC16'},
+        {value:'#EC4899', label:'#EC4899'},
+        {value:'#7628DA', label:'#7628DA'}
     ]
 
     return <>
         <div>
             <Card title={<div className={'card-title'}>
-                <div className="float-start">
-                    {type==='add' ? t('categories.add-title') : t('categories.edit-title')}
-                </div>
-                <div className="float-end">
-                    <button className={'close-btn'} title={t('common.close')} onClick={onClose}>X</button>
-                </div>
-            </div>}
+                            <div className="float-start">
+                                {type==='add' ? t('categories.add-title') : t('categories.edit-title')}
+                            </div>
+                            <div className="float-end">
+                                <button className={'close-btn'} title={t('common.close')} onClick={onClose}>X</button>
+                            </div>
+                        </div>}
                   className={'category-form-container'}>
                 <form onSubmit={handleSubmit(submitForm)}>
                     <div className={'content'}>
@@ -126,9 +126,7 @@ const CategoryForm = ({type, id, onClick, onClose}) => {
                     </div>
                 </form>
             </Card>
-
         </div>
-
     </>
 }
 

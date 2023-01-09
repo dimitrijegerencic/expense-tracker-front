@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./ButtonTableGroup.module.scss";
 import pencilImg from "../../../img/button/pencil.png";
-import trashbinImg from "../../../img/button/trash-2.png";
+import trashBinImg from "../../../img/button/trash-2.png";
 import PropTypes from "prop-types";
 
 const ButtonTableGroup = ({onEdit, onDelete}) => {
@@ -10,7 +10,7 @@ const ButtonTableGroup = ({onEdit, onDelete}) => {
             <img src={pencilImg} alt={""}/>
         </button>
         <button onClick={onDelete} type={'button'}>
-            <img src={trashbinImg} alt={""}/>
+            <img src={trashBinImg} alt={""}/>
         </button>
     </div>
 }

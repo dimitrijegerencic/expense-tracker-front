@@ -21,7 +21,6 @@ class TransactionModel{
     }
 
     getTypeName(){
-
         if(this.type==='expense'){
             return t('common.expense')
         }else if(this.type==='income'){

@@ -75,7 +75,7 @@ const ChangeProfile = () => {
                 <div className={classes['user-form-container']}>
                     <div className={classes['main']}>
                        <div className={classes['title']}>
-                           <h1>Izmjena profila</h1>
+                           <h1>{t('profile.title')}</h1>
                        </div>
                         <div className={classes['info']}>
                             <div className={classes['user-image']}>
@@ -83,7 +83,7 @@ const ChangeProfile = () => {
                             </div>
                             <div className={classes['inputs']}>
                                <div>
-                                   <label htmlFor={'name-input'}>Ime i prezime</label>
+                                   <label htmlFor={'name-input'}>{t('profile.first-last-name')}</label>
                                    <InputField name={'name'}
                                                use={'profile'}
                                                control={control}
@@ -92,7 +92,7 @@ const ChangeProfile = () => {
                                                id={'name-input'}/>
                                </div>
                                 <div>
-                                    <label htmlFor={'pass-input'}>Password</label>
+                                    <label htmlFor={'pass-input'}>{t('profile.password')}</label>
                                     <PasswordField name={'password'}
                                                    use={'profile'}
                                                    control={control}

@@ -1,7 +1,6 @@
 import React, {useState} from "react";
-import classes from "./TransactionsHistory.module.scss";
-import Table from "../../components/tables/Table";
-import {Card, Tag} from "antd";
+import "./TransactionsHistory.scss";
+import {Card, Table, Tag} from "antd";
 import ButtonTableGroup from "../../components/buttons/buttonTableGroup/ButtonTableGroup";
 import HorizontalTransactionForm from "../addTransaction/transactionForm/horizontal/HorizontalTransactionForm";
 import {useQuery} from "react-query";
@@ -28,7 +27,7 @@ const TransactionsHistory = () => {
                             id={id}
                             onCancel={close}
                             type={'transaction'}
-            />
+                        />
         })
     }
 
@@ -44,8 +43,11 @@ const TransactionsHistory = () => {
     const headers = [
         {
             title : t('transactions-history.table.type'),
-            key : 'type',
             dataIndex : 'type',
+            key : 'type',
+            render : (text, record) => {
+                return record?.getTypeName()
+            }
 
         },
         {
@@ -71,10 +73,14 @@ const TransactionsHistory = () => {
             title : t('transactions-history.table.category'),
             dataIndex : 'categories',
             key : 'categories',
-            align: 'center',
             render : (text, record) => {
                 return record?.categories?.map(category => {
-                    return <Tag key={category?.id} color={category?.color}>{category?.name}</Tag>
+                    return <Tag key={category?.id}
+                                color={category?.color}
+                                style={{fontFamily : "Inter", fontSize:14, borderRadius : 6, width: 127, height: 35, display: "flex", alignItems : "center", justifyContent: "center"}}
+                            >
+                                {category?.name}
+                            </Tag>
                 })
             }
         },
@@ -88,7 +94,7 @@ const TransactionsHistory = () => {
             title: '',
             dataIndex: 'options',
             key: 'options',
-            render: (text,record)=>{
+            render: (text, record)=>{
                 return <ButtonTableGroup
                             onEdit={() => navigate(`/edit-transaction/${record?.id}`)}
                             onDelete={() => openDeleteTransactionModal('transaction', record?.id)}
@@ -97,28 +103,32 @@ const TransactionsHistory = () => {
         }
     ]
 
-    return <>
+    return <div className={'history'}>
         <HorizontalTransactionForm typeSet={e => setType(e.target.value)}
                                    descriptionSet={e => setDescription(e.target.value)}
                                    dateSet={e => setDate(e)}
                                    categorySet={e => setCategory(e)}
-
         />
-        <div className={classes['container']}>
+        <div className={'container'}>
             <hr/>
             {expenses.length !== 0 ?
-                <div className={classes['table-container']}>
-                    <Card title={<div className={classes['table-card-title']}>{t('transactions.history')}</div>}>
-                        <Table data={expenses} columns={headers} size={600}/>
+                <div className={'table-container'}>
+                    <Card title={<div className={'table-card-title'}>{t('transactions.history')}</div>}>
+                        <Table dataSource={expenses} columns={headers}
+                               scroll={{y : 600}}
+                               rowKey={record => record.id}
+                               className={'history-table'}
+                               pagination={false}
+                        />
                     </Card>
                 </div>
                 :
-                <div className={classes['no-table-data']}>
+                <div className={'no-table-data'}>
                     <h1>{t('transactions-history.table.no-data')}</h1>
                 </div>
             }
         </div>
-    </>
+    </div>
 }
 
 export default TransactionsHistory;

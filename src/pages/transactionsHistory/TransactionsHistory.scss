@@ -1,0 +1,84 @@
+.history{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .container{
+    hr{
+      width: 90%;
+      text-align: center;
+
+    }
+    .table-container{
+      width: calc(100vw - 200px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 61px 0 61px 0;
+
+      .ant-table{
+
+        ::-webkit-scrollbar {
+          width: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: #F3F3F3;
+          border-radius: 6.5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+          background: #F3F3F3;
+        }
+
+        .ant-table-container{
+          font-family: "Inter", sans-serif !important;
+
+          .ant-table-header{
+            .ant-table-thead{
+              tr{
+                th{
+                  font-size: 14px !important;
+                  color: var(--primary-color);
+                  background-color: white !important;
+                  border: none !important;
+                }
+              }
+            }
+          }
+
+          .ant-table-body{
+            .ant-table-tbody{
+              tr{
+                td{
+                  border: none !important;
+                  color: #70768C;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .table-card-title{
+        padding-left: 30px;
+        font-family: "Inter", sans-serif;
+        font-size: 17px;
+      }
+    }
+
+    .no-table-data{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      h1{
+        font-family: "Montserrat ExtraBold", sans-serif;
+        margin-top: 15vh;
+        font-size: 40px;
+        color: #B80F0A;
+      }
+    }
+  }
+}

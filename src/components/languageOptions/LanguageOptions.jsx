@@ -7,7 +7,9 @@ const LanguageOptions = () => {
     const {setLanguage} = useUser();
 
     return <div className={'languages-container'}>
-        <p onClick={()=>setLanguage('me')}>MN</p> <span>|</span> <p onClick={()=>setLanguage('en')}>EN</p>
+        <p onClick={()=>setLanguage('me')}>MN</p>
+        <span>|</span>
+        <p onClick={()=>setLanguage('en')}>EN</p>
     </div>
 }
 

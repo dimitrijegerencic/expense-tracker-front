@@ -9,14 +9,14 @@
 
   .cancel-btn{
     background-color: #F2F2F2;
-    color: #140C6F;
+    color: var(--primary-color);
     border: none;
   }
 
   .save-btn{
-    background-color: #140C6F;
+    background-color: var(--primary-color);
     color: #F2F2F2;
-    border: 1px solid #140C6F;
+    border: 1px solid var(--primary-color);
   }
 
   .cancel-btn, .save-btn{
