@@ -11,6 +11,7 @@
       "error" : "Došlo je do greške. Molimo pokušajte ponovo."
     },
     "already-have-an-account": "Already have an account ?",
+    "dont-have-an-account" : "Don't have an account ?",
     "close" : "Close",
     "open" : "Open"
   },
