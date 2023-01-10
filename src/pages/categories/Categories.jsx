@@ -125,7 +125,7 @@ const Categories = () => {
                                 transition: { duration: 1 },
                   }}>
                       <CategoryForm type={'add'}
-                                    onClick={()=>{setIsAddVisible(false); }}
+                                    onClick={()=>{setIsAddVisible(false);setTimeout(increaseWidth, 1000)}}
                                     onClose={()=>{setIsAddVisible(false);setTimeout(increaseWidth, 1000)}}
                       />
                   </motion.div>
@@ -139,7 +139,7 @@ const Categories = () => {
                                   x: '+200%',
                                   transition: { duration: 1 },
                               }}>
-                      <CategoryForm type={'edit'} onClick={()=>setIsEditVisible(false)}
+                      <CategoryForm type={'edit'} onClick={()=>{setIsEditVisible(false); setTimeout(increaseWidth, 1000)}}
                                     id={categoryID}
                                     onClose={()=>{setIsEditVisible(false);setTimeout(increaseWidth, 1000)}}/>
                   </motion.div>

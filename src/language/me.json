@@ -34,7 +34,9 @@
       "email" : "Unesite e-mail",
       "password" : "Unesite lozinku",
       "confirm-password" : "Potvrdite lozinku"
-    }
+    },
+    "success" : "Uspješna prijava!",
+    "fail" : "Došlo je do greške! Molimo pokušajte ponovo!"
   },
   "navbar":{
     "transaction-history":"Istorija transakcija",
@@ -67,7 +69,7 @@
     "expense" : "Trošak",
     "income" : "Prihod",
     "chart" : {
-      "no-data" : "Izvinjavamo se! Za odabrane filtere nema podataka."
+      "no-data" : "Izvinjavamo se! Trenutno nema podataka."
     }
   },
   "transactions-history":{
@@ -78,7 +80,7 @@
       "amount":"Iznos",
       "category":"Kategorija",
       "note":"Opis",
-      "no-data" : "Izvinjavamo se! Za odabrane filtere nema podataka."
+      "no-data" : "Izvinjavamo se! Trenutno nema podataka."
     },
     "filter_options":{
       "expense":"Trošak",

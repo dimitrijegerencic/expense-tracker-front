@@ -6,7 +6,7 @@ class AuthService{
     api = {
         login: '/login',
         logout: '/logout',
-        sign_up: '/v1/users'
+        register: '/register'
     }
 
     login(email, password){
@@ -37,9 +37,9 @@ class AuthService{
         const formData = {
             "name" : data?.name,
             "email" : data?.email,
-            "password" : data?.password,
+            "password" : data?.password
         }
-        return requestInstance.post(this.api.sign_up, formData)
+        return requestInstance.post(this.api.register, formData)
             .then(result => new AuthModel(result?.data?.data))
             .catch(error => Promise.reject(error))
     }

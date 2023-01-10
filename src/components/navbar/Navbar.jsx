@@ -9,7 +9,6 @@ import {t} from "react-switch-lang";
 import logoImg from "../../img/navbar/LOGO.png";
 import { FaBars } from 'react-icons/fa';
 
-
 const Navbar = () => {
 
     const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -36,7 +35,7 @@ const Navbar = () => {
         },
         {
             label: <div className={'menu-buttons'}>
-                        <ButtonAddTransaction onClick={()=>navigate(routes.TRANSACTIONS.add.path)}/>
+                        <ButtonAddTransaction onClick={()=>{navigate(routes.TRANSACTIONS.add.path); setIsOpenMenu(false)}}/>
                         <ButtonUser/>
                     </div>,
             key: 'add-transaction&user-button',
@@ -44,7 +43,6 @@ const Navbar = () => {
     ]
 
     const navigate = useNavigate();
-
 
     const toggleMobileMenu = () => {
         setIsOpenMenu(!isOpenMenu)
@@ -57,7 +55,6 @@ const Navbar = () => {
         <Menu mode={'horizontal'}
               className={`navigation-menu ${isOpenMenu && 'active'}`}
               items={navbarItems}
-              breakpoint={null}
         />
     </div>
 }

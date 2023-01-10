@@ -14,11 +14,11 @@ setDefaultLanguage(storageService.exists(storageKeys.LANGUAGE) ? storageService.
 
 const UserProvider = ({children}) => {
 
-    const [userData, setUserData] = useState(null);
+    const [userData, setUserData] = useState({});
     const [appLanguage, setAppLanguage] = useState(0);
     const navigate = useNavigate();
 
-    useEffect(()=>{
+    useEffect(() => {
         if (storageService.exists(storageKeys.TOKEN)){
             profileService.getCurrentUserInfo()
                             .then(r => setUserData(r))
@@ -26,9 +26,6 @@ const UserProvider = ({children}) => {
         }
         else{
             navigate("/login");
-        }
-        if(storageService.exists(storageKeys.LANGUAGE) === false){
-            storageService.set(storageKeys.LANGUAGE,'me')
         }
 
     },[navigate])
@@ -39,7 +36,7 @@ const UserProvider = ({children}) => {
         setLanguage: (data)=>{
             setLanguage(data);
             setAppLanguage(prevState => prevState + 1)
-            storageService.set(storageKeys.LANGUAGE,data)
+            storageService.set(storageKeys.LANGUAGE, data)
         }
     }
 
@@ -54,5 +51,4 @@ const UserProvider = ({children}) => {
 export const useUser = () => {
     return useContext(UserContext)
 }
-
 export default UserProvider;

@@ -11,6 +11,7 @@ import {useQuery} from "react-query";
 import {t} from "react-switch-lang";
 import ButtonAddGeneral from "../../../../components/buttons/buttonAddGeneral/ButtonAddGeneral";
 import {useNavigate} from "react-router-dom";
+import PropTypes from "prop-types";
 
 const HorizontalTransactionForm = ({typeSet, dateSet, descriptionSet, categorySet}) => {
 
@@ -55,8 +56,9 @@ const HorizontalTransactionForm = ({typeSet, dateSet, descriptionSet, categorySe
                     placeholder={'_ _ /_ _/_ _ _ _'}
                     suffixIcon={<img src={calendarImg} alt="" style={{width:22, height:22}}/>}
                     allowClear={false}
-                    format={'YYYY/MM/DD'}
-                    onChange={(d,ds) => dateSet(ds ? dayjs(d).format('YYYY-MM-DD') : '')}
+                    format={'YYYY-MM-DD'}
+                    picker={'date'}
+                    onChange={date => dateSet(dayjs(date).format('YYYY-MM-DD'))}
                 />
                 <Select
                     className={'filter-select-field'}
@@ -69,6 +71,13 @@ const HorizontalTransactionForm = ({typeSet, dateSet, descriptionSet, categorySe
                 <ButtonAddGeneral onClick={()=>navigate('/add-transaction')} size={'big'}/>
             </div>
         </div>
+}
+
+HorizontalTransactionForm.propTypes={
+    typeSet : PropTypes.func,
+    dateSet : PropTypes.func,
+    descriptionSet : PropTypes.func,
+    categorySet : PropTypes.func
 }
 
 export default HorizontalTransactionForm;

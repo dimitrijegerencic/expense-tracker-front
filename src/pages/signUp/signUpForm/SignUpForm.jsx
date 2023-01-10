@@ -11,7 +11,6 @@ import {t} from "react-switch-lang";
 import {authService} from "../../../services/AuthService";
 import {storageService} from "../../../services/StorageService";
 import {storageKeys} from "../../../config/config";
-import {profileService} from "../../../services/ProfileService";
 import {useNavigate} from "react-router-dom";
 
 const SignUpForm = () => {
@@ -38,25 +37,19 @@ const SignUpForm = () => {
 
     const {handleSubmit, control, formState:{errors}} = useForm({resolver:yupResolver(schema)})
 
+
     const signUp = (data) => {
         authService.signUp(data)
-            .then(() => {
+            .then(()=>{
                 authService.login(data?.email, data?.password)
+                    .then(r => storageService.set(storageKeys.TOKEN, r.getAccessToken()))
             })
-            .then(result => {
-                storageService.set(storageKeys.TOKEN, result.getAccessToken())
+            .then(()=>{
+                message.success(t('sign-up.success'))
+                setTimeout(() => navigate('/'), 1000);
             })
-            .then(() => {
-                return profileService.getCurrentUserInfo()
-            })
-            .then(() => {
-                setTimeout(()=>{
-                    navigate('/')
-                },1000)
-            })
-            .catch(error => {
-                console.log(error)
-                message.error('Došlo je do greške! Molimo pokušajte ponovo!')
+            .catch(() => {
+                message.error(t('sign-up.fail'))
             })
     }
 

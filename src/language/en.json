@@ -33,7 +33,9 @@
       "email" : "Enter your e-mail",
       "password" : "Input password",
       "confirm-password" : "Confirm password"
-    }
+    },
+    "success" : "Sign up successfull!",
+    "fail" : "An error occured! Please try again later!"
   },
   "navbar":{
     "transaction-history":"Transactions history",
@@ -66,7 +68,7 @@
     "expense" : "Expense",
     "income" : "Income",
     "chart" : {
-      "no-data" : "Sorry! There is no data for this type of information."
+      "no-data" : "Sorry! There is no data."
     }
   },
     "chart-data":"There are no transactions for the chosen period!",
@@ -78,7 +80,7 @@
       "amount":"Amount",
       "category":"Category",
       "note":"Note",
-      "no-data" : "Sorry! There is no data for this type of information."
+      "no-data" : "Sorry! There is no data."
     },
     "title":"Transactions history"
   },

@@ -30,14 +30,14 @@ class ProfileService{
     }
 
 
-    editUser(data){
+    editUser(data, id){
 
         const formData = {
             "name" : data?.name,
             "email" : data?.email,
             "password" : data?.password
         }
-        return requestInstance.put(`${this.api.edit_user}/${data?.id}`,formData)
+        return requestInstance.put(`${this.api.edit_user}/${id}`,formData)
             .then(result=> new ProfileModel(result?.data))
             .catch(error => Promise.reject(error))
     }

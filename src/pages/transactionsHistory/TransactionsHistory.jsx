@@ -106,11 +106,13 @@ const TransactionsHistory = () => {
     return <div className={'history'}>
         <HorizontalTransactionForm typeSet={e => setType(e.target.value)}
                                    descriptionSet={e => setDescription(e.target.value)}
-                                   dateSet={e => setDate(e)}
+                                   dateSet={value => setDate(value)}
                                    categorySet={e => setCategory(e)}
         />
-        <div className={'container'}>
+        <div style={{height: 30, width: "85%"}}>
             <hr/>
+        </div>
+        <div className={'container'}>
             {expenses.length !== 0 ?
                 <div className={'table-container'}>
                     <Card title={<div className={'table-card-title'}>{t('transactions.history')}</div>}>

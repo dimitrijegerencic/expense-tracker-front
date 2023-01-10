@@ -13,7 +13,7 @@ const Wrapper = ({children, error = ''}) => {
 }
 
 Wrapper.propTypes = {
-    children: PropTypes.element,
+    children: PropTypes.any,
     error : PropTypes.string
 }
 

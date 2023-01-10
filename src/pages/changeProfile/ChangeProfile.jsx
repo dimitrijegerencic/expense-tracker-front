@@ -13,13 +13,16 @@ import {useForm} from "react-hook-form";
 import {message} from "antd";
 import {useModal} from "../../context/modalContext/ModalContext";
 import ChangeImageForm from "./changeImageForm/ChangeImageForm";
+import {useNavigate} from "react-router-dom";
+import defaultUserImg from "../../img/profile/user-128.png";
+import pencilImg from "../../img/button/edit pen.png";
 
 const ChangeProfile = () => {
 
     const {userData, setUserData} = useUser();
     const queryClient = useQueryClient();
     const {open, close} = useModal();
-
+    const navigate = useNavigate();
 
     const openImageModal = () => {
         open({
@@ -54,7 +57,7 @@ const ChangeProfile = () => {
     )
 
     const editProfile = useMutation(
-        (data) => profileService.editUser(data)
+        (data) => profileService.editUser(data, userData?.id)
             .then(result => {
                 queryClient.invalidateQueries('user', userData?.id)
                 setUserData(result);
@@ -62,6 +65,7 @@ const ChangeProfile = () => {
             })
             .catch(error => {
                 console.log(error);
+                alert(userData?.id)
                 message.error("Error")
             })
     )
@@ -79,7 +83,8 @@ const ChangeProfile = () => {
                        </div>
                         <div className={classes['info']}>
                             <div className={classes['user-image']}>
-                                <img src={currentUser ? currentUser.getUserPhoto() : ''} alt="user" onClick={()=>openImageModal()}/>
+                                <img src={currentUser ? currentUser?.getUserPhoto() : defaultUserImg} alt={''} className={classes['profile-img']}/>
+                                <img src={pencilImg} alt={''} onClick={()=>openImageModal()} className={classes['edit-img']}/>
                             </div>
                             <div className={classes['inputs']}>
                                <div>
@@ -104,7 +109,7 @@ const ChangeProfile = () => {
                         </div>
                     </div>
                     <div className={classes['form-buttons']}>
-                        <ButtonFormGroup onClick={()=>{}}/>
+                        <ButtonFormGroup onClick={()=>{navigate('/')}}/>
                     </div>
                 </div>
             </form>

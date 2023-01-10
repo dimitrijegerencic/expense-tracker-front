@@ -13,8 +13,11 @@ import {storageService} from "../../../services/StorageService";
 import {storageKeys} from "../../../config/config";
 import {profileService} from "../../../services/ProfileService";
 import {t} from "react-switch-lang";
+import {useUser} from "../../../context/userContext/UserContext";
 
 const LoginForm = () => {
+
+    const {setUserData} = useUser();
 
     const login = (email, password) => {
         authService.login(email, password)
@@ -24,9 +27,10 @@ const LoginForm = () => {
             .then(()=>{
                 return profileService.getCurrentUserInfo()
             })
-            .then(() => {
+            .then(result => {
+                setUserData(result)
                 message.success(t('login.success'));
-                setTimeout(()=>{
+                setTimeout(() => {
                     navigate("/");
                 }, 300)
             })
@@ -77,7 +81,6 @@ const LoginForm = () => {
                 </div>
             </div>
         </form>
-
     </>
 }
 
