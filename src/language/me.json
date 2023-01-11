@@ -130,10 +130,12 @@
     "edit-image":"Promijeni profilnu sliku",
     "edit-content":"Izaberi novu profilnu sliku",
     "errors":{
+      "general" : "Došlo je do greške! Molimo pokušajte ponovo!",
       "min":"Polje mora da sadrži najmanje {number} karaktera!",
       "max":"Polje ne smije imati više od {number} karaktera!",
-      "required":"Polje je obavezno!",
-      "format":"Unešeni format nije podržan!"
+      "required":"Molimo izaberite sliku!",
+      "format":"Izabrani format slike nije podržan! Molimo izaberite jedan od sljedećih : .jpg .jpeg .svg ili .png."
+
     }
   },
   "all-forms-validations": {

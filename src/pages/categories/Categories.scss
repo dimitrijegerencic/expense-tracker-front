@@ -17,6 +17,7 @@
         font-size: 19px;
         color: #140C6F;
         padding: 0 0 0 18px;
+
       }
       .end{
         float:right;
@@ -42,6 +43,9 @@
           font-family: "Inter Bold", sans-serif !important;
           font-size: 15px !important;
           color: black;
+          @media screen and (max-width: 800px) {
+            font-size: 13px !important;
+          }
 
           .ant-table-header{
             .ant-table-thead{
@@ -50,6 +54,9 @@
                   font-size: 18px !important;
                   border: none !important;
                   background-color: white !important;
+                  @media screen and (max-width: 800px) {
+                    font-size: 15px !important;
+                  }
                 }
               }
             }

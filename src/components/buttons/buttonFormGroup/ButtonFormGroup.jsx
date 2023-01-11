@@ -1,12 +1,17 @@
 import React from "react";
-import classes from "./ButtonFormGroup.module.scss";
+import "./ButtonFormGroup.scss";
 import {t} from "react-switch-lang";
 import PropTypes from "prop-types";
+import clsx from "clsx";
 
-const ButtonFormGroup = ({onClick}) => {
-    return <div className={classes['button-group']}>
-        <button className={classes['cancel-btn']} onClick={(e)=>onClick(e)}>{t('common.cancel')}</button>
-        <button className={classes['save-btn']} type={'submit'}>{t('common.save')}</button>
+const ButtonFormGroup = ({onClick, use}) => {
+    return <div className={clsx('button-group', use)}>
+        <button className={clsx('cancel-btn', use)}
+                onClick={(e)=>onClick(e)}>{t('common.cancel')}
+        </button>
+        <button className={clsx('save-btn', use)}
+                type={'submit'}>{t('common.save')}
+        </button>
     </div>
 }
 

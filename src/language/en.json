@@ -8,7 +8,7 @@
     "income":"Income",
     "expense":"Expense",
     "form": {
-      "error" : "Došlo je do greške. Molimo pokušajte ponovo."
+      "error" : "An error has occurred! Please try again!"
     },
     "already-have-an-account": "Already have an account ?",
     "dont-have-an-account" : "Don't have an account ?",
@@ -35,7 +35,7 @@
       "confirm-password" : "Confirm password"
     },
     "success" : "Sign up successfull!",
-    "fail" : "An error occured! Please try again later!",
+    "fail" : "An error occurred! Please try again later!",
     "not-same-password" : "Passwords do not match!"
   },
   "navbar":{
@@ -122,10 +122,11 @@
     "first-last-name":"First and last name",
     "password":"Password",
     "errors":{
+      "general" : "An error has occurred! Please try again!",
       "min":"Field must have at least {number} characters!",
       "max":"Field can't have more than {number} characters!",
-      "required":"Field is required!",
-      "format":"File format is not supported!"
+      "required":"Please choose an image!",
+      "format":"This file format is not supported! Please choose one of the following: .jpg .jpeg .svg or .png."
     }
   },
   "all-forms-validations": {

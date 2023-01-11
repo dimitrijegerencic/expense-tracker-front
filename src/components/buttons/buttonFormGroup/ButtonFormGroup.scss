@@ -2,6 +2,10 @@
   display: flex;
   gap:55px;
 
+  &.profile{
+    gap: 31px;
+  }
+
   @media screen and (max-width: 1029px) {
     flex-direction: column-reverse;
     gap: 20px;
@@ -26,5 +30,9 @@
     font-family: "Montserrat ExtraBold", sans-serif;
     font-size: 18px;
     cursor: pointer;
+
+    &.profile{
+      width: 365px !important;
+    }
   }
 }

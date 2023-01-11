@@ -24,7 +24,7 @@ const ChangeProfile = () => {
     const {open, close} = useModal();
     const navigate = useNavigate();
 
-    const [imageSrc, setImageSrc] = useState('https://expense-tracker.amplitudo.me/img/default.png');
+    const [imageSrc] = useState('https://expense-tracker.amplitudo.me/img/default.png');
 
     const openImageModal = () => {
         open({
@@ -93,7 +93,8 @@ const ChangeProfile = () => {
                                 <img src={pencilImg}
                                      alt={''}
                                      onClick={() => openImageModal()}
-                                     className={classes['edit-img']}/>
+                                     className={classes['edit-img']}
+                                />
                             </div>
                             <div className={classes['inputs']}>
                                <div>
@@ -103,7 +104,8 @@ const ChangeProfile = () => {
                                                control={control}
                                                placeholder={''}
                                                error={errors?.name?.message}
-                                               id={'name-input'}/>
+                                               id={'name-input'}
+                                   />
                                </div>
                                 <div>
                                     <label htmlFor={'pass-input'}>{t('profile.password')}</label>
@@ -111,13 +113,14 @@ const ChangeProfile = () => {
                                                    use={'profile'}
                                                    control={control}
                                                    error={errors?.password?.message}
-                                                   id={'pass-input'}/>
+                                                   id={'pass-input'}
+                                    />
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className={classes['form-buttons']}>
-                        <ButtonFormGroup onClick={()=>{navigate('/')}}/>
+                        <ButtonFormGroup onClick={()=>{navigate('/')}} use={'profile'}/>
                     </div>
                 </div>
             </form>
