@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import classes from "./ChangeProfile.module.scss";
 import InputField from "../../components/formFields/inputField/InputField";
 import ButtonFormGroup from "../../components/buttons/buttonFormGroup/ButtonFormGroup";
@@ -14,8 +14,8 @@ import {message} from "antd";
 import {useModal} from "../../context/modalContext/ModalContext";
 import ChangeImageForm from "./changeImageForm/ChangeImageForm";
 import {useNavigate} from "react-router-dom";
-import defaultUserImg from "../../img/profile/user-128.png";
 import pencilImg from "../../img/button/edit pen.png";
+import defaultProfileImg from "../../img/profile/default-profile.jpg";
 
 const ChangeProfile = () => {
 
@@ -23,6 +23,8 @@ const ChangeProfile = () => {
     const queryClient = useQueryClient();
     const {open, close} = useModal();
     const navigate = useNavigate();
+
+    const [imageSrc, setImageSrc] = useState('https://expense-tracker.amplitudo.me/img/default.png');
 
     const openImageModal = () => {
         open({
@@ -83,8 +85,15 @@ const ChangeProfile = () => {
                        </div>
                         <div className={classes['info']}>
                             <div className={classes['user-image']}>
-                                <img src={currentUser ? currentUser?.getUserPhoto() : defaultUserImg} alt={''} className={classes['profile-img']}/>
-                                <img src={pencilImg} alt={''} onClick={()=>openImageModal()} className={classes['edit-img']}/>
+                                <img src={currentUser ? currentUser?.getUserPhoto() : defaultProfileImg}
+                                     onError={(event) => event.target.src = imageSrc}
+                                     className={classes['profile-img']}
+                                     alt={''}
+                                />
+                                <img src={pencilImg}
+                                     alt={''}
+                                     onClick={() => openImageModal()}
+                                     className={classes['edit-img']}/>
                             </div>
                             <div className={classes['inputs']}>
                                <div>
@@ -92,7 +101,7 @@ const ChangeProfile = () => {
                                    <InputField name={'name'}
                                                use={'profile'}
                                                control={control}
-                                               placeholder={'Password'}
+                                               placeholder={''}
                                                error={errors?.name?.message}
                                                id={'name-input'}/>
                                </div>
@@ -102,8 +111,7 @@ const ChangeProfile = () => {
                                                    use={'profile'}
                                                    control={control}
                                                    error={errors?.password?.message}
-                                                   id={'pass-input'}
-                                                    />
+                                                   id={'pass-input'}/>
                                 </div>
                             </div>
                         </div>

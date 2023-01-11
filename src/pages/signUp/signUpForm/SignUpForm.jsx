@@ -54,7 +54,12 @@ const SignUpForm = () => {
     }
 
     const onSubmit = (data) => {
-        signUp(data);
+        if (data.password !== data.confirmPassword){
+            message.error(t('sign-up.not-same-password'))
+        }
+        else{
+            signUp(data);
+        }
     }
 
     return <>

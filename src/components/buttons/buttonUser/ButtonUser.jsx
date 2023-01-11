@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Dropdown} from "antd";
 import defaultProfileImg from "../../../img/profile/default-profile.jpg";
 import PopoverContent from "../../popoverContent/PopoverContent";
@@ -11,6 +11,7 @@ import {useForm} from "react-hook-form";
 const ButtonUser = () => {
 
     const {userData, setUserData} = useUser();
+    const [imageSrc, setImageSrc] = useState('https://expense-tracker.amplitudo.me/img/default.png');
 
     const dropContent = (
         <PopoverContent/>
@@ -39,8 +40,9 @@ const ButtonUser = () => {
                   trigger='click'
                   className={'nav-dropdown'}
                 >
-                  <img src={currentUser ? currentUser?.getUserPhoto() : defaultProfileImg} alt={'profile'} />
-
+                  <img src={currentUser ? currentUser?.getUserPhoto() : defaultProfileImg}
+                       onError={(event) => event.target.src = imageSrc}
+                   alt={''}/>
                 </Dropdown>
     </div>
 }

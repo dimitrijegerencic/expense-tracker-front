@@ -35,7 +35,8 @@
       "confirm-password" : "Confirm password"
     },
     "success" : "Sign up successfull!",
-    "fail" : "An error occured! Please try again later!"
+    "fail" : "An error occured! Please try again later!",
+    "not-same-password" : "Passwords do not match!"
   },
   "navbar":{
     "transaction-history":"Transactions history",

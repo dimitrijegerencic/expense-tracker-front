@@ -36,7 +36,8 @@
       "confirm-password" : "Potvrdite lozinku"
     },
     "success" : "Uspješna prijava!",
-    "fail" : "Došlo je do greške! Molimo pokušajte ponovo!"
+    "fail" : "Došlo je do greške! Molimo pokušajte ponovo!",
+    "not-same-password" : "Lozinke se ne poklapaju!"
   },
   "navbar":{
     "transaction-history":"Istorija transakcija",
@@ -123,7 +124,7 @@
     "placeholder" : "Kategorija"
   },
   "profile":{
-    "title":"Izmijena profila",
+    "title":"Izmjena profila",
     "first-last-name":"Ime i prezime",
     "password":"Lozinka",
     "edit-image":"Promijeni profilnu sliku",
