@@ -121,11 +121,14 @@
     "title":"Edit profile",
     "first-last-name":"First and last name",
     "password":"Password",
+    "success" : "Profile updated successfully!",
+    "fail" : "An error has occured! Please try again!",
     "errors":{
       "general" : "An error has occurred! Please try again!",
       "min":"Field must have at least {number} characters!",
       "max":"Field can't have more than {number} characters!",
       "required":"Please choose an image!",
+      "password-required" : "Please choose new password!",
       "format":"This file format is not supported! Please choose one of the following: .jpg .jpeg .svg or .png."
     }
   },

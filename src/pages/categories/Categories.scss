@@ -53,9 +53,13 @@
                 th{
                   font-size: 18px !important;
                   border: none !important;
+                  border-right: none !important;
                   background-color: white !important;
                   @media screen and (max-width: 800px) {
                     font-size: 15px !important;
+                  }
+                  &::before{
+                    content: none !important;
                   }
                 }
               }

@@ -10,11 +10,9 @@ import dayjs from "dayjs";
 
 const Home = () => {
 
-    const currDate = new Date();
-
-    const [month, setMonth] = useState(currDate.getMonth() + 1);
+    const currentDate = new Date();
+    const [month, setMonth] = useState(currentDate.getMonth() + 1);
     const [type, setType] = useState("expense");
-
 
     const {data : reports} = useQuery(
         ['reports'],
@@ -76,20 +74,29 @@ const Home = () => {
 
     const [monthLabel] = useState(`${allMonths[dayjs().month()]} ${dayjs().year()}`)
 
-    const currentDate = dayjs();
-    const last12dates = [];
+    const previousMonths = [];
 
     for (let i = 0; i < 12; i++) {
-        last12dates.push(allMonths[i] + " " +currentDate.subtract(i, 'month').format('YYYY'));
+        const previousMonth = new Date(currentDate);
+        previousMonth.setMonth(currentDate.getMonth() - i);
+        const month = previousMonth.getMonth() + 1;
+        previousMonths.push(month);
     }
 
-    const monthOptions = last12dates.reverse().map((item, index) =>(
-        {
-            label : <p onClick={()=>setMonth(last12dates.length-index)}>{item}</p>,
-            key : item.toString().toLowerCase(),
-            value : item.toString().toLowerCase()
-        }
-    ) )
+    const monthOptions = previousMonths.map((month, index) => {
+
+        const label = <p onClick={() => setMonth(month)}>
+                            { currentDate.getMonth() + 1 > index ?
+                                allMonths[month - 1] + " " + currentDate.getFullYear()
+                                :
+                                allMonths[month - 1] + " " + (currentDate.getFullYear() - 1)
+                            }
+                      </p>;
+        const key = `month_${month}`;
+
+        return { value: month.toString().toLowerCase(), label, key };
+
+    });
 
     return <div className={classes['home']}>
                 <div className={classes['info-cards-container']}>

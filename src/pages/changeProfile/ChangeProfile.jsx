@@ -34,13 +34,18 @@ const ChangeProfile = () => {
     }
 
     const shema = yup.object().shape({
-        name: yup.string().trim().min(3,t('profile.errors.min'), )
-            .max(100,t('profile.errors.max')).required(t('profile.errors.required')),
-        password: yup.string().min(8,t('profile.errors.min'))
-            .max(16,t('profile.errors.max')).required(t('profile.errors.required'))
+        name: yup.string()
+            .trim()
+            .min(3, t('profile.errors.min', {number : 3}))
+            .max(100,t('profile.errors.max', {number: 3}))
+            .required(t('profile.errors.required')),
+        password: yup.string()
+            .min(8,t('profile.errors.min', {number : 8}))
+            .max(16,t('profile.errors.max', {number : 16}))
+            .required(t('profile.errors.password-required'))
     })
 
-    const {handleSubmit,control,reset,formState:{errors}} = useForm({resolver:yupResolver(shema)})
+    const {handleSubmit, control, reset, formState : {errors}} = useForm({resolver : yupResolver(shema)})
 
     const {data : currentUser} = useQuery(
         ['user', userData?.id],
@@ -63,12 +68,10 @@ const ChangeProfile = () => {
             .then(result => {
                 queryClient.invalidateQueries('user', userData?.id)
                 setUserData(result);
-                message.success('Successfull!')
+                message.success(t('profile.success'))
             })
-            .catch(error => {
-                console.log(error);
-                alert(userData?.id)
-                message.error("Error")
+            .catch(() => {
+                message.error(t('profile.fail'))
             })
     )
 

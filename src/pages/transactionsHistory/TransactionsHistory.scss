@@ -43,6 +43,14 @@
                   color: var(--primary-color);
                   background-color: white !important;
                   border: none !important;
+
+                  &::before{
+                    content: none !important;
+                  }
+
+                  &:nth-child(5){
+                    text-align: center;
+                  }
                 }
               }
             }

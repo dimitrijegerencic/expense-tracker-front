@@ -25,7 +25,7 @@ const Categories = () => {
     const [cardWidth, setCardWidth] = useSpring(()=>({ width : '80%'}))
 
     const reduceWidth = () => {
-        setCardWidth({ width: '40%', config: { duration: 1000 } })
+        setCardWidth({ width: '45%', config: { duration: 1000 } })
     }
 
     const increaseWidth = () => {

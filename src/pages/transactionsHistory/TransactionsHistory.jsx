@@ -75,12 +75,16 @@ const TransactionsHistory = () => {
             key : 'categories',
             render : (text, record) => {
                 return record?.categories?.map(category => {
-                    return <Tag key={category?.id}
-                                color={category?.color}
-                                style={{fontFamily : "Inter", fontSize:14, borderRadius : 6, width: 127, height: 35, display: "flex", alignItems : "center", justifyContent: "center"}}
-                            >
-                                {category?.name}
-                            </Tag>
+                    return <div style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
+                        <Tag key={category?.id}
+                             color={category?.color}
+                             style={{fontFamily : "Inter", fontSize:14, borderRadius : 6,
+                                    width: 127, height: 35, display: "flex",
+                                    alignItems : "center", justifyContent: "center"}}
+                        >
+                            {category?.name}
+                        </Tag>
+                    </div>
                 })
             }
         },
