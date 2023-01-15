@@ -37,7 +37,8 @@
     },
     "success" : "Uspješna prijava!",
     "fail" : "Došlo je do greške! Molimo pokušajte ponovo!",
-    "not-same-password" : "Lozinke se ne poklapaju!"
+    "not-same-password" : "Lozinke se ne poklapaju!",
+    "email-taken": "Email već postoji!"
   },
   "navbar":{
     "transaction-history":"Istorija transakcija",

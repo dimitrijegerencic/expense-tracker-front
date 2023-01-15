@@ -11,7 +11,10 @@ class ProfileModel{
     }
 
     getUserPhoto(){
-        return `https://expense-tracker.amplitudo.me/storage/${this.profilePhoto}`;
+        if (this?.profilePhoto.includes('img'))
+            return this?.profilePhotoPath;
+        else
+            return `https://expense-tracker.amplitudo.me/storage/${this.profilePhoto}`;
     }
     
 }

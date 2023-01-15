@@ -36,7 +36,8 @@
     },
     "success" : "Sign up successfull!",
     "fail" : "An error occurred! Please try again later!",
-    "not-same-password" : "Passwords do not match!"
+    "not-same-password" : "Passwords do not match!",
+    "email-taken": "Email has already been taken!"
   },
   "navbar":{
     "transaction-history":"Transactions history",

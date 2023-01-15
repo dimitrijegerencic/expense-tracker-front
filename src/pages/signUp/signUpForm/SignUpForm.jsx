@@ -48,8 +48,13 @@ const SignUpForm = () => {
                 message.success(t('sign-up.success'))
                 setTimeout(() => navigate('/'), 1000);
             })
-            .catch(() => {
-                message.error(t('sign-up.fail'))
+            .catch((error) => {
+                if (error?.respomse?.data?.message === 'The email has already been taken.'){
+                    message.error(t('sign-up.email-taken'))
+                }
+                else{
+                    message.error(t('sign-up.fail'))
+                }
             })
     }
 
