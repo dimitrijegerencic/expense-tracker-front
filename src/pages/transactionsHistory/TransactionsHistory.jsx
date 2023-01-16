@@ -74,9 +74,9 @@ const TransactionsHistory = () => {
             dataIndex : 'categories',
             key : 'categories',
             render : (text, record) => {
-                return record?.categories?.map(category => {
-                    return <div style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
-                        <Tag key={category?.id}
+                return record?.categories?.map((category, index) => {
+                    return <div style={{display:"flex", alignItems:"center", justifyContent:"center"}} key={index}>
+                        <Tag key={index}
                              color={category?.color}
                              style={{fontFamily : "Inter", fontSize:14, borderRadius : 6,
                                     width: 127, height: 35, display: "flex",
@@ -122,7 +122,7 @@ const TransactionsHistory = () => {
                     <Card title={<div className={'table-card-title'}>{t('transactions.history')}</div>}>
                         <Table dataSource={expenses} columns={headers}
                                scroll={{y : 600}}
-                               rowKey={record => record.id}
+                               rowKey={record => record?.id}
                                className={'history-table'}
                                pagination={false}
                         />

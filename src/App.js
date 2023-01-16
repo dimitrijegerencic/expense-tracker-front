@@ -11,22 +11,23 @@ import {QueryClient, QueryClientProvider} from "react-query";
 import {queryClientConfig} from "./config/config";
 import DefaultLayout from "./components/layouts/defaultLayout/DefaultLayout";
 import EditTransaction from "./pages/editTransaction/EditTransaction";
+import PageNotFound from "./pages/pageNotFound/PageNotFound";
 
 const queryClient = new QueryClient(queryClientConfig);
 
 const router = createBrowserRouter(
     createRoutesFromElements (
         <>
-            <Route path="sign-in" element={<SignUp/>}/>
-            <Route path="login" element={<ContextWrapper><LogIn/></ContextWrapper>}/>
-            <Route path="/" element={<ContextWrapper><DefaultLayout/></ContextWrapper>}>
-                <Route index element={<Home/>}/>
-                <Route path={"/transactions-history"} element={<TransactionsHistory/>}/>
-                <Route path={"/change-profile"} element={<ChangeProfile/>}/>
-                <Route path={"/add-transaction"} element={<AddTransaction/>}/>
-                <Route path={"/edit-transaction/:id"} element={<EditTransaction/>}/>
-                <Route path={"/categories"} element={<Categories/>}/>
-            </Route>
+                <Route path="sign-in" element={<SignUp/>}/>
+                <Route path="login" element={<ContextWrapper><LogIn/></ContextWrapper>}/>
+                <Route path="/" element={<ContextWrapper><DefaultLayout/></ContextWrapper>} errorElement={<PageNotFound/>}>
+                    <Route index element={<Home/>}/>
+                    <Route path={"/transactions-history"} element={<TransactionsHistory/>}/>
+                    <Route path={"/change-profile"} element={<ChangeProfile/>}/>
+                    <Route path={"/add-transaction"} element={<AddTransaction/>}/>
+                    <Route path={"/edit-transaction/:id"} element={<EditTransaction/>}/>
+                    <Route path={"/categories"} element={<Categories/>}/>
+                </Route>
         </>
     )
 )

@@ -56,7 +56,7 @@ const Categories = () => {
             dataIndex: 'color',
             key: 'color',
             align: 'center',
-            render:(text,record)=>{
+            render:(text, record) => {
                 return <ColorCircle color={record?.color}/>
             }
         },
@@ -111,7 +111,7 @@ const Categories = () => {
                          columns={columns}
                          scroll={{y : 250}}
                          pagination={false}
-                         rowKey={record => record.id}
+                         rowKey={record => record?.id}
                          className={'category-table'}
                   />
               </Card>

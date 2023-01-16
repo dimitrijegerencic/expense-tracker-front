@@ -183,5 +183,9 @@
       "name-max" : "Ime ne smije imati više od {number} karaktera!",
       "color-required" : "Odabir boje je obavezan!"
     }
+  },
+  "page-not-found": {
+    "title" : "STRANICA NIJE PRONAĐENA",
+    "go-back" : "Vrati se nazad"
   }
 }

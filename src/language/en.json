@@ -174,5 +174,9 @@
       "name-max" : "Category name cannot be longer than {number} characters!",
       "color-required" : "Color field is required!"
     }
+  },
+  "page-not-found": {
+    "title" : "PAGE NOT FOUND",
+    "go-back" : "Go back"
   }
 }

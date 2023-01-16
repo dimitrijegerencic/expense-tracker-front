@@ -49,7 +49,7 @@ const SignUpForm = () => {
                 setTimeout(() => navigate('/'), 1000);
             })
             .catch((error) => {
-                if (error?.respomse?.data?.message === 'The email has already been taken.'){
+                if (error?.response?.data?.message === 'The email has already been taken.'){
                     message.error(t('sign-up.email-taken'))
                 }
                 else{

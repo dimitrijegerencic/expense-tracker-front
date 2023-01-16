@@ -17,9 +17,9 @@ const RadioField = ({label,error,name,control,options, use}) => {
                         status={error ? "error" : ""}
                         {...field}
                     >
-                        {options.map(option=>{
+                        {options.map((option, index)=>{
                             return <Radio
-                                key={option.label}
+                                key={index}
                                 value={option.value}
                                 style={{backgroundColor:option.value}}
                             ></Radio>
